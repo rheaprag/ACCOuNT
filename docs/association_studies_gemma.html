@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="rheaprag" />
 
+<meta name="date" content="2021-04-22" />
 
-<title>About</title>
+<title>association_studies_gemma</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +21,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -258,6 +263,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -265,6 +333,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -308,7 +386,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About</h1>
+<h1 class="title toc-ignore">association_studies_gemma</h1>
+<h4 class="author">rheaprag</h4>
+<h4 class="date">2021-04-22</h4>
 
 </div>
 
@@ -393,7 +473,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/about.Rmd</code>) and HTML (<code>docs/about.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/association_studies_gemma.Rmd</code>) and HTML (<code>docs/association_studies_gemma.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -422,7 +502,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/about.Rmd" target="_blank">1be0b98</a>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/association_studies_gemma.Rmd" target="_blank">1be0b98</a>
 </td>
 <td>
 rheaprag
@@ -434,40 +514,6 @@ rheaprag
 Publish analysis files
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/35ee90c838a35a77a1ec0f81ba8eb51088b77bda/docs/about.html" target="_blank">35ee90c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/be721cef6e51a7a28c177bbc6d8abbf0e1cbea7a/analysis/about.Rmd" target="_blank">be721ce</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -475,7 +521,30 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>ACCOuNT Project](<a href="https://precisionmedicine4all.com/research-projects/" class="uri">https://precisionmedicine4all.com/research-projects/</a>)</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The output from PrediXcan was converted and is now used as input for GEMMA.</p>
+</div>
+<div id="loop-to-run-predixcan-through-gemma-to-account-for-relatedness" class="section level2">
+<h2>Loop to run PrediXcan through GEMMA to account for relatedness</h2>
+<pre><code>declare -a drugs=(&quot;clop&quot; &quot;apix&quot; &quot;riva&quot;)
+declare -a models=(&quot;CAU&quot; &quot;ALL&quot; &quot;AFA&quot; &quot;CHN&quot; &quot;HIS&quot;)
+
+#Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
+for drug in ${drugs[@]}
+  do
+  for model in ${models[@]}
+    do
+    /usr/local/bin/gemma -g /home/rhea/account_wflow/pwas_results/blacks/${drug}/assoc_gemma_input/blacks_${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
+    -notsnp \
+    -p /home/ashley/account/phenos/${drug}/${drug}_pheno_no_ids.txt \
+    -k /home/ashley/account/covariates/${drug}/blacks_${drug}.cXX.txt \
+    -c /home/ashley/account/covariates/${drug}/${drug}_covariates.txt \
+    -lmm 4 \
+    -o ${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05
+  done
+done</code></pre>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -491,6 +560,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 
@@ -523,6 +594,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

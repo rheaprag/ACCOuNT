@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="rheaprag" />
 
+<meta name="date" content="2021-04-22" />
 
-<title>About</title>
+<title>pred_dosages</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +21,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -258,6 +263,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -265,6 +333,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -308,7 +386,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About</h1>
+<h1 class="title toc-ignore">pred_dosages</h1>
+<h4 class="author">rheaprag</h4>
+<h4 class="date">2021-04-22</h4>
 
 </div>
 
@@ -393,7 +473,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/about.Rmd</code>) and HTML (<code>docs/about.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/pred_dosages.Rmd</code>) and HTML (<code>docs/pred_dosages.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -422,7 +502,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/about.Rmd" target="_blank">1be0b98</a>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/pred_dosages.Rmd" target="_blank">1be0b98</a>
 </td>
 <td>
 rheaprag
@@ -434,40 +514,6 @@ rheaprag
 Publish analysis files
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/35ee90c838a35a77a1ec0f81ba8eb51088b77bda/docs/about.html" target="_blank">35ee90c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/be721cef6e51a7a28c177bbc6d8abbf0e1cbea7a/analysis/about.Rmd" target="_blank">be721ce</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -475,7 +521,93 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>ACCOuNT Project](<a href="https://precisionmedicine4all.com/research-projects/" class="uri">https://precisionmedicine4all.com/research-projects/</a>)</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In order to properly analyze the data in following steps, the original VCF files need to be split by drug, converted to dosage files, and then converted to plink files.</p>
+</div>
+<div id="split-vcf-by-drug" class="section level2">
+<h2>Split VCF by Drug</h2>
+<p>First, the original VCF file needs to be split by drug: Clopidogrel, Apixaban, Warfarin, Rivaroxiban, and NOAC (Apixaban &amp; Rivaroxiban).</p>
+<pre><code>for chr in {1..22};
+do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/ashley/account/vcfs/blacks_imputed/clop/clop_ids_new_filt.txt --recode --recode-INFO-all --out clop_chr${chr};
+done</code></pre>
+<p>This is repeated for the rest of the drugs.</p>
+<p>The files are then gzipped before the next step using the <code>gzip</code> command.</p>
+</div>
+<div id="vcf-to-dosage-python-script" class="section level2">
+<h2>VCF to Dosage Python Script</h2>
+<p>A Python script was then written in order to output the dosage files:</p>
+<pre><code>import gzip
+import re
+import sys
+import argparse
+import os
+
+def check_arg(args=None):
+    parser = argparse.ArgumentParser(description=&#39;Script to filter imputed VCF&#39;)
+    parser.add_argument(&#39;-i&#39;, &#39;--inputdir&#39;,
+                        help=&#39;directory containing VCF file&#39;,
+                        required=&#39;True&#39;
+                        )
+    parser.add_argument(&#39;-c&#39;, &#39;--chr&#39;,
+                        help=&#39;chromosome&#39;,
+            type=str,
+                        required=&#39;True&#39;
+                        )
+     parser.add_argument(&#39;-d&#39;, &#39;--drug&#39;,
+                        help=&#39;drug&#39;,
+            type=str,
+                        required=&#39;True&#39;
+                        )
+    return parser.parse_args(args)
+
+#retrieve command line arguments
+args = check_arg(sys.argv[1:])
+chrpath = args.inputdir
+c = args.chr
+drug = args.drug
+chrfile = chrpath + drug + &quot;_&quot; + &quot;chr&quot; + c + &quot;.recode.vcf.gz&quot;
+mypath = &quot;/home/rhea/account_wflow/&quot;
+
+# get dosage file data - getting errors with this section
+if(os.path.exists(mypath+ &#39;UMich_dosages/&#39;) == False): 
+    os.mkdir(mypath + &#39;UMich_dosages/&#39;)
+
+outdosage = open(mypath + &quot;UMich_dosages/&quot; + drug + &quot;chr&quot; + c + &quot;.dosage.txt&quot;,&quot;w&quot;)
+
+for line in gzip.open(chrfile):
+    #skip meta data and header lines
+    if(line.startswith(b&#39;##&#39;)):
+        continue
+    if(line.startswith(b&#39;#CHROM&#39;)):
+        continue
+    arr = line.strip().split()
+    (chr, pos, id, ref, alt, qual, filter, info, format) = arr[0:9]
+    gt_dosagerow = arr[9:]
+    #get freq of alt allele:
+    info_list = info.split(b&quot;;&quot;)
+    af_list = info_list[0].split(b&quot;=&quot;)
+    freqalt = af_list[1]
+    #get dosage of alt allele
+    dosagerow = map(lambda x : float(x.split(b&quot;:&quot;)[1]), gt_dosagerow) #lambda function to split each info entry and collect the dosage
+    dosages = &#39; &#39;.join(map(str,dosagerow))
+    #reformat ids for proteome models (chr:pos)
+    id_list = id.split(b&quot;:&quot;)
+    id_formatted = str(id_list[0]) + &quot;:&quot; + str(id_list[1])
+    output = str(chr) + &#39; &#39; + str(id_formatted) + &#39; &#39; + str(pos) + &#39; &#39; + str(ref) + &#39; &#39; + str(alt) + &#39; &#39; + str(freqalt) + &#39; &#39; + dosages + &#39;\n&#39;
+    output = output.replace(&quot;b&quot;, &quot;&quot;)
+    output = output.replace(&quot;&#39;&quot;, &quot;&quot;)
+    outdosage.write(output)
+
+outdosage.close()</code></pre>
+<p>This applies the python script to the gzipped VCF files. It then outputs the dosage txt files.</p>
+<pre><code>for chr in {1..22};
+do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/clop/ -c ${chr} -d clop;
+done</code></pre>
+<p>This is repeated for each drug.</p>
+<p>The text files are then gzipped using the <code>gzip</code> command.</p>
+<p>Dosage files are saved under <code>/home/rhea/account_wflow/dosages/blacks/drug*/pred_dosages</code>.</p>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -491,6 +623,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 
@@ -523,6 +657,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
