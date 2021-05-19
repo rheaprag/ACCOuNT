@@ -8,10 +8,14 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website. This is my documentation for the associations studies regarding 
+Welcome to my research website. 
+
+This is my documentation for the steps for the association studies.
 
 * [Creating the Dosage Files](pred_dosages.html) 
 
 * [Running PrediXcan](pwas.html)
 
 * [GEMMA Association Studies](association_studies_gemma.html)
+
+[Analysis  of Creatinine Clearance](creatinine_clearance.html)

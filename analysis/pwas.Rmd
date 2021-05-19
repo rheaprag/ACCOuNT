@@ -50,9 +50,9 @@ done
 
 ## Convert predicted expression from PrediXcan to GEMMA input
 
-This will convert the matrix outputed from PrediXcan to the input for GEMMA.
+This will convert the matrix outputted from PrediXcan to the input for GEMMA.
 
-R file created with `nano` in directory. However, used R in command line to execute code.
+Used R in command line to execute code.
 
 ``` {}
 library(data.table)

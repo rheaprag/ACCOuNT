@@ -1,0 +1,72 @@
+---
+title: "creatinine_clearance"
+author: "rheaprag"
+date: "2021-04-22"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+This analysis looks at creatinine clearance in the data. 
+
+Creatinine is a waste product produced in our body. Low creatinine levels indicate kidney damage while high levels indicate diminished kidney function.
+
+This analysis uses the Clopidogrel and NOAC drug groups. 
+
+
+### TODO
+ 
+* read files with matched IDs into R and select columns needed for CrCl (need to calculate for clop, already calculated for noac)
+
+`home/ashley/account/phenos/noac/account_noac_processed_matched_IDs_all.csv`
+
+`home/ashley/account/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv`
+
+* 
+
+### Extract Phenotype Data 
+
+The `csv` files with matched IDs were used for this.
+
+```{}
+#adapted from Ashley's code ACCOUNT/scripts/pheno/extract_important_pheno_data.R
+
+library(data.table)
+library(dplyr)
+
+clop<-fread("/home/rhea/account_wflow/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv")
+noac<-fread("/home/rhea/account_wflow/phenos/noac/account_noac_processed_matched_IDs_all.csv")
+
+#save ids and pheno columns only, remove unneeded columns so files are easier to work with
+clop_small<-clop[, c(1:9,205)]
+noac_small<-noac[, c(1:9,78)]
+
+fwrite(clop_small, "clop_CrClpheno_with_ids.txt", sep = "\t", quote = F, na = NA)
+fwrite(noac_small, "noac_CrClpheno_with_ids.txt", sep = "\t", quote = F, na = NA)
+
+```
+
+
+### Merge Samples File with CSV file with phenotype data to get Clop IDs
+
+```{}
+# samples file path = /home/rhea/account_wflow/dosages/blacks/clop/samples_clop.txt
+# phenotype file path = /home/rhea/account_wflow/pheno/clop/clop_CrClpheno_with_ids.txt
+
+library(data.table)
+library(dplyr)
+
+clop_samples<-fread("/home/ashley/account/dosages/blacks/clop/samples_clop.txt", header = FALSE)
+clop_phenos<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrClpheno_with_ids.txt")
+
+clop_cmbnd<-left_join(clop_samples, clop_phenos)
+
+fwrite(clop_cmbnd, "clop_combnd_pheno_ids.txt", sep = "\t", quote = F, na = NA)
+
+```
+
+
+
+
