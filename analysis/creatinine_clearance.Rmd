@@ -15,17 +15,6 @@ Creatinine is a waste product produced in our body. Low creatinine levels indica
 
 This analysis uses the Clopidogrel and NOAC drug groups. 
 
-
-### TODO
- 
-* read files with matched IDs into R and select columns needed for CrCl (need to calculate for clop, already calculated for noac)
-
-`home/ashley/account/phenos/noac/account_noac_processed_matched_IDs_all.csv`
-
-`home/ashley/account/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv`
-
-* 
-
 ### Extract Phenotype Data 
 
 The `csv` files with matched IDs were used for this.
@@ -33,40 +22,74 @@ The `csv` files with matched IDs were used for this.
 ```{}
 #adapted from Ashley's code ACCOUNT/scripts/pheno/extract_important_pheno_data.R
 
+#import necessary libraries
 library(data.table)
 library(dplyr)
 
+#import csv files for clop & noac
 clop<-fread("/home/rhea/account_wflow/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv")
 noac<-fread("/home/rhea/account_wflow/phenos/noac/account_noac_processed_matched_IDs_all.csv")
 
 #save ids and pheno columns only, remove unneeded columns so files are easier to work with
-clop_small<-clop[, c(1:9,205)]
-noac_small<-noac[, c(1:9,78)]
+clop_small<-clop[, c(1:9,206)]
+noac_small<-noac[, c(1:9,79)]
 
-fwrite(clop_small, "clop_CrClpheno_with_ids.txt", sep = "\t", quote = F, na = NA)
-fwrite(noac_small, "noac_CrClpheno_with_ids.txt", sep = "\t", quote = F, na = NA)
+#output files
+fwrite(clop_small, "clop_CrCl_with_ids.txt", sep = "\t", quote = F, na = NA)
+fwrite(noac_small, "noac_CrCl_with_ids.txt", sep = "\t", quote = F, na = NA)
 
 ```
 
-
-### Merge Samples File with CSV file with phenotype data to get Clop IDs
+### Merge Samples File with CSV file with phenotype data 
 
 ```{}
-# samples file path = /home/rhea/account_wflow/dosages/blacks/clop/samples_clop.txt
-# phenotype file path = /home/rhea/account_wflow/pheno/clop/clop_CrClpheno_with_ids.txt
-
+#import necessary libraries
 library(data.table)
 library(dplyr)
 
+#import samples & pheno txt files for clop 
 clop_samples<-fread("/home/ashley/account/dosages/blacks/clop/samples_clop.txt", header = FALSE)
-clop_phenos<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrClpheno_with_ids.txt")
+clop_phenos<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_with_ids.txt")
 
+#merge two files
 clop_cmbnd<-left_join(clop_samples, clop_phenos)
 
+#output file
 fwrite(clop_cmbnd, "clop_combnd_pheno_ids.txt", sep = "\t", quote = F, na = NA)
 
 ```
 
+Repeat this step to create combined phenotype file for NOAC.
 
+### Calculate Creatinine Clearance for Clopidogril Data
 
+```{}
+library(data.table)
+library(dplyr)
 
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt")
+
+clop_age<-clop[, c(6)]
+clop_weight<-clop[, c(8)]
+clop_sCr<-clop[, c(10)]
+
+#set equation to variables
+CrCl_num<-(140-clop_age)%*%clop_weight #ERROR when multiply - Error in FUN(left, right) : non-numeric argument to binary operator
+CrCl_denom<-72*clop_sCr
+CrCl_eqn<-(CrCl_num/CrCl_denom)
+
+# if/else loop to specify for male/female
+for (g in clop$Gender){
+  if (g == "F") {
+    gender<-c(gender, CrCl_eqn*0.85)
+  } else (g == "M") {
+    gender<-c(gender, CrCl_eqn)
+  }
+}
+
+#add column to file
+clop_pheno_all<-add_column(clop, gender = gender)
+
+#output file
+fwrite(clop_pheno_all, "/home/rhea/account_wflow/dosages/blacks/clop/clop_CrCl_pheno.txt", sep = "\t", quote = F, col.names = CrCl)
+```
