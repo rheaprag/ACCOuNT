@@ -413,7 +413,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-05-19
+<strong>Last updated:</strong> 2021-05-25
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -444,16 +444,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreea608eaa007a137a2b04ce33d780ba0dd9ee183ddtargetblanka608eaaa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/a608eaa007a137a2b04ce33d780ba0dd9ee183dd" target="_blank">a608eaa</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree5c901a3ae643ec008c087b006b553912505ab61ftargetblank5c901a3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/5c901a3ae643ec008c087b006b553912505ab61f" target="_blank">5c901a3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreea608eaa007a137a2b04ce33d780ba0dd9ee183ddtargetblanka608eaaa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree5c901a3ae643ec008c087b006b553912505ab61ftargetblank5c901a3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/a608eaa007a137a2b04ce33d780ba0dd9ee183dd" target="_blank">a608eaa</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/5c901a3ae643ec008c087b006b553912505ab61f" target="_blank">5c901a3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -509,6 +509,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/5c901a3ae643ec008c087b006b553912505ab61f/analysis/creatinine_clearance.Rmd" target="_blank">5c901a3</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-05-25
+</td>
+<td>
+Added citatiosn and fixed column numbers
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/33b030e99d31f8974013e4226d07c160780bcaac/docs/creatinine_clearance.html" target="_blank">33b030e</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-05-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/rheaprag/ACCOuNT/blob/a608eaa007a137a2b04ce33d780ba0dd9ee183dd/analysis/creatinine_clearance.Rmd" target="_blank">a608eaa</a>
 </td>
 <td>
@@ -533,51 +567,76 @@ Update website and fix typos
 <p>This analysis looks at creatinine clearance in the data.</p>
 <p>Creatinine is a waste product produced in our body. Low creatinine levels indicate kidney damage while high levels indicate diminished kidney function.</p>
 <p>This analysis uses the Clopidogrel and NOAC drug groups.</p>
-<div id="todo" class="section level3">
-<h3>TODO</h3>
-<ul>
-<li>read files with matched IDs into R and select columns needed for CrCl (need to calculate for clop, already calculated for noac)</li>
-</ul>
-<p><code>home/ashley/account/phenos/noac/account_noac_processed_matched_IDs_all.csv</code></p>
-<p><code>home/ashley/account/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv</code></p>
-<ul>
-<li></li>
-</ul>
-</div>
 <div id="extract-phenotype-data" class="section level3">
 <h3>Extract Phenotype Data</h3>
 <p>The <code>csv</code> files with matched IDs were used for this.</p>
 <pre><code>#adapted from Ashley&#39;s code ACCOUNT/scripts/pheno/extract_important_pheno_data.R
 
+#import necessary libraries
 library(data.table)
 library(dplyr)
 
+#import csv files for clop &amp; noac
 clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv&quot;)
 noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/account_noac_processed_matched_IDs_all.csv&quot;)
 
 #save ids and pheno columns only, remove unneeded columns so files are easier to work with
-clop_small&lt;-clop[, c(1:9,205)]
-noac_small&lt;-noac[, c(1:9,78)]
+clop_small&lt;-clop[, c(1:9,206)]
+noac_small&lt;-noac[, c(1:9,79)]
 
-fwrite(clop_small, &quot;clop_CrClpheno_with_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
-fwrite(noac_small, &quot;noac_CrClpheno_with_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
+#output files
+fwrite(clop_small, &quot;clop_CrCl_with_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
+fwrite(noac_small, &quot;noac_CrCl_with_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
 </code></pre>
 </div>
-<div id="merge-samples-file-with-csv-file-with-phenotype-data-to-get-clop-ids" class="section level3">
-<h3>Merge Samples File with CSV file with phenotype data to get Clop IDs</h3>
-<pre><code># samples file path = /home/rhea/account_wflow/dosages/blacks/clop/samples_clop.txt
-# phenotype file path = /home/rhea/account_wflow/pheno/clop/clop_CrClpheno_with_ids.txt
-
+<div id="merge-samples-file-with-csv-file-with-phenotype-data" class="section level3">
+<h3>Merge Samples File with CSV file with phenotype data</h3>
+<pre><code>#import necessary libraries
 library(data.table)
 library(dplyr)
 
+#import samples &amp; pheno txt files for clop 
 clop_samples&lt;-fread(&quot;/home/ashley/account/dosages/blacks/clop/samples_clop.txt&quot;, header = FALSE)
-clop_phenos&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrClpheno_with_ids.txt&quot;)
+clop_phenos&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_with_ids.txt&quot;)
 
+#merge two files
 clop_cmbnd&lt;-left_join(clop_samples, clop_phenos)
 
+#output file
 fwrite(clop_cmbnd, &quot;clop_combnd_pheno_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
 </code></pre>
+<p>Repeat this step to create combined phenotype file for NOAC.</p>
+</div>
+<div id="calculate-creatinine-clearance-for-clopidogril-data" class="section level3">
+<h3>Calculate Creatinine Clearance for Clopidogril Data</h3>
+<pre><code>library(data.table)
+library(dplyr)
+
+clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt&quot;)
+
+clop_age&lt;-clop[, c(6)]
+clop_weight&lt;-clop[, c(8)]
+clop_sCr&lt;-clop[, c(10)]
+
+#set equation to variables
+CrCl_num&lt;-(140-clop_age)%*%clop_weight #ERROR when multiply - Error in FUN(left, right) : non-numeric argument to binary operator
+CrCl_denom&lt;-72*clop_sCr
+CrCl_eqn&lt;-(CrCl_num/CrCl_denom)
+
+# if/else loop to specify for male/female
+for (g in clop$Gender){
+  if (g == &quot;F&quot;) {
+    gender&lt;-c(gender, CrCl_eqn*0.85)
+  } else (g == &quot;M&quot;) {
+    gender&lt;-c(gender, CrCl_eqn)
+  }
+}
+
+#add column to file
+clop_pheno_all&lt;-add_column(clop, gender = gender)
+
+#output file
+fwrite(clop_pheno_all, &quot;/home/rhea/account_wflow/dosages/blacks/clop/clop_CrCl_pheno.txt&quot;, sep = &quot;\t&quot;, quote = F, col.names = CrCl)</code></pre>
 </div>
 </div>
 
