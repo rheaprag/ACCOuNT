@@ -413,7 +413,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-05-25
+<strong>Last updated:</strong> 2021-07-28
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -444,16 +444,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree5c901a3ae643ec008c087b006b553912505ab61ftargetblank5c901a3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/5c901a3ae643ec008c087b006b553912505ab61f" target="_blank">5c901a3</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreeec9f04ac3c545761a3f785100a70952159d60b01targetblankec9f04aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/ec9f04ac3c545761a3f785100a70952159d60b01" target="_blank">ec9f04a</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree5c901a3ae643ec008c087b006b553912505ab61ftargetblank5c901a3a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreeec9f04ac3c545761a3f785100a70952159d60b01targetblankec9f04aa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/5c901a3ae643ec008c087b006b553912505ab61f" target="_blank">5c901a3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/ec9f04ac3c545761a3f785100a70952159d60b01" target="_blank">ec9f04a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -504,6 +504,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/ec9f04ac3c545761a3f785100a70952159d60b01/analysis/creatinine_clearance.Rmd" target="_blank">ec9f04a</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-07-28
+</td>
+<td>
+Publish incomplete analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/77dac55423ff86743164d4d8f9ae9b32ddf6903b/docs/creatinine_clearance.html" target="_blank">77dac55</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-05-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -589,8 +623,8 @@ fwrite(clop_small, &quot;clop_CrCl_with_ids.txt&quot;, sep = &quot;\t&quot;, quo
 fwrite(noac_small, &quot;noac_CrCl_with_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
 </code></pre>
 </div>
-<div id="merge-samples-file-with-csv-file-with-phenotype-data" class="section level3">
-<h3>Merge Samples File with CSV file with phenotype data</h3>
+<div id="merge-samples-file-with-phenotype-data" class="section level3">
+<h3>Merge Samples File with Phenotype Data</h3>
 <pre><code>#import necessary libraries
 library(data.table)
 library(dplyr)
@@ -609,34 +643,187 @@ fwrite(clop_cmbnd, &quot;clop_combnd_pheno_ids.txt&quot;, sep = &quot;\t&quot;, 
 </div>
 <div id="calculate-creatinine-clearance-for-clopidogril-data" class="section level3">
 <h3>Calculate Creatinine Clearance for Clopidogril Data</h3>
+<pre><code>#crcl calculation
+#Est. Creatinine Clearance = [[140 - age(yr)]*weight(kg)]/[72*serum Cr(mg/dL)]
+#multiply by 0.85 for women
+
+library(data.table)
+library(dplyr)
+
+#import pheno file in for clop, has missing data values
+clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt&quot;)
+
+str(clop) #see structure of data.frame
+#Note Height and Creatinine level are characters, need to convert to the numeric type
+
+clop_age&lt;-clop$`Age at enrollment (with over 89 binning)`
+clop_weight&lt;-as.numeric(clop$`Weight (kg)`) #as.numeric() converts MD&#39;s to NA, I&#39;m assuming MD=&quot;missing data&quot;?
+clop_sCr&lt;-as.numeric(clop$`Creatinine level (mg/dL)`) #as.numeric() converts characters to numbers and MD&#39;s to NA, so we can do math
+
+crcl &lt;- (140 - clop_age)*clop_weight / (72*clop_sCr)
+
+#use mutate() to add crcl to clop data.frame and adjust if female with ifelse()
+clop &lt;- mutate(clop, CrCl = ifelse(Gender==&#39;M&#39;,crcl,0.85*crcl))
+
+fwrite(clop, &quot;clop_CrCl_pheno.txt&quot;, sep=&quot;\t&quot;, na=&quot;NA&quot;, quote=FALSE)</code></pre>
+</div>
+<div id="finishing-data-file" class="section level3">
+<h3>Finishing Data File</h3>
+<p>Now, a row needs to be removed from both the clop and noac files as the person switched drugs:</p>
 <pre><code>library(data.table)
 library(dplyr)
 
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt&quot;)
+clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno.txt&quot;)
+clop_new&lt;-clop[-c(16),]
+fwrite(clop_new, &quot;clop_CrCl_pheno_final.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
 
-clop_age&lt;-clop[, c(6)]
-clop_weight&lt;-clop[, c(8)]
-clop_sCr&lt;-clop[, c(10)]
+noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_combnd_pheno_ids.txt&quot;)
+noac_new&lt;-noac[-c(6),] #remove duplicated data &amp; missing data
 
-#set equation to variables
-CrCl_num&lt;-(140-clop_age)%*%clop_weight #ERROR when multiply - Error in FUN(left, right) : non-numeric argument to binary operator
-CrCl_denom&lt;-72*clop_sCr
-CrCl_eqn&lt;-(CrCl_num/CrCl_denom)
+fwrite(noac_new, &quot;noac_CrCl_pheno_final.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)</code></pre>
+</div>
+<div id="histogram" class="section level3">
+<h3>Histogram</h3>
+<p>The original histogram created showed that the data was skewed to the right.</p>
+<p>In order to fix this, I first applied log transformation to the phenotype files:</p>
+<pre><code>library(ggplot2)
+library(dplyr)
 
-# if/else loop to specify for male/female
-for (g in clop$Gender){
-  if (g == &quot;F&quot;) {
-    gender&lt;-c(gender, CrCl_eqn*0.85)
-  } else (g == &quot;M&quot;) {
-    gender&lt;-c(gender, CrCl_eqn)
+#clop
+clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt&quot;)
+Creatinine_clop &lt;- clop$CrCl
+Creatinine_c_log &lt;- log(Creatinine_clop)
+clop_hist &lt;- hist(Creatinine_c_log,
+main=&quot;Creatinine Clearance of Clopidogril&quot;,
+col=&quot;darkmagenta&quot;)
+
+#noac 
+noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt&quot;)
+colnames(noac)[10] &lt;- &quot;CrCl&quot;
+Creatinine_noac &lt;- noac$CrCl
+Creatinine_noac_num &lt;- as.numeric(Creatinine_noac)
+Creatinine_noac_log &lt;- log(Creatinine_noac_num)
+noac_hist &lt;- hist(Creatinine_noac_log,
+main=&quot;Creatinine Clearance of NOAC drugs&quot;,
+col=&quot;gold&quot;)
+</code></pre>
+<p>However, the log transformed data was now skewed to the left. So I applied rank normalization to the data instead.</p>
+<pre><code>library(ggplot2)
+library(dplyr)
+
+#rank normalize files
+source(&quot;/home/rhea/account_wflow/rntransform.R&quot;)
+source(&quot;/home/rhea/account_wflow/ztransform.R&quot;)
+
+clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt&quot;)
+Creatinine_clop &lt;- rntransform(clop$CrCl)
+clop_hist &lt;- hist(Creatinine_clop,
+main=&quot;Creatinine Clearance of Clopidogril&quot;,
+col=&quot;darkmagenta&quot;)
+
+noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt&quot;)
+colnames(noac)[10] &lt;- &quot;CrCl&quot;
+Creatinine_noac &lt;- noac$CrCl
+Creatinine_noac_num &lt;- as.numeric(Creatinine_noac)
+Creatinine_noac_rn &lt;- rntransform(Creatinine_noac_num)
+noac_hist &lt;- hist(Creatinine_noac_rn,
+main=&quot;Creatinine Clearance of NOAC drugs&quot;,
+col=&quot;gold&quot;)
+</code></pre>
+<p>These histograms showed a normal distribution. The phenotype data used for the remainder of the calculations will be rank-normalized.</p>
+<p>Histograms are all saved under <code>/home/rhea/account_wflow/phenos/{drug}</code>.</p>
+</div>
+<div id="merge-samples-file--" class="section level3">
+<h3>Merge samples file - ?</h3>
+<pre><code>
+clop_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/clop/clop_ids_CrCl.txt&quot;)
+noac_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/noac/noac_ids_CrCl.txt&quot;)
+
+clop_noac_ids &lt;- union_all(clop_ids, noac_ids)
+fwrite(clop_noac_ids, &quot;clop_noac_CrCl_ids.txt&quot;)
+</code></pre>
+<p>using merged samples file…</p>
+</div>
+<div id="create-dosage-files" class="section level3">
+<h3>Create Dosage files</h3>
+<pre><code>#split vcf by pulling out clop &amp; noac data using combined ID file
+for chr in {1..22};
+do vcftools --gzvcf /home/rhea/account_wflow/vcfs/blacks_imputed/CrCl/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
+done
+
+# Use vcf_to_dosage.py to output dosage txt files
+for chr in {1..22};
+do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/CrCl/clop_noac/ -c ${chr} -d clop_noac;
+done
+</code></pre>
+<p>create merged samples_clop_noac.txt file</p>
+</div>
+<div id="run-pwas---not-done" class="section level3">
+<h3>Run PWAS - not done</h3>
+<pre><code>
+#Run PrediXcan with drug groups and protein models:
+#Clop
+
+declare -a drugs=(&quot;clop&quot;)
+declare -a model_pops=(&quot;AFA&quot; &quot;ALL&quot; &quot;CAU&quot; &quot;CHN&quot; &quot;HIS&quot;)
+
+for model_pop in ${model_pops[@]}
+  do
+  for drug in ${drugs[@]}
+    do
+    python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
+    --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
+    --text_genotypes /home/ashley/account/dosages/blacks/${drug}/pred_dosages/${drug}_chr*.dosage.txt.gz \
+    --text_sample_ids /home/ashley/account/dosages/blacks/${drug}/samples_clop_noac.txt \
+    --prediction_output /home/ashley/account/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
+  done
+done
+
+#NOAC
+
+declare -a drugs=(&quot;noac&quot;)
+declare -a model_pops=(&quot;AFA&quot; &quot;ALL&quot; &quot;CAU&quot; &quot;CHN&quot; &quot;HIS&quot;)
+
+for model_pop in ${model_pops[@]}
+  do
+  for drug in ${drugs[@]}
+    do
+    python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
+    --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
+    --text_genotypes /home/ashley/account/dosages/blacks/${drug}/pred_dosages/${drug}_chr*.dosage.txt.gz \
+    --text_sample_ids /home/ashley/account/dosages/blacks/${drug}/samples_${drug}.txt \
+    --prediction_output /home/ashley/account/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
+  done
+done
+</code></pre>
+</div>
+<div id="convert-predixcan-output-to-gemma-input---not-done" class="section level3">
+<h3>Convert PrediXcan Output to GEMMA input - not done</h3>
+<pre><code>library(data.table)
+&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
+model_list &lt;- c(&quot;AFA&quot;, &quot;CAU&quot;, &quot;HIS&quot;, &quot;CHN&quot;, &quot;ALL&quot;)
+drug_list &lt;- c(&quot;clop&quot;)
+
+for(model in model_list){
+  for(drug in drug_list){
+    pred_exp &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/predicted_levels/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_WG_baseline_rho0.1_zpval0.05.txt&quot;, header = F) #path to PrediXcan-produced _predicted_expression.txt
+    pred_exp$V1 &lt;- NULL
+    pred_exp$V2 &lt;- NULL
+    pred_exp &lt;- transpose(pred_exp)
+    gene_list &lt;- as.data.frame(pred_exp$V1)
+    colnames(gene_list) &lt;- &quot;V0&quot;
+    pred_exp &lt;- cbind(gene_list, pred_exp)
+    pred_exp$V0 &lt;- NA
+    pred_exp$V1 &lt;- NA
+    colnames(gene_list) &lt;- &quot;V&quot;
+    pred_exp &lt;- cbind(gene_list, pred_exp)
+    fwrite(pred_exp, &quot;/home/ashley/account/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_input/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05_gemma.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = F) #path to GEMMA input/pseudo-genotype
   }
-}
-
-#add column to file
-clop_pheno_all&lt;-add_column(clop, gender = gender)
-
-#output file
-fwrite(clop_pheno_all, &quot;/home/rhea/account_wflow/dosages/blacks/clop/clop_CrCl_pheno.txt&quot;, sep = &quot;\t&quot;, quote = F, col.names = CrCl)</code></pre>
+}</code></pre>
+</div>
+<div id="run-gemma---not-done" class="section level3">
+<h3>Run GEMMA - not done</h3>
+<pre><code></code></pre>
 </div>
 </div>
 
