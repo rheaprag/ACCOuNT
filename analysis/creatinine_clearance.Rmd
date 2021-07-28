@@ -40,7 +40,7 @@ fwrite(noac_small, "noac_CrCl_with_ids.txt", sep = "\t", quote = F, na = NA)
 
 ```
 
-### Merge Samples File with CSV file with phenotype data 
+### Merge Samples File with Phenotype Data 
 
 ```{}
 #import necessary libraries
@@ -64,32 +64,211 @@ Repeat this step to create combined phenotype file for NOAC.
 ### Calculate Creatinine Clearance for Clopidogril Data
 
 ```{}
+#crcl calculation
+#Est. Creatinine Clearance = [[140 - age(yr)]*weight(kg)]/[72*serum Cr(mg/dL)]
+#multiply by 0.85 for women
+
 library(data.table)
 library(dplyr)
 
+#import pheno file in for clop, has missing data values
 clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt")
 
-clop_age<-clop[, c(6)]
-clop_weight<-clop[, c(8)]
-clop_sCr<-clop[, c(10)]
+str(clop) #see structure of data.frame
+#Note Height and Creatinine level are characters, need to convert to the numeric type
 
-#set equation to variables
-CrCl_num<-(140-clop_age)%*%clop_weight #ERROR when multiply - Error in FUN(left, right) : non-numeric argument to binary operator
-CrCl_denom<-72*clop_sCr
-CrCl_eqn<-(CrCl_num/CrCl_denom)
+clop_age<-clop$`Age at enrollment (with over 89 binning)`
+clop_weight<-as.numeric(clop$`Weight (kg)`) #as.numeric() converts MD's to NA, I'm assuming MD="missing data"?
+clop_sCr<-as.numeric(clop$`Creatinine level (mg/dL)`) #as.numeric() converts characters to numbers and MD's to NA, so we can do math
 
-# if/else loop to specify for male/female
-for (g in clop$Gender){
-  if (g == "F") {
-    gender<-c(gender, CrCl_eqn*0.85)
-  } else (g == "M") {
-    gender<-c(gender, CrCl_eqn)
+crcl <- (140 - clop_age)*clop_weight / (72*clop_sCr)
+
+#use mutate() to add crcl to clop data.frame and adjust if female with ifelse()
+clop <- mutate(clop, CrCl = ifelse(Gender=='M',crcl,0.85*crcl))
+
+fwrite(clop, "clop_CrCl_pheno.txt", sep="\t", na="NA", quote=FALSE)
+```
+
+### Finishing Data File
+
+Now, a row needs to be removed from both the clop and noac files as the person switched drugs:
+```{}
+library(data.table)
+library(dplyr)
+
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno.txt")
+clop_new<-clop[-c(16),]
+fwrite(clop_new, "clop_CrCl_pheno_final.txt", sep = "\t", quote = F, na = NA)
+
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_combnd_pheno_ids.txt")
+noac_new<-noac[-c(6),] #remove duplicated data & missing data
+
+fwrite(noac_new, "noac_CrCl_pheno_final.txt", sep = "\t", quote = F, na = NA)
+```
+
+### Histogram
+
+The original histogram created showed that the data was skewed to the right. 
+
+In order to fix this, I first applied log transformation to the phenotype files:
+```{}
+library(ggplot2)
+library(dplyr)
+
+#clop
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+Creatinine_clop <- clop$CrCl
+Creatinine_c_log <- log(Creatinine_clop)
+clop_hist <- hist(Creatinine_c_log,
+main="Creatinine Clearance of Clopidogril",
+col="darkmagenta")
+
+#noac 
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+colnames(noac)[10] <- "CrCl"
+Creatinine_noac <- noac$CrCl
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+Creatinine_noac_log <- log(Creatinine_noac_num)
+noac_hist <- hist(Creatinine_noac_log,
+main="Creatinine Clearance of NOAC drugs",
+col="gold")
+
+```
+
+However, the log transformed data was now skewed to the left. So I applied rank normalization to the data instead.
+
+```{}
+library(ggplot2)
+library(dplyr)
+
+#rank normalize files
+source("/home/rhea/account_wflow/rntransform.R")
+source("/home/rhea/account_wflow/ztransform.R")
+
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+Creatinine_clop <- rntransform(clop$CrCl)
+clop_hist <- hist(Creatinine_clop,
+main="Creatinine Clearance of Clopidogril",
+col="darkmagenta")
+
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+colnames(noac)[10] <- "CrCl"
+Creatinine_noac <- noac$CrCl
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+Creatinine_noac_rn <- rntransform(Creatinine_noac_num)
+noac_hist <- hist(Creatinine_noac_rn,
+main="Creatinine Clearance of NOAC drugs",
+col="gold")
+
+```
+
+These histograms showed a normal distribution. The phenotype data used for the remainder of the calculations will be rank-normalized.
+
+Histograms are all saved under `/home/rhea/account_wflow/phenos/{drug}`.
+
+### Merge samples file - ?
+
+```{}
+
+clop_ids <- fread("/home/rhea/account_wflow/vcfs/clop/clop_ids_CrCl.txt")
+noac_ids <- fread("/home/rhea/account_wflow/vcfs/noac/noac_ids_CrCl.txt")
+
+clop_noac_ids <- union_all(clop_ids, noac_ids)
+fwrite(clop_noac_ids, "clop_noac_CrCl_ids.txt")
+
+```
+
+using merged samples file...
+
+### Create Dosage files
+
+```{}
+#split vcf by pulling out clop & noac data using combined ID file
+for chr in {1..22};
+do vcftools --gzvcf /home/rhea/account_wflow/vcfs/blacks_imputed/CrCl/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
+done
+
+# Use vcf_to_dosage.py to output dosage txt files
+for chr in {1..22};
+do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/CrCl/clop_noac/ -c ${chr} -d clop_noac;
+done
+
+```
+
+create merged samples_clop_noac.txt file
+
+### Run PWAS - not done
+
+```{}
+
+#Run PrediXcan with drug groups and protein models:
+#Clop
+
+declare -a drugs=("clop")
+declare -a model_pops=("AFA" "ALL" "CAU" "CHN" "HIS")
+
+for model_pop in ${model_pops[@]}
+  do
+  for drug in ${drugs[@]}
+    do
+    python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
+    --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
+    --text_genotypes /home/ashley/account/dosages/blacks/${drug}/pred_dosages/${drug}_chr*.dosage.txt.gz \
+    --text_sample_ids /home/ashley/account/dosages/blacks/${drug}/samples_clop_noac.txt \
+    --prediction_output /home/ashley/account/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
+  done
+done
+
+#NOAC
+
+declare -a drugs=("noac")
+declare -a model_pops=("AFA" "ALL" "CAU" "CHN" "HIS")
+
+for model_pop in ${model_pops[@]}
+  do
+  for drug in ${drugs[@]}
+    do
+    python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
+    --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
+    --text_genotypes /home/ashley/account/dosages/blacks/${drug}/pred_dosages/${drug}_chr*.dosage.txt.gz \
+    --text_sample_ids /home/ashley/account/dosages/blacks/${drug}/samples_${drug}.txt \
+    --prediction_output /home/ashley/account/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
+  done
+done
+
+```
+
+### Convert PrediXcan Output to GEMMA input - not done
+
+```{}
+library(data.table)
+"%&%" = function(a,b) paste(a,b,sep="")
+model_list <- c("AFA", "CAU", "HIS", "CHN", "ALL")
+drug_list <- c("clop")
+
+for(model in model_list){
+  for(drug in drug_list){
+    pred_exp <- fread("/home/rhea/account_wflow/pwas_results/blacks/" %&% drug %&% "/predicted_levels/blacks_" %&% drug %&% "_PCAIR_PAV_filtered_" %&% model %&% "_WG_baseline_rho0.1_zpval0.05.txt", header = F) #path to PrediXcan-produced _predicted_expression.txt
+    pred_exp$V1 <- NULL
+    pred_exp$V2 <- NULL
+    pred_exp <- transpose(pred_exp)
+    gene_list <- as.data.frame(pred_exp$V1)
+    colnames(gene_list) <- "V0"
+    pred_exp <- cbind(gene_list, pred_exp)
+    pred_exp$V0 <- NA
+    pred_exp$V1 <- NA
+    colnames(gene_list) <- "V"
+    pred_exp <- cbind(gene_list, pred_exp)
+    fwrite(pred_exp, "/home/ashley/account/pwas_results/blacks/" %&% drug %&% "/assoc_gemma_input/blacks_" %&% drug %&% "_PCAIR_PAV_filtered_" %&% model %&% "_baseline_rho0.1_zpval0.05_gemma.txt", na = "NA", quote = F, sep = "\t", col.names = F) #path to GEMMA input/pseudo-genotype
   }
 }
-
-#add column to file
-clop_pheno_all<-add_column(clop, gender = gender)
-
-#output file
-fwrite(clop_pheno_all, "/home/rhea/account_wflow/dosages/blacks/clop/clop_CrCl_pheno.txt", sep = "\t", quote = F, col.names = CrCl)
 ```
+
+### Run GEMMA - not done
+
+```{}
+
+```
+
+
+
