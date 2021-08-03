@@ -38,6 +38,15 @@ div.section {
 }
 </style>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      </style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -413,7 +422,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-07-28
+<strong>Last updated:</strong> 2021-08-03
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -444,28 +453,23 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreeec9f04ac3c545761a3f785100a70952159d60b01targetblankec9f04aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/ec9f04ac3c545761a3f785100a70952159d60b01" target="_blank">ec9f04a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree542a4a304944961400031407bf8853d9e5599a26targetblank542a4a3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/542a4a304944961400031407bf8853d9e5599a26" target="_blank">542a4a3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreeec9f04ac3c545761a3f785100a70952159d60b01targetblankec9f04aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree542a4a304944961400031407bf8853d9e5599a26targetblank542a4a3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/ec9f04ac3c545761a3f785100a70952159d60b01" target="_blank">ec9f04a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/542a4a304944961400031407bf8853d9e5599a26" target="_blank">542a4a3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .RData
-    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-
-Unstaged changes:
-    Modified:   analysis/association_studies_gemma.Rmd
 
 </code></pre>
 <p>
@@ -504,6 +508,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/542a4a304944961400031407bf8853d9e5599a26/analysis/creatinine_clearance.Rmd" target="_blank">542a4a3</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-08-03
+</td>
+<td>
+Publish updated CrCl analysis.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/96b42221bdba4e0762544df9b3ef4ba86e7b71ef/docs/creatinine_clearance.html" target="_blank">96b4222</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-07-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -736,8 +774,8 @@ col=&quot;gold&quot;)
 <div id="merge-samples-file--" class="section level3">
 <h3>Merge samples file - ?</h3>
 <pre><code>
-clop_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/clop/clop_ids_CrCl.txt&quot;)
-noac_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/noac/noac_ids_CrCl.txt&quot;)
+clop_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/clop/clop_ids_CrCl.txt&quot;)
+noac_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/noac/noac_ids_CrCl.txt&quot;)
 
 clop_noac_ids &lt;- union_all(clop_ids, noac_ids)
 fwrite(clop_noac_ids, &quot;clop_noac_CrCl_ids.txt&quot;)
@@ -748,23 +786,28 @@ fwrite(clop_noac_ids, &quot;clop_noac_CrCl_ids.txt&quot;)
 <h3>Create Dosage files</h3>
 <pre><code>#split vcf by pulling out clop &amp; noac data using combined ID file
 for chr in {1..22};
-do vcftools --gzvcf /home/rhea/account_wflow/vcfs/blacks_imputed/CrCl/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
+do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
 done
+
+#gzip new vcf files
+gzip clop_noac_chr*.recode.vcf
 
 # Use vcf_to_dosage.py to output dosage txt files
 for chr in {1..22};
-do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/CrCl/clop_noac/ -c ${chr} -d clop_noac;
+do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/ -c ${chr} -d clop_noac;
 done
+
+#gzip new dosage files
+gzip clop_noacchr*.dosage.txt
 </code></pre>
 <p>create merged samples_clop_noac.txt file</p>
 </div>
-<div id="run-pwas---not-done" class="section level3">
-<h3>Run PWAS - not done</h3>
+<div id="run-pwas" class="section level3">
+<h3>Run PWAS</h3>
 <pre><code>
 #Run PrediXcan with drug groups and protein models:
-#Clop
 
-declare -a drugs=(&quot;clop&quot;)
+declare -a drugs=(&quot;clop_noac&quot;)
 declare -a model_pops=(&quot;AFA&quot; &quot;ALL&quot; &quot;CAU&quot; &quot;CHN&quot; &quot;HIS&quot;)
 
 for model_pop in ${model_pops[@]}
@@ -773,40 +816,24 @@ for model_pop in ${model_pops[@]}
     do
     python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
     --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
-    --text_genotypes /home/ashley/account/dosages/blacks/${drug}/pred_dosages/${drug}_chr*.dosage.txt.gz \
-    --text_sample_ids /home/ashley/account/dosages/blacks/${drug}/samples_clop_noac.txt \
-    --prediction_output /home/ashley/account/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
-  done
-done
-
-#NOAC
-
-declare -a drugs=(&quot;noac&quot;)
-declare -a model_pops=(&quot;AFA&quot; &quot;ALL&quot; &quot;CAU&quot; &quot;CHN&quot; &quot;HIS&quot;)
-
-for model_pop in ${model_pops[@]}
-  do
-  for drug in ${drugs[@]}
-    do
-    python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
-    --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
-    --text_genotypes /home/ashley/account/dosages/blacks/${drug}/pred_dosages/${drug}_chr*.dosage.txt.gz \
-    --text_sample_ids /home/ashley/account/dosages/blacks/${drug}/samples_${drug}.txt \
-    --prediction_output /home/ashley/account/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
+    --text_genotypes /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr*.dosage.txt.gz \
+    --text_sample_ids /home/rhea/account_wflow/dosages/blacks/clop_noac/samples_clop_noac.txt \
+    --prediction_output /home/rhea/account_wflow/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
   done
 done
 </code></pre>
 </div>
-<div id="convert-predixcan-output-to-gemma-input---not-done" class="section level3">
-<h3>Convert PrediXcan Output to GEMMA input - not done</h3>
-<pre><code>library(data.table)
+<div id="convert-predixcan-output-to-gemma-input" class="section level3">
+<h3>Convert PrediXcan Output to GEMMA input</h3>
+<pre><code>
+library(data.table)
 &quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
-model_list &lt;- c(&quot;AFA&quot;, &quot;CAU&quot;, &quot;HIS&quot;, &quot;CHN&quot;, &quot;ALL&quot;)
-drug_list &lt;- c(&quot;clop&quot;)
+model_list &lt;- c(&quot;AFA&quot;, &quot;HIS&quot;, &quot;CHN&quot;, &quot;ALL&quot;)
+drug_list &lt;- c(&quot;clop_noac&quot;)
 
 for(model in model_list){
   for(drug in drug_list){
-    pred_exp &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/predicted_levels/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_WG_baseline_rho0.1_zpval0.05.txt&quot;, header = F) #path to PrediXcan-produced _predicted_expression.txt
+    pred_exp &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/predicted_levels/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.txt&quot;, header = F) #path to PrediXcan-produced _predicted_expression.txt
     pred_exp$V1 &lt;- NULL
     pred_exp$V2 &lt;- NULL
     pred_exp &lt;- transpose(pred_exp)
@@ -817,13 +844,36 @@ for(model in model_list){
     pred_exp$V1 &lt;- NA
     colnames(gene_list) &lt;- &quot;V&quot;
     pred_exp &lt;- cbind(gene_list, pred_exp)
-    fwrite(pred_exp, &quot;/home/ashley/account/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_input/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05_gemma.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = F) #path to GEMMA input/pseudo-genotype
+    fwrite(pred_exp, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_input/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05_gemma.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = F) #path to GEMMA input/pseudo-genotype
   }
 }</code></pre>
 </div>
+<div id="run-covariates" class="section level3">
+<h3>Run Covariates</h3>
+<p>Create bed/bim/fam files for each drug based on the list of IDs</p>
+<pre><code>plink --bfile /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/ACCOuNTBLACKSfinal_updated --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_CrCl_ids_filt.txt --make-bed --out pre_imputed_blacks_clop_noac</code></pre>
+</div>
 <div id="run-gemma---not-done" class="section level3">
 <h3>Run GEMMA - not done</h3>
-<pre><code></code></pre>
+<pre><code>
+declare -a drugs=(&quot;clop_noac)
+declare -a models=(&quot;ALL&quot; &quot;AFA&quot; &quot;CHN&quot; &quot;HIS&quot;)
+
+#Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
+for drug in ${drugs[@]}
+  do
+  for model in ${models[@]}
+    do
+    /usr/local/bin/gemma -g /home/rhea/account_wflow/pwas_results/blacks/${drug}/assoc_gemma_input/blacks_${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
+    -notsnp \
+    -p /home/ashley/account/phenos/${drug}/${drug}_pheno_no_ids.txt \
+    -k /home/ashley/account/covariates/${drug}/blacks_${drug}.cXX.txt \
+    -c /home/ashley/account/covariates/${drug}/${drug}_covariates.txt \
+    -lmm 4 \
+    -o ${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05
+  done
+done
+</code></pre>
 </div>
 </div>
 
