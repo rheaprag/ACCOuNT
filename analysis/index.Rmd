@@ -18,4 +18,9 @@ This is my documentation for the steps for the association studies.
 
 * [GEMMA Association Studies](association_studies_gemma.html)
 
+* [Covariates](covariates.html)
+
+
+Analysis:
+
 [Analysis  of Creatinine Clearance](creatinine_clearance.html)
