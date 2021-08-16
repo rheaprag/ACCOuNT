@@ -422,7 +422,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-08-03
+<strong>Last updated:</strong> 2021-08-16
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -453,16 +453,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree542a4a304944961400031407bf8853d9e5599a26targetblank542a4a3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/542a4a304944961400031407bf8853d9e5599a26" target="_blank">542a4a3</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree5df004f0a5e2f66768cbaa7c7736f8a65a4909fftargetblank5df004fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/5df004f0a5e2f66768cbaa7c7736f8a65a4909ff" target="_blank">5df004f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree542a4a304944961400031407bf8853d9e5599a26targetblank542a4a3a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree5df004f0a5e2f66768cbaa7c7736f8a65a4909fftargetblank5df004fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/542a4a304944961400031407bf8853d9e5599a26" target="_blank">542a4a3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/5df004f0a5e2f66768cbaa7c7736f8a65a4909ff" target="_blank">5df004f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -508,6 +508,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/5df004f0a5e2f66768cbaa7c7736f8a65a4909ff/analysis/creatinine_clearance.Rmd" target="_blank">5df004f</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-08-16
+</td>
+<td>
+Update CrCl with covariate analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/680c0ddd098a63bf6697a3e95d98b6be8c0dd9df/docs/creatinine_clearance.html" target="_blank">680c0dd</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-08-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -778,7 +812,7 @@ clop_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/clop/clo
 noac_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/noac/noac_ids_CrCl.txt&quot;)
 
 clop_noac_ids &lt;- union_all(clop_ids, noac_ids)
-fwrite(clop_noac_ids, &quot;clop_noac_CrCl_ids.txt&quot;)
+fwrite(clop_noac_ids, &quot;clop_noac_ids.txt&quot;)
 </code></pre>
 <p>using merged samples file…</p>
 </div>
@@ -850,13 +884,12 @@ for(model in model_list){
 </div>
 <div id="run-covariates" class="section level3">
 <h3>Run Covariates</h3>
-<p>Create bed/bim/fam files for each drug based on the list of IDs</p>
-<pre><code>plink --bfile /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/ACCOuNTBLACKSfinal_updated --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_CrCl_ids_filt.txt --make-bed --out pre_imputed_blacks_clop_noac</code></pre>
+<p>Check index/covariates</p>
 </div>
 <div id="run-gemma---not-done" class="section level3">
 <h3>Run GEMMA - not done</h3>
 <pre><code>
-declare -a drugs=(&quot;clop_noac)
+declare -a drugs=(&quot;clop_noac&quot;)
 declare -a models=(&quot;ALL&quot; &quot;AFA&quot; &quot;CHN&quot; &quot;HIS&quot;)
 
 #Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
@@ -866,9 +899,9 @@ for drug in ${drugs[@]}
     do
     /usr/local/bin/gemma -g /home/rhea/account_wflow/pwas_results/blacks/${drug}/assoc_gemma_input/blacks_${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
     -notsnp \
-    -p /home/ashley/account/phenos/${drug}/${drug}_pheno_no_ids.txt \
-    -k /home/ashley/account/covariates/${drug}/blacks_${drug}.cXX.txt \
-    -c /home/ashley/account/covariates/${drug}/${drug}_covariates.txt \
+    -p /home/rhea/account_wflow/phenos/${drug}/${drug}_pheno_no_ids.txt \
+    -k /home/rhea/account_wflow/covariates/${drug}/blacks_${drug}.cXX.txt \
+    -c /home/rhea/account_wflow/covariates/${drug}/${drug}_covariates.txt \
     -lmm 4 \
     -o ${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05
   done

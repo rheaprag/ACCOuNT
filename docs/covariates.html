@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="rheaprag" />
 
+<meta name="date" content="2021-08-03" />
 
-<title>Home</title>
+<title>covariates</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +21,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -267,6 +272,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -274,6 +342,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -317,7 +395,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">covariates</h1>
+<h4 class="author">rheaprag</h4>
+<h4 class="date">2021-08-03</h4>
 
 </div>
 
@@ -404,7 +484,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/covariates.Rmd</code>) and HTML (<code>docs/covariates.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -433,7 +513,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/5df004f0a5e2f66768cbaa7c7736f8a65a4909ff/analysis/index.Rmd" target="_blank">5df004f</a>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/5df004f0a5e2f66768cbaa7c7736f8a65a4909ff/analysis/covariates.Rmd" target="_blank">5df004f</a>
 </td>
 <td>
 rheaprag
@@ -445,108 +525,6 @@ rheaprag
 Update CrCl with covariate analysis
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/33b030e99d31f8974013e4226d07c160780bcaac/docs/index.html" target="_blank">33b030e</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-05-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/a608eaa007a137a2b04ce33d780ba0dd9ee183dd/analysis/index.Rmd" target="_blank">a608eaa</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-05-19
-</td>
-<td>
-Update website and fix typos
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/7230c4c0664c5a4d7c2d3deb6f78013679dde148/docs/index.html" target="_blank">7230c4c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/index.Rmd" target="_blank">1be0b98</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Publish analysis files
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/35ee90c838a35a77a1ec0f81ba8eb51088b77bda/docs/index.html" target="_blank">35ee90c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/be721cef6e51a7a28c177bbc6d8abbf0e1cbea7a/analysis/index.Rmd" target="_blank">be721ce</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -554,16 +532,140 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>Welcome to my research website.</p>
-<p>This is my documentation for the steps for the association studies.</p>
-<ul>
-<li><p><a href="pred_dosages.html">Creating the Dosage Files</a></p></li>
-<li><p><a href="pwas.html">Running PrediXcan</a></p></li>
-<li><p><a href="association_studies_gemma.html">GEMMA Association Studies</a></p></li>
-<li><p><a href="covariates.html">Covariates</a></p></li>
-</ul>
-<p>Analysis:</p>
-<p><a href="creatinine_clearance.html">Analysis of Creatinine Clearance</a></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This set of code shows the analysis of covariates and PCs.</p>
+<p>This will be done using creatinine clearance as an example.</p>
+<div id="create-bedbimfam-files-for-combined-clopnoac-drugs-based-on-the-list-of-ids" class="section level3">
+<h3>Create bed/bim/fam files for combined clop/noac drugs based on the list of IDs</h3>
+<pre><code>plink --bfile /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/ACCOuNTBLACKSfinal_updated --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_ids_filt.txt --make-bed --out pre_imputed_blacks_clop_noac</code></pre>
+</div>
+<div id="qc-data" class="section level3">
+<h3>QC data</h3>
+<pre><code>/home/ryan/gwasqc_pipeline/shellscripts/01MissingnessFiltering -b /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/pre_imputed_blacks_clop_noac --maf 0.01 -a -o /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/</code></pre>
+</div>
+<div id="run-king" class="section level3">
+<h3>Run King:</h3>
+<pre><code>/home/ashley/king --pca -b /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/missingness_hwe_steps/05filtered_HWE.bed --prefix blacks_clop_noac_</code></pre>
+</div>
+<div id="create-input-for-pca-plots" class="section level3">
+<h3>Create input for PCA plots</h3>
+<pre><code>plink --bfile /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/missingness_hwe_steps/05filtered_HWE --bmerge /home/ashley/account/covariates/hapmap_pops_plinkfiles_for_pcs/hapmap.hg38 --make-bed --out pre_imputed_blacks_clop_noac_hapmap_merged</code></pre>
+<p>If failed, use .missnp to exclude bad snps</p>
+<pre><code>plink --bfile hapmap.hg38 --exclude /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/pre_imputed_blacks_clop_noac_hapmap_merged-merge.missnp --make-bed --out hapmap.hg38_excluded_snps
+
+plink --bfile /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/missingness_hwe_steps/05filtered_HWE --exclude pre_imputed_blacks_clop_noac_hapmap_merged-merge.missnp --make-bed --out pre_imputed_blacks_clop_noac_excluded_snps</code></pre>
+<p>Merge the new files</p>
+<pre><code>plink --bfile pre_imputed_blacks_clop_noac_excluded_snps --bmerge /home/rhea/account_wflow/covariates/hapmap_pops_plinkfiles_for_pcs/hapmap.hg38_excluded_snps --make-bed --out pre_imputed_blacks_clop_noac_hapmap_excluded_snps_merged</code></pre>
+<p>Run PCA with merged plinkfiles:</p>
+<pre><code>/home/ashley/king --pca -b pre_imputed_blacks_clop_noac_hapmap_excluded_snps_merged.bed --prefix blacks_clop_noac_hapmap_merged_</code></pre>
+</div>
+<div id="create-pc-plots" class="section level3">
+<h3>Create PC Plots</h3>
+<pre><code>#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(tibble)
+
+#Read in fam file and add column names
+fam&lt;-fread(&quot;/home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/pre_imputed_blacks_clop_noac_hapmap_excluded_snps_merged.fam&quot;) %&gt;% select (V1,V2)
+colnames(fam)&lt;-c(&quot;FID&quot;, &quot;IID&quot;)
+#add column with pop
+pop&lt;-c(rep(&quot;CEU&quot;, 111), rep(&quot;AFA&quot;, 141), rep(&quot;ASN&quot;, 170), rep(&quot;YRI&quot;, 110))
+fam_with_pop&lt;-add_column(fam, pop=pop, .before = &quot;FID&quot;)
+
+#Read in pcs (king output)
+pcs &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/blacks_clop_noac_hapmap_merged_pc.txt&quot;)
+
+#Join fam and pcs to reorder pcs and add pop 
+pcdf &lt;- left_join(fam_with_pop, pcs)
+
+#Create vector with eigen values (they appear in output process as king runs pca, no file produced)
+eval&lt;-c(3569.71, 2389.00, 646.99, 590.33, 494.22, 488.86, 487.72, 486.80, 485.43, 485.22)
+
+#Calcuate proportion variance explained by each PC:
+eval&lt;-round(eval/sum(eval),3)
+eval&lt;-cbind.data.frame(eval,c(1,2,3,4,5,6,7,8,9,10))
+colnames(eval)&lt;-c(&quot;percent_var&quot;, &quot;PC&quot;)
+
+#Make PCA plots:
+pdf(&quot;/home/rhea/account_wflow/covariates/pca_plots/clop_noac_hapmap_pca_plots.pdf&quot;)
+
+#Scree Plot
+ggplot(data=eval, aes(x=PC, y=percent_var)) + geom_point() + geom_line() + scale_x_continuous(breaks = 1:10) + ggtitle(&quot;Proportion of variance explained&quot;)
+
+#PCA Plot 1 (PC1 vs PC2)
+ggplot() + geom_point(data=pcdf,aes(x=PC1,y=PC2,col=pop,shape=pop)) + theme_bw() + scale_colour_brewer(palette=&quot;Set1&quot;) + ggtitle(&quot;PC1 vs PC2&quot;)
+
+#PCA Plot 2 (PC1 vs PC3)
+ggplot() + geom_point(data=pcdf,aes(x=PC1,y=PC3,col=pop,shape=pop)) + theme_bw() + scale_colour_brewer(palette=&quot;Set1&quot;) + ggtitle(&quot;PC1 vs PC3&quot;)
+
+#PCA Plot 1 (PC2 vs PC3)
+ggplot() + geom_point(data=pcdf,aes(x=PC2,y=PC3,col=pop,shape=pop)) + theme_bw() + scale_colour_brewer(palette=&quot;Set1&quot;) + ggtitle(&quot;PC2 vs PC3&quot;)
+
+dev.off() 
+</code></pre>
+</div>
+<div id="make-the-covariate-and-phenotype-files" class="section level3">
+<h3>Make the Covariate and Phenotype files</h3>
+<pre><code>#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(tibble)
+
+#import pcs 
+clop_noac_pcs &lt;- fread(&quot;/home/rhea/account_wflow/covariates/clop_noac/blacks_clop_noac_pc.txt&quot;)
+clop_noac_cov_pcs&lt;-select(clop_noac_pcs, 1,2,7:16)
+
+#import pheno files for each drug:
+clop_noac_pheno&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop_noac/clop_noac_CrCl_pheno_final.txt&quot;)
+
+#Clop/Noac covariates: 10 pcs, age, gender
+#join files by ids
+clop_noac_covs_pheno&lt;-left_join(clop_noac_cov_pcs, clop_noac_pheno, by = c(&quot;FID&quot; = &quot;V1&quot;, &quot;IID&quot; = &quot;V2&quot;))
+#make pheno file
+clop_noac_pheno_no_ids&lt;-select(clop_noac_covs_pheno, 20)
+#replace MD with NA in nano after outputting
+fwrite(clop_noac_pheno_no_ids, &quot;/home/rhea/account_wflow/phenos/clop_noac/clop_noac_pheno_no_ids.txt&quot;, sep = &quot;\t&quot;, col.names = F, quote = F)
+#make covariates file
+clop_noac_covs&lt;-select(clop_noac_covs_pheno, 3:12,16)
+#remake gender column with F=1 and M=0:
+gender&lt;-c()
+for (g in clop_noac_covs_pheno$Gender){
+  if (g == &quot;F&quot;) {
+    gender&lt;-c(gender, 1)
+  }
+  if (g == &quot;M&quot;) {
+    gender&lt;-c(gender, 0)
+  }
+}
+#add gender column to covs
+clop_noac_covs_all&lt;-add_column(clop_noac_covs, gender = gender)
+#output file
+fwrite(clop_noac_covs_all, &quot;/home/rhea/account_wflow/covariates/clop_noac/clop_noac_covariates.txt&quot;, sep = &quot;\t&quot;, col.names = F, quote = F)
+</code></pre>
+</div>
+<div id="rank-normalize-phenotype-file" class="section level3">
+<h3>Rank Normalize Phenotype file</h3>
+<pre><code>#import necessary libraries
+library(data.table)
+
+#get source functions
+source(&quot;/home/rhea/account_wflow/rntransform.R&quot;)
+source(&quot;/home/rhea/account_wflow/ztransform.R&quot;)
+
+#read in pheno files
+clop_noac_pheno&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop_noac/clop_noac_pheno_no_ids.txt&quot;, header = F)
+
+#rank-normalize phenos:
+clop_noac_pheno$V1&lt;-rntransform(clop_noac_pheno$V1)
+
+#output rank-normalized phenos:
+fwrite(clop_noac_pheno, &quot;/home/rhea/account_wflow/phenos/clop_noac/clop_noac_rn_pheno_no_ids.txt&quot;, col.names = F, sep = &quot;\t&quot;, quote = F, na = NA)
+</code></pre>
+</div>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -579,6 +681,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 
@@ -611,6 +715,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
