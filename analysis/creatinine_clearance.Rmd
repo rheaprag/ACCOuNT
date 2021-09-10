@@ -196,7 +196,6 @@ for chr in {1..22};
 do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/ -c ${chr} -d clop_noac;
 done
 
-#gzip new dosage files
 gzip clop_noacchr*.dosage.txt
 
 ```
@@ -253,10 +252,43 @@ for(model in model_list){
 }
 ```
 
+
 ### Run Covariates
-Check index/covariates
+Check `Covariates` on Home.
+
+### Adjust kinship files & combine
+Because a member of each drug group was removed since they switched drugs, the kinship file needs to reflect that. To do this, simply pull out the patient from each file as we had done before and rewrite a new kinship file. Then, combine the kinship files so it can be used in GEMMA accordingly.
+
+```{}
+
+#import original kinship files
+clop_kinship <- fread("/home/rhea/account_wflow/covariates/clop/blacks_clop.cXX.txt")
+noac_kinship <- fread("/home/rhea/account_wflow/coviarates/noac/blacks_noac.cXX.txt")
+
+#select rows to keep
+clop_kinship_keep <- clop_kinship[c(1:15, 17:142), ]
+noac_kinship_keep <- noac_kinship[c(1:6, 8:234), ]
+
+#double check dimensions with `dim` function
+
+#output adjusted files
+fwrite(clop_kinship_keep, "/home/rhea/account_wflow/covariates/clop/blacks_clop_adj.cXX.txt", col.names = F, sep = "\t", quote = F, na = " ")
+fwrite(noac_kinship_keep, "/home/rhea/account_wflow/covariates/noac/blacks_noac_adj.cXX.txt", col.names = F, sep = "\t", quote = F, na = " ")
+
+#combine kinship files
+clop_kinship_adj <- fread("/home/rhea/account_wflow/covariates/clop/blacks_clop_adj.cXX.txt")
+noac_kinship_adj <- fread("/home/rhea/account_wflow/covariates/noac/blacks_noac_adj.cXX.txt")
+
+kinship_cmbnd <- bind_rows(clop_kinship_adj, noac_kinship_adj, .id = NULL)
+
+#output combined kinship file
+fwrite(kinship_cmbnd, "/home/rhea/account_wflow/covariates/clop_noac/blacks_clop_noac.cXX.txt", col.names = F, sep = "\t", quote = F, na = " ")
+
+```
 
 ### Run GEMMA - not done
+
+kinship matrix not equal!!!!!!!!
 
 ```{}
 
@@ -268,17 +300,14 @@ for drug in ${drugs[@]}
   do
   for model in ${models[@]}
     do
-    /usr/local/bin/gemma -g /home/rhea/account_wflow/pwas_results/blacks/${drug}/assoc_gemma_input/blacks_${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
+    /usr/local/bin/gemma -g /home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_input/blacks_clop_noac_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
     -notsnp \
-    -p /home/rhea/account_wflow/phenos/${drug}/${drug}_pheno_no_ids.txt \
-    -k /home/rhea/account_wflow/covariates/${drug}/blacks_${drug}.cXX.txt \
-    -c /home/rhea/account_wflow/covariates/${drug}/${drug}_covariates.txt \
+    -p /home/rhea/account_wflow/phenos/clop_noac/clop_noac_pheno_no_ids.txt \
+    -k /home/rhea/account_wflow/covariates/clop_noac/blacks_clop_noac.cXX.txt \
+    -c /home/rhea/account_wflow/covariates/clop_noac/clop_noac_covariates.txt \
     -lmm 4 \
     -o ${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05
   done
 done
 
 ```
-
-
-
