@@ -18,6 +18,11 @@ This will be done using creatinine clearance as an example.
 plink --bfile /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/ACCOuNTBLACKSfinal_updated --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_ids_filt.txt --make-bed --out pre_imputed_blacks_clop_noac
 ```
 
+### Generate kinship matrices
+```{}
+gemma -bfile /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/pre_imputed_blacks_clop_noac_excluded_snps -gk 1 -o blacks_clop_noac
+```
+
 ### QC data
 ```{}
 /home/ryan/gwasqc_pipeline/shellscripts/01MissingnessFiltering -b /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/pre_imputed_blacks_clop_noac --maf 0.01 -a -o /home/rhea/account_wflow/vcfs/preimputation_plinkfiles/clop_noac/
