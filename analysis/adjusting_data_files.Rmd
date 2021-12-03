@@ -1,0 +1,24 @@
+---
+title: "adjusting_data_files"
+author: "rheaprag"
+date: "2021-12-03"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+A row needs to be removed from both the Clopidogril and NOAC files as the person switched drugs:
+
+```{R}
+library(data.table)
+library(dplyr)
+
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno.txt")
+clop_new<-clop[-c(16),]
+fwrite(clop_new, "clop_CrCl_pheno_final.txt", sep = "\t", quote = F, na = NA)
+
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_combnd_pheno_ids.txt")
+noac_new<-noac[-c(6),] #remove duplicated data & missing data
+
+fwrite(noac_new, "noac_CrCl_pheno_final.txt", sep = "\t", quote = F, na = NA)
+```

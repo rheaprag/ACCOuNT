@@ -1,0 +1,176 @@
+---
+title: "phenotype_data_analysis"
+author: "rheaprag"
+date: "2021-12-03"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+Histograms were to created to analyze the final merged phenotype data.
+
+## Histogram with No Transformation
+
+The original histogram created showed that the data was skewed to the right. 
+
+```{}
+library(ggplot2)
+library(dplyr)
+library(data.table)
+
+#read in final clop phenotype file
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+#assign CrCl column to variable
+Creatinine_clop <- clop$CrCl
+#create histogram
+clop_hist <- hist(Creatinine_clop, main="Creatinine Clearance of Clopidogril", col="darkmagenta")
+
+#read in final noac phenotype file 
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+#rename column name to 'CrCl'
+colnames(noac)[10] <- "CrCl"
+#assign CrCl column to variable
+Creatinine_noac <- noac$CrCl
+#convert any MD's to NA
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+#create histogram
+noac_hist <- hist(Creatinine_noac, main="Creatinine Clearance of NOAC drugs", col="gold")
+```
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(dplyr)
+library(data.table)
+
+#read in final clop phenotype file
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+#assign CrCl column to variable
+Creatinine_clop <- clop$CrCl
+#create histogram
+clop_hist <- hist(Creatinine_clop, main="Creatinine Clearance of Clopidogril", col="darkmagenta")
+
+#read in final noac phenotype file 
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+#rename column name to 'CrCl'
+colnames(noac)[10] <- "CrCl"
+#assign CrCl column to variable
+Creatinine_noac <- noac$CrCl
+#convert any MD's to NA
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+#create histogram
+noac_hist <- hist(Creatinine_noac_num, main="Creatinine Clearance of NOAC drugs", col="gold")
+```
+
+## Log Transformation
+
+In order to fix this, I first applied log transformation to the phenotype files:
+```{}
+library(ggplot2)
+library(dplyr)
+library(data.table)
+
+#read in final clop phenotype file
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+#assign CrCl column to variable
+Creatinine_clop <- clop$CrCl
+#apply log transformation
+Creatinine_c_log <- log(Creatinine_clop)
+#create histogram
+clop_hist <- hist(Creatinine_c_log, main="Creatinine Clearance of Clopidogril", col="darkmagenta")
+
+#read in final noac phenotype file 
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+#rename column name to 'CrCl'
+colnames(noac)[10] <- "CrCl"
+#assign CrCl column to variable
+Creatinine_noac <- noac$CrCl
+#convert any MD's to NA
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+#apply log transformation
+Creatinine_noac_log <- log(Creatinine_noac_num)
+#create histogram
+noac_hist <- hist(Creatinine_noac_log, main="Creatinine Clearance of NOAC drugs", col="gold")
+```
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(dplyr)
+library(data.table)
+
+#clop
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+Creatinine_clop <- clop$CrCl
+Creatinine_c_log <- log(Creatinine_clop)
+clop_hist <- hist(Creatinine_c_log,
+main="Creatinine Clearance of Clopidogril",
+col="darkmagenta")
+
+#noac 
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+colnames(noac)[10] <- "CrCl"
+Creatinine_noac <- noac$CrCl
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+Creatinine_noac_log <- log(Creatinine_noac_num)
+noac_hist <- hist(Creatinine_noac_log,
+main="Creatinine Clearance of NOAC drugs",
+col="gold")
+```
+
+The log transformed data was skewed to the left, so rank normalization is applied instead.
+
+## Rank Normalization
+
+```{}
+library(ggplot2)
+library(dplyr)
+library(data.table)
+
+#rank normalize files
+source("/home/rhea/account_wflow/rntransform.R")
+source("/home/rhea/account_wflow/ztransform.R")
+
+#read in final clop phenotype file
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+#apply rn transformation
+Creatinine_clop <- rntransform(clop$CrCl)
+#create histogram
+clop_hist <- hist(Creatinine_clop, main="Creatinine Clearance of Clopidogril", col="darkmagenta")
+
+#read in final noac phenotype file
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+#rename column to 'CrCl'
+colnames(noac)[10] <- "CrCl"
+#assign CrClcolumn to variable
+Creatinine_noac <- noac$CrCl
+#convert MD's to NA
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+#apply rn transform
+Creatinine_noac_rn <- rntransform(Creatinine_noac_num)
+#create histogram
+noac_hist <- hist(Creatinine_noac_rn, main="Creatinine Clearance of NOAC drugs", col="gold")
+```
+
+```{r, echo = FALSE}
+library(ggplot2)
+library(dplyr)
+library(data.table)
+
+#rank normalize files
+source("/home/rhea/account_wflow/rntransform.R")
+source("/home/rhea/account_wflow/ztransform.R")
+
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
+Creatinine_clop <- rntransform(clop$CrCl)
+clop_hist <- hist(Creatinine_clop, main="Creatinine Clearance of Clopidogril", col="darkmagenta")
+
+noac<-fread("/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt")
+colnames(noac)[10] <- "CrCl"
+Creatinine_noac <- noac$CrCl
+Creatinine_noac_num <- as.numeric(Creatinine_noac)
+Creatinine_noac_rn <- rntransform(Creatinine_noac_num)
+noac_hist <- hist(Creatinine_noac_rn, main="Creatinine Clearance of NOAC drugs", col="gold")
+```
+
+These histograms showed a normal distribution. The phenotype data used for the remainder of the calculations will be rank-normalized.
+
+Histograms are all saved under `/home/rhea/account_wflow/phenos/{drug}`.

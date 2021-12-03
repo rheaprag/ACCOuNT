@@ -7,8 +7,31 @@ output:
 editor_options:
   chunk_output_type: console
 ---
+*UNDER EDIT*
 
-Welcome to my research website. 
+
+Welcome to my website where I document my analysis. 
+
+The code is adapted from [here](https://github.com/ashleymulford/ACCOuNT/tree/master/scripts).
+
+Specifically, this will look at the analysis of creatinine clearance. Creatinine is a waste product produced in our body. Low creatinine levels indicate kidney damage while high levels indicate diminished kidney function.
+
+This analysis uses the Clopidogrel and NOAC drug groups.
+
+This is my documentation for the various association studies.
+
+1. [Extracting and Merging Phenotype Data](pheno.html)
+
+2. [Calculating Creatinine Clearance](calculation_clop_CrCl.html)
+
+3. [Finishing the Data Files](adjusting_data_files.html)
+
+4. [Histogram of Phenotype Data](phenotype_data_analysis.html)
+
+
+
+
+## Still in Progress
 
 This is my documentation for the steps for the association studies.
 

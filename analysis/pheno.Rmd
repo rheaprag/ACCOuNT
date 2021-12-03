@@ -1,0 +1,50 @@
+---
+title: "pheno"
+author: "rheaprag"
+date: "2021-12-03"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+This code extracts the important phenotype data from the csv files and put them in a separate text file. The text file was then merged with the the samples file to be used for further analysis.
+
+## Extract Important Phenotype Data
+
+The `csv` files with matched IDs were used for this.
+
+```{R}
+#import necessary libraries
+library(data.table)
+library(dplyr)
+
+#import csv files for clop & noac
+clop<-fread("/home/rhea/account_wflow/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv")
+noac<-fread("/home/rhea/account_wflow/phenos/noac/account_noac_processed_matched_IDs_all.csv")
+
+#save ids and pheno columns only, remove unneeded columns so files are easier to work with
+clop_small<-clop[, c(1:9,206)]
+noac_small<-noac[, c(1:9,79)]
+
+#output files
+fwrite(clop_small, "clop_CrCl_with_ids.txt", sep = "\t", quote = F, na = NA)
+fwrite(noac_small, "noac_CrCl_with_ids.txt", sep = "\t", quote = F, na = NA)
+```
+
+### Merge Samples File with Phenotype Data 
+
+```{R}
+#import necessary libraries
+library(data.table)
+library(dplyr)
+
+#import samples & pheno txt files for clop 
+clop_samples<-fread("/home/ashley/account/dosages/blacks/clop/samples_clop.txt", header = FALSE)
+clop_phenos<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_with_ids.txt")
+
+#merge two files
+clop_cmbnd<-left_join(clop_samples, clop_phenos)
+
+#output file
+fwrite(clop_cmbnd, "clop_combnd_pheno_ids.txt", sep = "\t", quote = F, na = NA)
+```

@@ -1,0 +1,41 @@
+---
+title: "calculation_clop_CrCl"
+author: "rheaprag"
+date: "2021-12-03"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+In this analysis, the creatinine clearance of clopidogril and the NOAC drugs are being analyzed. However, the creatinine clearance for clopidogril is not already given and needs to be calculated. 
+
+### Calculate Creatinine Clearance for Clopidogril Data
+
+```{R}
+#crcl calculation
+#Est. Creatinine Clearance = [[140 - age(yr)]*weight(kg)]/[72*serum Cr(mg/dL)]
+#multiply by 0.85 for women
+
+library(data.table)
+library(dplyr)
+
+#import pheno file in for clop, has missing data values
+clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt")
+
+str(clop) #see structure of data.frame
+#Note Height and Creatinine level are characters, need to convert to the numeric type
+
+clop_age<-clop$`Age at enrollment (with over 89 binning)`
+clop_weight<-as.numeric(clop$`Weight (kg)`) #as.numeric() converts MD's to NA, I'm assuming MD="missing data"?
+clop_sCr<-as.numeric(clop$`Creatinine level (mg/dL)`) #as.numeric() converts characters to numbers and MD's to NA, so we can do math
+
+crcl <- (140 - clop_age)*clop_weight / (72*clop_sCr)
+
+#use mutate() to add crcl to clop data.frame and adjust if female with ifelse()
+clop <- mutate(clop, CrCl = ifelse(Gender=='M',crcl,0.85*crcl))
+
+fwrite(clop, "clop_CrCl_pheno.txt", sep="\t", na="NA", quote=FALSE)
+```
+
