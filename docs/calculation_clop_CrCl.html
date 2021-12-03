@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="rheaprag" />
 
+<meta name="date" content="2021-12-03" />
 
-<title>Home</title>
+<title>calculation_clop_CrCl</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,6 +30,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -227,6 +232,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -234,6 +302,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -277,7 +355,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">calculation_clop_CrCl</h1>
+<h4 class="author">rheaprag</h4>
+<h4 class="date">2021-12-03</h4>
 
 </div>
 
@@ -351,6 +431,11 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rproj.user/
 
+Untracked files:
+    Untracked:  clop_CrCl_with_ids.txt
+    Untracked:  clop_combnd_pheno_ids.txt
+    Untracked:  noac_CrCl_with_ids.txt
+
 Unstaged changes:
     Modified:   analysis/creatinine_clearance.Rmd
     Modified:   analysis/pred_dosages.Rmd
@@ -368,7 +453,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/calculation_clop_CrCl.Rmd</code>) and HTML (<code>docs/calculation_clop_CrCl.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -397,7 +482,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/c81d34f3a039804889f078505230f718d53444f0/analysis/index.Rmd" target="_blank">c81d34f</a>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/c81d34f3a039804889f078505230f718d53444f0/analysis/calculation_clop_CrCl.Rmd" target="_blank">c81d34f</a>
 </td>
 <td>
 rheaprag
@@ -409,142 +494,6 @@ rheaprag
 Publish updated analysis files
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/a46b009be514d24846ebaf81058366440a216468/docs/index.html" target="_blank">a46b009</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-08-16
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/5df004f0a5e2f66768cbaa7c7736f8a65a4909ff/analysis/index.Rmd" target="_blank">5df004f</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-08-16
-</td>
-<td>
-Update CrCl with covariate analysis
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/33b030e99d31f8974013e4226d07c160780bcaac/docs/index.html" target="_blank">33b030e</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-05-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/a608eaa007a137a2b04ce33d780ba0dd9ee183dd/analysis/index.Rmd" target="_blank">a608eaa</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-05-19
-</td>
-<td>
-Update website and fix typos
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/7230c4c0664c5a4d7c2d3deb6f78013679dde148/docs/index.html" target="_blank">7230c4c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/index.Rmd" target="_blank">1be0b98</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Publish analysis files
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/35ee90c838a35a77a1ec0f81ba8eb51088b77bda/docs/index.html" target="_blank">35ee90c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/be721cef6e51a7a28c177bbc6d8abbf0e1cbea7a/analysis/index.Rmd" target="_blank">be721ce</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -552,29 +501,58 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p><em>UNDER EDIT</em></p>
-<p>Welcome to my website where I document my analysis.</p>
-<p>The code is adapted from <a href="https://github.com/ashleymulford/ACCOuNT/tree/master/scripts">here</a>.</p>
-<p>Specifically, this will look at the analysis of creatinine clearance. Creatinine is a waste product produced in our body. Low creatinine levels indicate kidney damage while high levels indicate diminished kidney function.</p>
-<p>This analysis uses the Clopidogrel and NOAC drug groups.</p>
-<p>This is my documentation for the various association studies.</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="pheno.html">Extracting and Merging Phenotype Data</a></p></li>
-<li><p><a href="calculation_clop_CrCl.html">Calculating Creatinine Clearance</a></p></li>
-<li><p><a href="adjusting_data_files.html">Finishing the Data Files</a></p></li>
-<li><p><a href="phenotype_data_analysis.html">Histogram of Phenotype Data</a></p></li>
-</ol>
-<div id="still-in-progress" class="section level2">
-<h2>Still in Progress</h2>
-<p>This is my documentation for the steps for the association studies.</p>
-<ul>
-<li><p><a href="pred_dosages.html">Creating the Dosage Files</a></p></li>
-<li><p><a href="pwas.html">Running PrediXcan</a></p></li>
-<li><p><a href="association_studies_gemma.html">GEMMA Association Studies</a></p></li>
-<li><p><a href="covariates.html">Covariates</a></p></li>
-</ul>
-<p>Analysis:</p>
-<p><a href="creatinine_clearance.html">Analysis of Creatinine Clearance</a></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this analysis, the creatinine clearance of clopidogril and the NOAC drugs are being analyzed. However, the creatinine clearance for clopidogril is not already given and needs to be calculated.</p>
+<div id="calculate-creatinine-clearance-for-clopidogril-data" class="section level3">
+<h3>Calculate Creatinine Clearance for Clopidogril Data</h3>
+<pre class="r"><code>#crcl calculation
+#Est. Creatinine Clearance = [[140 - age(yr)]*weight(kg)]/[72*serum Cr(mg/dL)]
+#multiply by 0.85 for women
+
+library(data.table)
+library(dplyr)</code></pre>
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:data.table&#39;:
+
+    between, first, last</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>#import pheno file in for clop, has missing data values
+clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt&quot;)
+
+str(clop) #see structure of data.frame</code></pre>
+<pre><code>Classes &#39;data.table&#39; and &#39;data.frame&#39;:  141 obs. of  10 variables:
+ $ V1                                      : chr  &quot;MP-7528&quot; &quot;MP-7503&quot; &quot;MP-8496&quot; &quot;MP-3893&quot; ...
+ $ V2                                      : chr  &quot;MP-7528&quot; &quot;MP-7503&quot; &quot;MP-8496&quot; &quot;MP-3893&quot; ...
+ $ Study ID (PharmGKB ID)                  : chr  &quot;PA166167528&quot; &quot;PA166167503&quot; &quot;PA166168496&quot; &quot;PA166163893&quot; ...
+ $ Project site                            : int  4 4 5 1 4 5 1 4 2 1 ...
+ $ Gender                                  : chr  &quot;M&quot; &quot;M&quot; &quot;F&quot; &quot;F&quot; ...
+ $ Age at enrollment (with over 89 binning): int  56 68 49 60 81 69 54 61 24 75 ...
+ $ Height (cm)                             : chr  &quot;170.18&quot; &quot;175.26&quot; &quot;162.56&quot; &quot;152.4&quot; ...
+ $ Weight (kg)                             : chr  &quot;75.75&quot; &quot;73.03&quot; &quot;103.419&quot; &quot;92.5&quot; ...
+ $ BMI                                     : chr  &quot;26.2&quot; &quot;23.8&quot; &quot;39.1&quot; &quot;39.8&quot; ...
+ $ Creatinine level (mg/dL)                : chr  &quot;1&quot; &quot;0.8&quot; &quot;0.95&quot; &quot;MD&quot; ...
+ - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt; </code></pre>
+<pre class="r"><code>#Note Height and Creatinine level are characters, need to convert to the numeric type
+
+clop_age&lt;-clop$`Age at enrollment (with over 89 binning)`
+clop_weight&lt;-as.numeric(clop$`Weight (kg)`) #as.numeric() converts MD&#39;s to NA, I&#39;m assuming MD=&quot;missing data&quot;?</code></pre>
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre class="r"><code>clop_sCr&lt;-as.numeric(clop$`Creatinine level (mg/dL)`) #as.numeric() converts characters to numbers and MD&#39;s to NA, so we can do math</code></pre>
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre class="r"><code>crcl &lt;- (140 - clop_age)*clop_weight / (72*clop_sCr)
+
+#use mutate() to add crcl to clop data.frame and adjust if female with ifelse()
+clop &lt;- mutate(clop, CrCl = ifelse(Gender==&#39;M&#39;,crcl,0.85*crcl))
+
+fwrite(clop, &quot;clop_CrCl_pheno.txt&quot;, sep=&quot;\t&quot;, na=&quot;NA&quot;, quote=FALSE)</code></pre>
+</div>
 </div>
 
 
@@ -591,6 +569,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 
@@ -623,6 +603,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
