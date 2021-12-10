@@ -13,7 +13,7 @@ This code extracts the important phenotype data from the csv files and put them 
 
 The `csv` files with matched IDs were used for this.
 
-```{R}
+```{}
 #import necessary libraries
 library(data.table)
 library(dplyr)
@@ -33,7 +33,7 @@ fwrite(noac_small, "noac_CrCl_with_ids.txt", sep = "\t", quote = F, na = NA)
 
 ### Merge Samples File with Phenotype Data 
 
-```{R}
+```{}
 #import necessary libraries
 library(data.table)
 library(dplyr)

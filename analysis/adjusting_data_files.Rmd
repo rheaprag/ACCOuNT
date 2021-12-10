@@ -9,7 +9,7 @@ editor_options:
 
 A row needs to be removed from both the Clopidogril and NOAC files as the person switched drugs:
 
-```{R}
+```{}
 library(data.table)
 library(dplyr)
 
