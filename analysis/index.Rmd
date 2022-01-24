@@ -7,10 +7,8 @@ output:
 editor_options:
   chunk_output_type: console
 ---
-*UNDER EDIT*
 
-
-Welcome to my website where I document my analysis. 
+Welcome to my website where I document my analysis used in my project. 
 
 The code is adapted from [here](https://github.com/ashleymulford/ACCOuNT/tree/master/scripts).
 
@@ -38,7 +36,9 @@ This is my documentation for the various association studies.
 
 9. [Correct Bonferroni](correct_bonferroni.html)
 
+10. [PWAS Plots](pwas_plots.html)
 
-Analysis:
+This documentation describes the analysis for GWAS.
 
-[Analysis  of Creatinine Clearance](creatinine_clearance.html)
+11.
+

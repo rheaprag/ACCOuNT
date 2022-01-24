@@ -1,0 +1,221 @@
+---
+title: "pwas_plots"
+author: "rheaprag"
+date: "2022-01-24"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+This is a set of plots from the PrediXcan and GEMMA PWAS results. 
+
+## Create QQ Plots
+
+```{}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Make QQ Plots
+pwas_output_ALL <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_ALL_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_ALL<-left_join(pwas_output_ALL, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_ALL$chr.y<-as.numeric(pwas_out_anno_ALL$chr.y)
+qq(pwas_out_anno_ALL$p_wald)
+
+pwas_output_AFA <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_AFA_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_AFA<-left_join(pwas_output_AFA, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_AFA$chr.y<-as.numeric(pwas_out_anno_AFA$chr.y)
+qq(pwas_out_anno_AFA$p_wald)
+```
+
+#### QQ Plot for ALL Model
+
+```{r, echo = FALSE}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Make QQ Plots
+pwas_output_ALL <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_ALL_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_ALL<-left_join(pwas_output_ALL, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_ALL$chr.y<-as.numeric(pwas_out_anno_ALL$chr.y)
+qq(pwas_out_anno_ALL$p_wald)
+```
+
+#### QQ Plot for AFA Model
+
+```{r, echo = FALSE}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Make QQ Plots
+pwas_output_AFA <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_AFA_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_AFA<-left_join(pwas_output_AFA, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_AFA$chr.y<-as.numeric(pwas_out_anno_AFA$chr.y)
+qq(pwas_out_anno_AFA$p_wald)
+```
+
+## Create Manhattan Plots
+
+```{}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Create Manhattan Plots
+pwas_output_ALL <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_ALL_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_ALL<-left_join(pwas_output_ALL, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_ALL$chr.y<-as.numeric(pwas_out_anno_ALL$chr.y)
+manhattan(pwas_out_anno_ALL, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+
+pwas_output_AFA <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_AFA_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_AFA<-left_join(pwas_output_AFA, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_AFA$chr.y<-as.numeric(pwas_out_anno_AFA$chr.y)
+manhattan(pwas_out_anno_AFA, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+```
+
+#### Manhattan Plot for ALL Model
+
+```{r, echo = FALSE}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Create Manhattan Plots
+pwas_output_ALL <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_ALL_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_ALL<-left_join(pwas_output_ALL, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_ALL$chr.y<-as.numeric(pwas_out_anno_ALL$chr.y)
+manhattan(pwas_out_anno_ALL, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+```
+
+#### Manhattan Plot for AFA Model
+
+```{r, echo = FALSE}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Create Manhattan Plots
+pwas_output_AFA <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_rn_filtered_AFA_baseline_rho0.1_zpval0.05.assoc.txt")
+pwas_out_anno_AFA<-left_join(pwas_output_AFA, anno, by = c("rs" = "gene_id"))
+pwas_out_anno_AFA$chr.y<-as.numeric(pwas_out_anno_AFA$chr.y)
+manhattan(pwas_out_anno_AFA, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+```
+
+## Create Plot for Most Significant Result
+
+This is a plot of the result with the highest significance
+
+```{}
+library(data.table)
+library(dplyr)
+library(ggplot2)
+
+#PrediXcan PWAS Results:
+
+#Pheno files:
+clop_noac_pheno<-fread("/home/rhea/account_wflow/phenos/clop_noac/clop_noac_rn_pheno_no_ids.txt", header = F)
+clop_noac_samples<-fread("/home/rhea/account_wflow/dosages/blacks/clop_noac/samples_clop_noac.txt", header = F)
+
+x_clop_noac<-cbind(clop_noac_samples, clop_noac_pheno)
+colnames(x_clop_noac)<-c("FID", "IID", "pheno")
+ 
+#Predicted Expression files:
+y_clop_noac_Pred_AFA<-fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/predicted_levels/blacks_clop_noac_PCAIR_PAV_filtered_AFA_baseline_rho0.1_zpval0.05.txt")
+
+
+#Plot Predicted Expression for IL5RA, for AFA Model, ALL pop, and Ara-C drug: 
+#Data file:
+xy_clop_noac_Pred_AFA<-inner_join(x_clop_noac, y_clop_noac_Pred_AFA, by = c("FID", "IID"))
+
+******
+ggplot(xy_clop_noac_Pred_AFA, aes(x = xy_clop_noac_Pred_AFA$SL000403_ENSG00000182871.16, y = xy_clop_noac_Pred_AFA$pheno)) +
+  geom_jitter(size = 0.75, color = "#ec328c") + 
+  geom_density_2d(color = "#ffbf24") + 
+  stat_smooth(method="lm", se = TRUE, fullrange = TRUE, color = "#8c1788") + 
+  scale_x_continuous(name = "Predicted protein levels") + 
+  scale_y_continuous(name = "Clopidogril_NOAC Dose (rank normalized)") + 
+  theme_bw() + 
+  theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Clopidogril_NOAC Baseline AFA AFM")
+dev.off()
+```
+
+```{r, echo = FALSE}
+library(data.table)
+library(dplyr)
+library(ggplot2)
+
+#PrediXcan PWAS Results:
+
+#Pheno files:
+clop_noac_pheno<-fread("/home/rhea/account_wflow/phenos/clop_noac/clop_noac_rn_pheno_no_ids.txt", header = F)
+clop_noac_samples<-fread("/home/rhea/account_wflow/dosages/blacks/clop_noac/samples_clop_noac.txt", header = F)
+
+x_clop_noac<-cbind(clop_noac_samples, clop_noac_pheno)
+colnames(x_clop_noac)<-c("FID", "IID", "pheno")
+ 
+#Predicted Expression files:
+y_clop_noac_Pred_AFA<-fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/predicted_levels/blacks_clop_noac_PCAIR_PAV_filtered_AFA_baseline_rho0.1_zpval0.05.txt")
+
+
+#Plot Predicted Expression for IL5RA, for AFA Model, ALL pop, and Ara-C drug: 
+#Data file:
+xy_clop_noac_Pred_AFA<-inner_join(x_clop_noac, y_clop_noac_Pred_AFA, by = c("FID", "IID"))
+
+#Create plot
+ggplot(xy_clop_noac_Pred_AFA, aes(x = xy_clop_noac_Pred_AFA$SL000403_ENSG00000182871.16, y = xy_clop_noac_Pred_AFA$pheno)) +
+  geom_jitter(size = 0.75, color = "#ec328c") + 
+  geom_density_2d(color = "#ffbf24") + 
+  stat_smooth(method="lm", se = TRUE, fullrange = TRUE, color = "#8c1788") + 
+  scale_x_continuous(name = "Predicted protein levels") + 
+  scale_y_continuous(name = "Clopidogril_NOAC Dose (rank normalized)") + 
+  theme_bw() + 
+  theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5)) +
+  ggtitle("Clopidogril_NOAC Baseline AFA AFM")
+```
+
