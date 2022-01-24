@@ -28,20 +28,15 @@ This is my documentation for the various association studies.
 
 4. [Histogram of Phenotype Data](phenotype_data_analysis.html)
 
+5. [Creating the Dosage Files](pred_dosages.html)
 
+6. [Running PrediXcan](pwas.html)
 
+7. [Covariates](covariates.html)
 
-## Still in Progress
+8. [GEMMA Association Studies](association_studies_gemma.html)
 
-This is my documentation for the steps for the association studies.
-
-* [Creating the Dosage Files](pred_dosages.html) 
-
-* [Running PrediXcan](pwas.html)
-
-* [GEMMA Association Studies](association_studies_gemma.html)
-
-* [Covariates](covariates.html)
+9. [Correct Bonferroni](correct_bonferroni.html)
 
 
 Analysis:

@@ -9,23 +9,23 @@ editor_options:
 
 ## Introduction
 
-In order to properly analyze the data in following steps, the original VCF files need to be split by drug, converted to dosage files, and then converted to plink files.
+In order to properly analyze the data in following steps, the original VCF files converted to dosage files and then converted to dosage files.
 
-## Split VCF by Drug
+### Merge samples file
 
-First, the original VCF file needs to be split by drug: Clopidogrel, Apixaban, Warfarin, Rivaroxiban, and NOAC (Apixaban & Rivaroxiban).
+The IDs for clop and noac need to be combined for the combined dosage files.
 
 ```{}
-for chr in {1..22};
-do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/ashley/account/vcfs/blacks_imputed/clop/clop_ids_new_filt.txt --recode --recode-INFO-all --out clop_chr${chr};
-done
-```
 
-This is repeated for the rest of the drugs.
+clop_ids <- fread("/home/rhea/account_wflow/vcfs/blacks_imputed/clop/clop_ids_CrCl.txt")
+noac_ids <- fread("/home/rhea/account_wflow/vcfs/blacks_imputed/noac/noac_ids_CrCl.txt")
 
-The files are then gzipped before the next step using the `gzip` command. 
+clop_noac_ids <- union_all(clop_ids, noac_ids)
+fwrite(clop_noac_ids, "clop_noac_ids.txt")
 
-## VCF to Dosage Python Script
+``` 
+
+## VCF to Dosage Script
 
 A Python script was then written in order to output the dosage files: 
 
@@ -95,16 +95,26 @@ for line in gzip.open(chrfile):
 outdosage.close()
 ```
 
-This applies the python script to the gzipped VCF files. It then outputs the dosage txt files. 
+### Create Dosage files
+
+The clop and noac data is pulled out of the original VCF file using the combined ID file made above. A loop then uses `vcf_to_dosage.py` file is then applies the python script to the new VCF file and outputs the dosage txt fies.
 
 ```{}
+#split vcf by pulling out clop & noac data using combined ID file
 for chr in {1..22};
-do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/clop/ -c ${chr} -d clop;
+do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
 done
+
+#gzip new vcf files
+gzip clop_noac_chr*.recode.vcf
+
+# Use vcf_to_dosage.py to output dosage txt files
+for chr in {1..22};
+do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/ -c ${chr} -d clop_noac;
+done
+
+gzip clop_noacchr*.dosage.txt
+
 ```
 
-This is repeated for each drug. 
-
-The text files are then gzipped using the `gzip` command. 
-
-Dosage files are saved under `/home/rhea/account_wflow/dosages/blacks/drug*/pred_dosages`.
+Dosage files are saved under `/home/rhea/account_wflow/dosages/blacks/clop_noad/pred_dosages`.

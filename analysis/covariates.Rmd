@@ -9,7 +9,7 @@ editor_options:
 
 ## Introduction
 
-This set of code shows the analysis of covariates and PCs. 
+This set of code shows the analysis of covariates and PCs. This is where the covariates file, phenotype file, and kinship files will be generated.
 
 This will be done using creatinine clearance as an example.
 
