@@ -21,6 +21,15 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -38,12 +47,16 @@ div.section {
 }
 </style>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -56,32 +69,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -91,10 +79,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -111,40 +95,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -172,7 +129,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -184,7 +141,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -195,10 +152,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -210,7 +180,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -336,7 +305,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -382,7 +351,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -413,7 +382,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-04-22
+<strong>Last updated:</strong> 2022-01-24
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -444,22 +413,35 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree1be0b9863b9dca4b3c1f1ca1277e4f822f184e2etargetblank1be0b98a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e" target="_blank">1be0b98</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree8539d50cf6782108873137b88ec6802c32ea2758targetblank8539d50a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/8539d50cf6782108873137b88ec6802c32ea2758" target="_blank">8539d50</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree1be0b9863b9dca4b3c1f1ca1277e4f822f184e2etargetblank1be0b98a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree8539d50cf6782108873137b88ec6802c32ea2758targetblank8539d50a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e" target="_blank">1be0b98</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/8539d50cf6782108873137b88ec6802c32ea2758" target="_blank">8539d50</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
-working directory clean
+Ignored files:
+    Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  clop_CrCl_pheno.txt
+    Untracked:  clop_CrCl_pheno_final.txt
+    Untracked:  clop_CrCl_with_ids.txt
+    Untracked:  clop_combnd_pheno_ids.txt
+    Untracked:  noac_CrCl_pheno_final.txt
+    Untracked:  noac_CrCl_with_ids.txt
+
+Unstaged changes:
+    Modified:   analysis/creatinine_clearance.Rmd
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -502,6 +484,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/8539d50cf6782108873137b88ec6802c32ea2758/analysis/pred_dosages.Rmd" target="_blank">8539d50</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+<td>
+Publish files 5 to 8 to show analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/7230c4c0664c5a4d7c2d3deb6f78013679dde148/docs/pred_dosages.html" target="_blank">7230c4c</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-04-22
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/pred_dosages.Rmd" target="_blank">1be0b98</a>
 </td>
 <td>
@@ -523,19 +539,21 @@ Publish analysis files
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>In order to properly analyze the data in following steps, the original VCF files need to be split by drug, converted to dosage files, and then converted to plink files.</p>
+<p>In order to properly analyze the data in following steps, the original VCF files converted to dosage files and then converted to dosage files.</p>
+<div id="merge-samples-file" class="section level3">
+<h3>Merge samples file</h3>
+<p>The IDs for clop and noac need to be combined for the combined dosage files.</p>
+<pre><code>
+clop_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/clop/clop_ids_CrCl.txt&quot;)
+noac_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/noac/noac_ids_CrCl.txt&quot;)
+
+clop_noac_ids &lt;- union_all(clop_ids, noac_ids)
+fwrite(clop_noac_ids, &quot;clop_noac_ids.txt&quot;)
+</code></pre>
 </div>
-<div id="split-vcf-by-drug" class="section level2">
-<h2>Split VCF by Drug</h2>
-<p>First, the original VCF file needs to be split by drug: Clopidogrel, Apixaban, Warfarin, Rivaroxiban, and NOAC (Apixaban &amp; Rivaroxiban).</p>
-<pre><code>for chr in {1..22};
-do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/ashley/account/vcfs/blacks_imputed/clop/clop_ids_new_filt.txt --recode --recode-INFO-all --out clop_chr${chr};
-done</code></pre>
-<p>This is repeated for the rest of the drugs.</p>
-<p>The files are then gzipped before the next step using the <code>gzip</code> command.</p>
 </div>
-<div id="vcf-to-dosage-python-script" class="section level2">
-<h2>VCF to Dosage Python Script</h2>
+<div id="vcf-to-dosage-script" class="section level2">
+<h2>VCF to Dosage Script</h2>
 <p>A Python script was then written in order to output the dosage files:</p>
 <pre><code>import gzip
 import re
@@ -600,13 +618,26 @@ for line in gzip.open(chrfile):
     outdosage.write(output)
 
 outdosage.close()</code></pre>
-<p>This applies the python script to the gzipped VCF files. It then outputs the dosage txt files.</p>
-<pre><code>for chr in {1..22};
-do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/clop/ -c ${chr} -d clop;
-done</code></pre>
-<p>This is repeated for each drug.</p>
-<p>The text files are then gzipped using the <code>gzip</code> command.</p>
-<p>Dosage files are saved under <code>/home/rhea/account_wflow/dosages/blacks/drug*/pred_dosages</code>.</p>
+<div id="create-dosage-files" class="section level3">
+<h3>Create Dosage files</h3>
+<p>The clop and noac data is pulled out of the original VCF file using the combined ID file made above. A loop then uses <code>vcf_to_dosage.py</code> file is then applies the python script to the new VCF file and outputs the dosage txt fies.</p>
+<pre><code>#split vcf by pulling out clop &amp; noac data using combined ID file
+for chr in {1..22};
+do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
+done
+
+#gzip new vcf files
+gzip clop_noac_chr*.recode.vcf
+
+# Use vcf_to_dosage.py to output dosage txt files
+for chr in {1..22};
+do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/ -c ${chr} -d clop_noac;
+done
+
+gzip clop_noacchr*.dosage.txt
+</code></pre>
+<p>Dosage files are saved under <code>/home/rhea/account_wflow/dosages/blacks/clop_noad/pred_dosages</code>.</p>
+</div>
 </div>
 
 
@@ -632,7 +663,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -650,7 +681,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -659,6 +690,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')

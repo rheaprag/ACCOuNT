@@ -382,7 +382,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-10-29
+<strong>Last updated:</strong> 2022-01-24
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -413,16 +413,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree836e4fc0be86920681e109f7bc07352ad159c88btargetblank836e4fca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/836e4fc0be86920681e109f7bc07352ad159c88b" target="_blank">836e4fc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree8539d50cf6782108873137b88ec6802c32ea2758targetblank8539d50a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/8539d50cf6782108873137b88ec6802c32ea2758" target="_blank">8539d50</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree836e4fc0be86920681e109f7bc07352ad159c88btargetblank836e4fca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree8539d50cf6782108873137b88ec6802c32ea2758targetblank8539d50a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/836e4fc0be86920681e109f7bc07352ad159c88b" target="_blank">836e4fc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/8539d50cf6782108873137b88ec6802c32ea2758" target="_blank">8539d50</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -430,6 +430,17 @@ Note that you need to be careful to ensure that all relevant files for the analy
 <pre><code>
 Ignored files:
     Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  clop_CrCl_pheno.txt
+    Untracked:  clop_CrCl_pheno_final.txt
+    Untracked:  clop_CrCl_with_ids.txt
+    Untracked:  clop_combnd_pheno_ids.txt
+    Untracked:  noac_CrCl_pheno_final.txt
+    Untracked:  noac_CrCl_with_ids.txt
+
+Unstaged changes:
+    Modified:   analysis/creatinine_clearance.Rmd
 
 </code></pre>
 <p>
@@ -468,6 +479,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/8539d50cf6782108873137b88ec6802c32ea2758/analysis/covariates.Rmd" target="_blank">8539d50</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+<td>
+Publish files 5 to 8 to show analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/57b14d25f886fb47f939216182349c8f27036f39/docs/covariates.html" target="_blank">57b14d2</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-10-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -545,7 +590,7 @@ Update CrCl with covariate analysis
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This set of code shows the analysis of covariates and PCs.</p>
+<p>This set of code shows the analysis of covariates and PCs. This is where the covariates file, phenotype file, and kinship files will be generated.</p>
 <p>This will be done using creatinine clearance as an example.</p>
 <div id="create-bedbimfam-files-for-combined-clopnoac-drugs-based-on-the-list-of-ids" class="section level3">
 <h3>Create bed/bim/fam files for combined clop/noac drugs based on the list of IDs</h3>
