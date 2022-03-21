@@ -38,7 +38,21 @@ This is my documentation for the various association studies.
 
 10. [PWAS Plots](pwas_plots.html)
 
-This documentation describes the analysis for GWAS.
+11. [PWAS Results](pwas_results.html)
 
-11.
+This documentation documents the analysis for GWAS.
+
+12. [Dosage File to BIMBAM Format](dosage_to_bimbam.html)
+
+13. [Running GEMMA for GWAS](gwas.html)
+
+14. [GWAS Plots](gwas_plots.html)
+
+This documentation documents the analysis for TWAS.
+
+15. Running GEMMA for TWAS
+
+16. TWAS Results
+
+17. TWAS Plots
 

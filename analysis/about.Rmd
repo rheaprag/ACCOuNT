@@ -8,3 +8,5 @@ editor_options:
 ---
 
 [ACCOuNT Project](https://precisionmedicine4all.com/research-projects/)
+
+[GEMMA Manual](https://www.xzlab.org/software/GEMMAmanual.pdf)

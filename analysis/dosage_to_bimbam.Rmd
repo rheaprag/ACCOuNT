@@ -1,0 +1,25 @@
+---
+title: "dosage_to_bimbam"
+author: "rheaprag"
+date: "2022-01-24"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+In order to use GEMMA for GWAS, the files need to be adjusted. First, the dosage file was converted to BIMBAM format in order to create a mean genotype file. 
+
+## Code
+
+```{}
+for chr in {1..22};
+do zcat /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr${chr}.dosage.txt.gz |awk '{$1=$3=$6=""; print $0}'| sed 's/^ *//g' | sed 's/\s\+/, /g' > /home/rhea/account_wflow/dosages/blacks/clop_noac/bimbam/clop_noac_chr${chr}_bimbam.txt;
+done
+
+for chr in {1..22};
+do gzip /home/rhea/account_wflow/dosages/blacks/clop_noac/bimbam/clop_noac_chr${chr}_bimbam.txt
+done
+
+```

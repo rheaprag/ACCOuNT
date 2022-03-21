@@ -178,11 +178,10 @@ ggplot(xy_clop_noac_Pred_AFA, aes(x = xy_clop_noac_Pred_AFA$SL000403_ENSG0000018
   geom_density_2d(color = "#ffbf24") + 
   stat_smooth(method="lm", se = TRUE, fullrange = TRUE, color = "#8c1788") + 
   scale_x_continuous(name = "Predicted protein levels") + 
-  scale_y_continuous(name = "Clopidogril_NOAC Dose (rank normalized)") + 
+  scale_y_continuous(name = "Clopidogril_NOAC Creatinine Clearance (rn)") + 
   theme_bw() + 
   theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5)) +
-  ggtitle("Clopidogril_NOAC Baseline AFA AFM")
-dev.off()
+  ggtitle("Clopidogril_NOAC Baseline AFA")
 ```
 
 ```{r, echo = FALSE}
@@ -213,9 +212,9 @@ ggplot(xy_clop_noac_Pred_AFA, aes(x = xy_clop_noac_Pred_AFA$SL000403_ENSG0000018
   geom_density_2d(color = "#ffbf24") + 
   stat_smooth(method="lm", se = TRUE, fullrange = TRUE, color = "#8c1788") + 
   scale_x_continuous(name = "Predicted protein levels") + 
-  scale_y_continuous(name = "Clopidogril_NOAC Dose (rank normalized)") + 
+  scale_y_continuous(name = "Clopidogril_NOAC Creatinine Clearance (rn)") + 
   theme_bw() + 
   theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5)) +
-  ggtitle("Clopidogril_NOAC Baseline AFA AFM")
+  ggtitle("Clopidogril_NOAC Baseline AFA")
 ```
 

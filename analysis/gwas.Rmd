@@ -1,0 +1,83 @@
+---
+title: "gwas"
+author: "rheaprag"
+date: "2022-02-02"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+This script details the GWAS in order to do SNP-level association with the ACCOuNT data using GEMMA. 
+
+##GWAS GEMMA
+
+```{}
+/usr/local/bin/gemma -g /home/rhea/account_wflow/dosages/blacks/clop_noac/bimbam/clop_noac_chr1_bimbam.txt.gz \
+-p /home/rhea/account_wflow/phenos/clop_noac/clop_noac_rn_pheno_no_ids.txt \
+-k  /home/rhea/account_wflow/covariates/clop_noac/blacks_clop_noac.cXX.txt \
+-lmm 4 \
+-o clop_noac_CrCl_gwas
+```
+
+##Correct Bonferroni
+
+```{}
+library(data.table)
+library(dplyr)
+library(tibble)
+
+#Make a data frame from combined GEMMA results that includes chr #, bp, and BH and Bonferroni adj p-value
+  #Read in output files
+  #Create vector of p-values
+  #Adjust p-values with BH and bonferroni methods
+  #Add new columns with adjusted p-values to data frame
+  #Join GEMMA data frame with bp_chrome data frame to add columns with chr # and bp
+  #Remove old/inaccurate chr and bp columns
+  #Ouput data frame into directory
+  
+assoc_file <- fread("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/clop_noac_CrCl_gwas.assoc.txt.gz")
+pvalues <- select(assoc_file, contains("p_wald"))
+pvalues <- as.vector(unlist(pvalues))
+pvalues_adjusted_BH <- p.adjust(pvalues, method = "BH")
+pvalues_adjusted_BF <- p.adjust(pvalues, method = "bonferroni")
+assoc_file <- add_column(assoc_file,  pvalues_adjusted_BH = pvalues_adjusted_BH , .before = "p_lrt")
+assoc_file <- add_column(assoc_file,  pvalues_adjusted_bonferroni = pvalues_adjusted_BF, .before = "p_lrt")
+fwrite(assoc_file, "/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_gwas.adj.txt", sep = "\t", quote = F)
+
+```
+
+##Combine Significant Hits
+
+```{}
+#Import necessasry libraries
+library(data.table)
+library(dplyr)
+library(tibble)
+
+#Read in file
+#Compile significant subsets into single data frame
+
+output <- fread("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_gwas.adj.txt")
+if(exists("all_assoc")){
+    all_assoc<-left_join(x = all_assoc, y = output, all = TRUE)
+} else {
+all_assoc<-output
+}
+
+#subset at different thresholds
+all_sig<-subset(all_assoc, pvalues_adjusted_BH < .75)
+most_sig<-subset(all_assoc, pvalues_adjusted_BH < .1)
+BF_not1<-subset(all_assoc, pvalues_adjusted_bonferroni < 1)
+BF_sig<-subset(all_assoc, pvalues_adjusted_bonferroni < .05)
+   
+#Output data frames into directory
+fwrite(all_assoc, "/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_allassoc_CrCl_gwas.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(all_sig, "/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_sig_CrCl_gwas.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(most_sig, "/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_most_sig__CrCl_gwas.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(BF_not1, "/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_BFnot1_CrCl_gwas.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+fwrite(BF_sig, "/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_BFsig_CrCl_gwas.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+
+```
+
+Unfortunately there were no significant results with any Bonferroni value.
