@@ -15,7 +15,8 @@
 
 <title>pwas_plots</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -39,13 +40,15 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
   padding-top: 12px;
 }
 </style>
+
+
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -382,7 +385,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-24
+<strong>Last updated:</strong> 2022-03-21
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -391,8 +394,8 @@ div.tocify {
 <strong>Knit directory:</strong> <code>ACCOuNT/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -473,16 +476,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreec14bd9c79d68c024a7ba4c9067e594d92eb8bd6dtargetblankc14bd9ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/c14bd9c79d68c024a7ba4c9067e594d92eb8bd6d" target="_blank">c14bd9c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreec14bd9c79d68c024a7ba4c9067e594d92eb8bd6dtargetblankc14bd9ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/c14bd9c79d68c024a7ba4c9067e594d92eb8bd6d" target="_blank">c14bd9c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -492,15 +495,14 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
+    Untracked:  analysis/gwas_plots.Rmd
+    Untracked:  analysis/pwas_results.Rmd
     Untracked:  clop_CrCl_pheno.txt
     Untracked:  clop_CrCl_pheno_final.txt
     Untracked:  clop_CrCl_with_ids.txt
     Untracked:  clop_combnd_pheno_ids.txt
     Untracked:  noac_CrCl_pheno_final.txt
     Untracked:  noac_CrCl_with_ids.txt
-
-Unstaged changes:
-    Modified:   analysis/creatinine_clearance.Rmd
 
 </code></pre>
 <p>
@@ -539,6 +541,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/03115f91eb2e7686b1c4772a37fbedf35ec5bb02/analysis/pwas_plots.Rmd" target="_blank">03115f9</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-03-21
+</td>
+<td>
+Update pages and add GWAS analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/9c280eba585deb9bc1a5d59575aa30170199ede0/docs/pwas_plots.html" target="_blank">9c280eb</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -610,10 +646,84 @@ Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>Turner, (2018). qqman: an R package for visualizing GWAS results using Q-Q and manhattan plots. Journal of Open Source Software, 3(25), 731, https://doi.org/10.21105/joss.00731.</code></pre>
 <pre><code></code></pre>
 <p><img src="figure/pwas_plots.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
+Past versions of unnamed-chunk-1-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/9c280eba585deb9bc1a5d59575aa30170199ede0/docs/figure/pwas_plots.Rmd/unnamed-chunk-1-1.png" target="_blank">9c280eb</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="qq-plot-for-afa-model" class="section level4">
 <h4>QQ Plot for AFA Model</h4>
 <p><img src="figure/pwas_plots.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/9c280eba585deb9bc1a5d59575aa30170199ede0/docs/figure/pwas_plots.Rmd/unnamed-chunk-2-1.png" target="_blank">9c280eb</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="create-manhattan-plots" class="section level2">
@@ -642,10 +752,84 @@ manhattan(pwas_out_anno_AFA, chr = &quot;chr.y&quot;, bp = &quot;start&quot;, p 
 <div id="manhattan-plot-for-all-model" class="section level4">
 <h4>Manhattan Plot for ALL Model</h4>
 <p><img src="figure/pwas_plots.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/9c280eba585deb9bc1a5d59575aa30170199ede0/docs/figure/pwas_plots.Rmd/unnamed-chunk-3-1.png" target="_blank">9c280eb</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="manhattan-plot-for-afa-model" class="section level4">
 <h4>Manhattan Plot for AFA Model</h4>
 <p><img src="figure/pwas_plots.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/9c280eba585deb9bc1a5d59575aa30170199ede0/docs/figure/pwas_plots.Rmd/unnamed-chunk-4-1.png" target="_blank">9c280eb</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="create-plot-for-most-significant-result" class="section level2">
@@ -678,16 +862,52 @@ ggplot(xy_clop_noac_Pred_AFA, aes(x = xy_clop_noac_Pred_AFA$SL000403_ENSG0000018
   geom_density_2d(color = &quot;#ffbf24&quot;) + 
   stat_smooth(method=&quot;lm&quot;, se = TRUE, fullrange = TRUE, color = &quot;#8c1788&quot;) + 
   scale_x_continuous(name = &quot;Predicted protein levels&quot;) + 
-  scale_y_continuous(name = &quot;Clopidogril_NOAC Dose (rank normalized)&quot;) + 
+  scale_y_continuous(name = &quot;Clopidogril_NOAC Creatinine Clearance (rn)&quot;) + 
   theme_bw() + 
   theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5)) +
-  ggtitle(&quot;Clopidogril_NOAC Baseline AFA AFM&quot;)
-dev.off()</code></pre>
+  ggtitle(&quot;Clopidogril_NOAC Baseline AFA&quot;)</code></pre>
 <pre><code>Warning: Removed 18 rows containing non-finite values (stat_density2d).</code></pre>
 <pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>Warning: Removed 18 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>Warning: Removed 18 rows containing missing values (geom_point).</code></pre>
 <p><img src="figure/pwas_plots.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/9c280eba585deb9bc1a5d59575aa30170199ede0/docs/figure/pwas_plots.Rmd/unnamed-chunk-5-1.png" target="_blank">9c280eb</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -696,7 +916,7 @@ dev.off()</code></pre>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 3.6.3 (2020-02-29)
+<pre><code>R version 4.1.2 (2021-11-01)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Pop!_OS 20.04 LTS
 
@@ -716,32 +936,34 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] ggplot2_3.3.5     colorspace_2.0-2  qqman_0.1.8       dplyr_1.0.7      
-[5] data.table_1.14.0 workflowr_1.6.2  
+[1] ggplot2_3.3.5     colorspace_2.0-2  qqman_0.1.8       dplyr_1.0.8      
+[5] data.table_1.14.2 workflowr_1.7.0  
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1 xfun_0.25        bslib_0.2.5.1    purrr_0.3.4     
- [5] lattice_0.20-44  splines_3.6.3    vctrs_0.3.8      generics_0.1.0  
- [9] htmltools_0.5.2  yaml_2.2.1       mgcv_1.8-36      utf8_1.2.2      
-[13] rlang_0.4.11     isoband_0.2.5    jquerylib_0.1.4  later_1.3.0     
-[17] pillar_1.6.2     glue_1.4.2       withr_2.4.2      DBI_1.1.1       
-[21] calibrate_1.7.7  lifecycle_1.0.0  stringr_1.4.0    munsell_0.5.0   
-[25] gtable_0.3.0     evaluate_0.14    labeling_0.4.2   knitr_1.33      
-[29] fastmap_1.1.0    httpuv_1.6.2     fansi_0.5.0      highr_0.9       
-[33] Rcpp_1.0.7       promises_1.2.0.1 scales_1.1.1     jsonlite_1.7.2  
-[37] farver_2.1.0     fs_1.5.0         digest_0.6.27    stringi_1.7.4   
-[41] rprojroot_2.0.2  grid_3.6.3       tools_3.6.3      magrittr_2.0.1  
-[45] sass_0.4.0       tibble_3.1.4     crayon_1.4.1     whisker_0.4     
-[49] pkgconfig_2.0.3  Matrix_1.3-4     ellipsis_0.3.2   MASS_7.3-54     
-[53] assertthat_0.2.1 rmarkdown_2.10   R6_2.5.1         nlme_3.1-152    
-[57] git2r_0.28.0     compiler_3.6.3  </code></pre>
+ [1] Rcpp_1.0.8       lattice_0.20-45  getPass_0.2-2    ps_1.6.0        
+ [5] assertthat_0.2.1 rprojroot_2.0.2  digest_0.6.29    utf8_1.2.2      
+ [9] R6_2.5.1         evaluate_0.14    httr_1.4.2       highr_0.9       
+[13] pillar_1.7.0     rlang_1.0.1      rstudioapi_0.13  whisker_0.4     
+[17] callr_3.7.0      jquerylib_0.1.4  Matrix_1.4-0     rmarkdown_2.11  
+[21] labeling_0.4.2   splines_4.1.2    stringr_1.4.0    munsell_0.5.0   
+[25] compiler_4.1.2   httpuv_1.6.5     xfun_0.29        pkgconfig_2.0.3 
+[29] mgcv_1.8-38      htmltools_0.5.2  tidyselect_1.1.1 tibble_3.1.6    
+[33] fansi_1.0.2      calibrate_1.7.7  crayon_1.5.0     withr_2.4.3     
+[37] later_1.3.0      MASS_7.3-55      grid_4.1.2       nlme_3.1-155    
+[41] jsonlite_1.7.3   gtable_0.3.0     lifecycle_1.0.1  DBI_1.1.2       
+[45] git2r_0.29.0     magrittr_2.0.2   scales_1.1.1     cli_3.2.0       
+[49] stringi_1.7.6    farver_2.1.0     fs_1.5.2         promises_1.2.0.1
+[53] bslib_0.3.1      ellipsis_0.3.2   generics_0.1.2   vctrs_0.3.8     
+[57] tools_4.1.2      glue_1.6.1       purrr_0.3.4      processx_3.5.2  
+[61] fastmap_1.1.0    yaml_2.2.2       isoband_0.2.5    knitr_1.37      
+[65] sass_0.4.0      </code></pre>
 </div>
 </div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->
@@ -750,6 +972,8 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
+
+
 
 
 </div>

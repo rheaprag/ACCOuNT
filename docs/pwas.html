@@ -15,7 +15,8 @@
 
 <title>pwas</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -39,13 +40,15 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
   padding-top: 12px;
 }
 </style>
+
+
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -382,7 +385,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-01-24
+<strong>Last updated:</strong> 2022-03-21
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -391,8 +394,8 @@ div.tocify {
 <strong>Knit directory:</strong> <code>ACCOuNT/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -413,16 +416,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree8539d50cf6782108873137b88ec6802c32ea2758targetblank8539d50a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/8539d50cf6782108873137b88ec6802c32ea2758" target="_blank">8539d50</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree8539d50cf6782108873137b88ec6802c32ea2758targetblank8539d50a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/8539d50cf6782108873137b88ec6802c32ea2758" target="_blank">8539d50</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -432,15 +435,14 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
+    Untracked:  analysis/gwas_plots.Rmd
+    Untracked:  analysis/pwas_results.Rmd
     Untracked:  clop_CrCl_pheno.txt
     Untracked:  clop_CrCl_pheno_final.txt
     Untracked:  clop_CrCl_with_ids.txt
     Untracked:  clop_combnd_pheno_ids.txt
     Untracked:  noac_CrCl_pheno_final.txt
     Untracked:  noac_CrCl_with_ids.txt
-
-Unstaged changes:
-    Modified:   analysis/creatinine_clearance.Rmd
 
 </code></pre>
 <p>
@@ -479,6 +481,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/03115f91eb2e7686b1c4772a37fbedf35ec5bb02/analysis/pwas.Rmd" target="_blank">03115f9</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-03-21
+</td>
+<td>
+Update pages and add GWAS analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/26e8fc52d1aca5006746eaa7a98bf9bf3326d9e8/docs/pwas.html" target="_blank">26e8fc5</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-01-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -579,6 +615,10 @@ Publish analysis files
 <h2>Run PrediXcan with all drug groups and protein models</h2>
 <pre><code>#Run PrediXcan with drug groups and protein models:
 
+#--model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
+    #updated db models -
+
+
 declare -a drugs=(&quot;clop_noac&quot;)
 declare -a model_pops=(&quot;AFA&quot; &quot;ALL&quot; &quot;CAU&quot; &quot;CHN&quot; &quot;HIS&quot;)
 
@@ -587,10 +627,10 @@ for model_pop in ${model_pops[@]}
   for drug in ${drugs[@]}
     do
     python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
-    --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
+    --model_db_path /home/rhea/account_wflow/TOPMed_Proteome/${model_pop}_PCAIR_baseline_models_rho0.1_zpval0.05.db \
     --text_genotypes /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr*.dosage.txt.gz \
     --text_sample_ids /home/rhea/account_wflow/dosages/blacks/clop_noac/samples_clop_noac.txt \
-    --prediction_output /home/rhea/account_wflow/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
+    --prediction_output /home/rhea/account_wflow/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
   done
 done</code></pre>
 </div>
@@ -618,13 +658,37 @@ for(model in model_list){
     pred_exp &lt;- cbind(gene_list, pred_exp)
     fwrite(pred_exp, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_input/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05_gemma.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = F) #path to GEMMA input/pseudo-genotype
   }
+}
+
+
+#new models
+library(data.table)
+&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
+model_list &lt;- c(&quot;AFA&quot;, &quot;HIS&quot;, &quot;CHN&quot;, &quot;ALL&quot;)
+drug_list &lt;- c(&quot;clop_noac&quot;)
+
+for(model in model_list){
+  for(drug in drug_list){
+    pred_exp &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/predicted_levels/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.txt&quot;, header = F) #path to PrediXcan-produced _predicted_expression.txt
+    pred_exp$V1 &lt;- NULL
+    pred_exp$V2 &lt;- NULL
+    pred_exp &lt;- transpose(pred_exp)
+    gene_list &lt;- as.data.frame(pred_exp$V1)
+    colnames(gene_list) &lt;- &quot;V0&quot;
+    pred_exp &lt;- cbind(gene_list, pred_exp)
+    pred_exp$V0 &lt;- NA
+    pred_exp$V1 &lt;- NA
+    colnames(gene_list) &lt;- &quot;V&quot;
+    pred_exp &lt;- cbind(gene_list, pred_exp)
+    fwrite(pred_exp, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_input/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05_gemma.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = F) #path to GEMMA input/pseudo-genotype
+  }
 }</code></pre>
 </div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->
@@ -633,6 +697,8 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
+
+
 
 
 </div>

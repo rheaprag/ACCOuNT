@@ -15,7 +15,8 @@
 
 <title>creatinine_clearance</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -39,13 +40,15 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
   padding-top: 12px;
 }
 </style>
+
+
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -382,7 +385,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-10-29
+<strong>Last updated:</strong> 2022-03-21
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -391,8 +394,8 @@ div.tocify {
 <strong>Knit directory:</strong> <code>ACCOuNT/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -413,16 +416,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree836e4fc0be86920681e109f7bc07352ad159c88btargetblank836e4fca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/836e4fc0be86920681e109f7bc07352ad159c88b" target="_blank">836e4fc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree836e4fc0be86920681e109f7bc07352ad159c88btargetblank836e4fca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/836e4fc0be86920681e109f7bc07352ad159c88b" target="_blank">836e4fc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -430,6 +433,16 @@ Note that you need to be careful to ensure that all relevant files for the analy
 <pre><code>
 Ignored files:
     Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  analysis/gwas_plots.Rmd
+    Untracked:  analysis/pwas_results.Rmd
+    Untracked:  clop_CrCl_pheno.txt
+    Untracked:  clop_CrCl_pheno_final.txt
+    Untracked:  clop_CrCl_with_ids.txt
+    Untracked:  clop_combnd_pheno_ids.txt
+    Untracked:  noac_CrCl_pheno_final.txt
+    Untracked:  noac_CrCl_with_ids.txt
 
 </code></pre>
 <p>
@@ -468,6 +481,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/03115f91eb2e7686b1c4772a37fbedf35ec5bb02/analysis/creatinine_clearance.Rmd" target="_blank">03115f9</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-03-21
+</td>
+<td>
+Update pages and add GWAS analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/57b14d25f886fb47f939216182349c8f27036f39/docs/creatinine_clearance.html" target="_blank">57b14d2</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-10-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -696,413 +743,30 @@ Update website and fix typos
 </div>
 </div>
 </div>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>This analysis looks at creatinine clearance in the data.</p>
-<p>Creatinine is a waste product produced in our body. Low creatinine levels indicate kidney damage while high levels indicate diminished kidney function.</p>
-<p>This analysis uses the Clopidogrel and NOAC drug groups.</p>
-<div id="extract-phenotype-data" class="section level3">
-<h3>Extract Phenotype Data</h3>
-<p>The <code>csv</code> files with matched IDs were used for this.</p>
-<pre><code>#adapted from Ashley&#39;s code ACCOUNT/scripts/pheno/extract_important_pheno_data.R
-
-#import necessary libraries
-library(data.table)
-library(dplyr)
-
-#import csv files for clop &amp; noac
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/account_clopidogrel_processed_matched_IDs_all.csv&quot;)
-noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/account_noac_processed_matched_IDs_all.csv&quot;)
-
-#save ids and pheno columns only, remove unneeded columns so files are easier to work with
-clop_small&lt;-clop[, c(1:9,206)]
-noac_small&lt;-noac[, c(1:9,79)]
-
-#output files
-fwrite(clop_small, &quot;clop_CrCl_with_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
-fwrite(noac_small, &quot;noac_CrCl_with_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
-</code></pre>
-</div>
-<div id="merge-samples-file-with-phenotype-data" class="section level3">
-<h3>Merge Samples File with Phenotype Data</h3>
-<pre><code>#import necessary libraries
-library(data.table)
-library(dplyr)
-
-#import samples &amp; pheno txt files for clop 
-clop_samples&lt;-fread(&quot;/home/ashley/account/dosages/blacks/clop/samples_clop.txt&quot;, header = FALSE)
-clop_phenos&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_with_ids.txt&quot;)
-
-#merge two files
-clop_cmbnd&lt;-left_join(clop_samples, clop_phenos)
-
-#output file
-fwrite(clop_cmbnd, &quot;clop_combnd_pheno_ids.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
-</code></pre>
-<p>Repeat this step to create combined phenotype file for NOAC.</p>
-</div>
-<div id="calculate-creatinine-clearance-for-clopidogril-data" class="section level3">
-<h3>Calculate Creatinine Clearance for Clopidogril Data</h3>
-<pre><code>#crcl calculation
-#Est. Creatinine Clearance = [[140 - age(yr)]*weight(kg)]/[72*serum Cr(mg/dL)]
-#multiply by 0.85 for women
-
-library(data.table)
-library(dplyr)
-
-#import pheno file in for clop, has missing data values
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt&quot;)
-
-str(clop) #see structure of data.frame
-#Note Height and Creatinine level are characters, need to convert to the numeric type
-
-clop_age&lt;-clop$`Age at enrollment (with over 89 binning)`
-clop_weight&lt;-as.numeric(clop$`Weight (kg)`) #as.numeric() converts MD&#39;s to NA, I&#39;m assuming MD=&quot;missing data&quot;?
-clop_sCr&lt;-as.numeric(clop$`Creatinine level (mg/dL)`) #as.numeric() converts characters to numbers and MD&#39;s to NA, so we can do math
-
-crcl &lt;- (140 - clop_age)*clop_weight / (72*clop_sCr)
-
-#use mutate() to add crcl to clop data.frame and adjust if female with ifelse()
-clop &lt;- mutate(clop, CrCl = ifelse(Gender==&#39;M&#39;,crcl,0.85*crcl))
-
-fwrite(clop, &quot;clop_CrCl_pheno.txt&quot;, sep=&quot;\t&quot;, na=&quot;NA&quot;, quote=FALSE)</code></pre>
-</div>
-<div id="finishing-data-file" class="section level3">
-<h3>Finishing Data File</h3>
-<p>Now, a row needs to be removed from both the clop and noac files as the person switched drugs:</p>
-<pre><code>library(data.table)
-library(dplyr)
-
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno.txt&quot;)
-clop_new&lt;-clop[-c(16),]
-fwrite(clop_new, &quot;clop_CrCl_pheno_final.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)
-
-noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_combnd_pheno_ids.txt&quot;)
-noac_new&lt;-noac[-c(6),] #remove duplicated data &amp; missing data
-
-fwrite(noac_new, &quot;noac_CrCl_pheno_final.txt&quot;, sep = &quot;\t&quot;, quote = F, na = NA)</code></pre>
-</div>
-<div id="histogram" class="section level3">
-<h3>Histogram</h3>
-<p>The original histogram created showed that the data was skewed to the right.</p>
-<p>In order to fix this, I first applied log transformation to the phenotype files:</p>
-<pre><code>library(ggplot2)
-library(dplyr)
-
-#clop
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt&quot;)
-Creatinine_clop &lt;- clop$CrCl
-Creatinine_c_log &lt;- log(Creatinine_clop)
-clop_hist &lt;- hist(Creatinine_c_log,
-main=&quot;Creatinine Clearance of Clopidogril&quot;,
-col=&quot;darkmagenta&quot;)
-
-#noac 
-noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt&quot;)
-colnames(noac)[10] &lt;- &quot;CrCl&quot;
-Creatinine_noac &lt;- noac$CrCl
-Creatinine_noac_num &lt;- as.numeric(Creatinine_noac)
-Creatinine_noac_log &lt;- log(Creatinine_noac_num)
-noac_hist &lt;- hist(Creatinine_noac_log,
-main=&quot;Creatinine Clearance of NOAC drugs&quot;,
-col=&quot;gold&quot;)
-</code></pre>
-<p>However, the log transformed data was now skewed to the left. So I applied rank normalization to the data instead.</p>
-<pre><code>library(ggplot2)
-library(dplyr)
-
-#rank normalize files
-source(&quot;/home/rhea/account_wflow/rntransform.R&quot;)
-source(&quot;/home/rhea/account_wflow/ztransform.R&quot;)
-
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt&quot;)
-Creatinine_clop &lt;- rntransform(clop$CrCl)
-clop_hist &lt;- hist(Creatinine_clop,
-main=&quot;Creatinine Clearance of Clopidogril&quot;,
-col=&quot;darkmagenta&quot;)
-
-noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt&quot;)
-colnames(noac)[10] &lt;- &quot;CrCl&quot;
-Creatinine_noac &lt;- noac$CrCl
-Creatinine_noac_num &lt;- as.numeric(Creatinine_noac)
-Creatinine_noac_rn &lt;- rntransform(Creatinine_noac_num)
-noac_hist &lt;- hist(Creatinine_noac_rn,
-main=&quot;Creatinine Clearance of NOAC drugs&quot;,
-col=&quot;gold&quot;)
-</code></pre>
-<p>These histograms showed a normal distribution. The phenotype data used for the remainder of the calculations will be rank-normalized.</p>
-<p>Histograms are all saved under <code>/home/rhea/account_wflow/phenos/{drug}</code>.</p>
-</div>
-<div id="merge-samples-file--" class="section level3">
-<h3>Merge samples file - ?</h3>
-<pre><code>
-clop_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/clop/clop_ids_CrCl.txt&quot;)
-noac_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/noac/noac_ids_CrCl.txt&quot;)
-
-clop_noac_ids &lt;- union_all(clop_ids, noac_ids)
-fwrite(clop_noac_ids, &quot;clop_noac_ids.txt&quot;)
-</code></pre>
-<p>using merged samples file…</p>
-</div>
-<div id="create-dosage-files" class="section level3">
-<h3>Create Dosage files</h3>
-<pre><code>#split vcf by pulling out clop &amp; noac data using combined ID file
-for chr in {1..22};
-do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
-done
-
-#gzip new vcf files
-gzip clop_noac_chr*.recode.vcf
-
-# Use vcf_to_dosage.py to output dosage txt files
-for chr in {1..22};
-do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/ -c ${chr} -d clop_noac;
-done
-
-gzip clop_noacchr*.dosage.txt
-</code></pre>
-<p>create merged samples_clop_noac.txt file</p>
-</div>
-<div id="run-pwas" class="section level3">
-<h3>Run PWAS</h3>
-<pre><code>
-#Run PrediXcan with drug groups and protein models:
-
-declare -a drugs=(&quot;clop_noac&quot;)
-declare -a model_pops=(&quot;AFA&quot; &quot;ALL&quot; &quot;CAU&quot; &quot;CHN&quot; &quot;HIS&quot;)
-
-for model_pop in ${model_pops[@]}
-  do
-  for drug in ${drugs[@]}
-    do
-    python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
-    --model_db_path /home/ryan/TOPMed_Proteome/dbs_out/${model_pop}_PCAIR_baseline_models_PAV_filtered_rho0.1_zpval0.05.db \
-    --text_genotypes /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr*.dosage.txt.gz \
-    --text_sample_ids /home/rhea/account_wflow/dosages/blacks/clop_noac/samples_clop_noac.txt \
-    --prediction_output /home/rhea/account_wflow/pwas_results/blacks/${drug}/predicted_levels/blacks_${drug}_PCAIR_PAV_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
-  done
-done
-</code></pre>
-</div>
-<div id="convert-predixcan-output-to-gemma-input" class="section level3">
-<h3>Convert PrediXcan Output to GEMMA input</h3>
-<pre><code>
-library(data.table)
-&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
-model_list &lt;- c(&quot;AFA&quot;, &quot;HIS&quot;, &quot;CHN&quot;, &quot;ALL&quot;)
-drug_list &lt;- c(&quot;clop_noac&quot;)
-
-for(model in model_list){
-  for(drug in drug_list){
-    pred_exp &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/predicted_levels/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.txt&quot;, header = F) #path to PrediXcan-produced _predicted_expression.txt
-    pred_exp$V1 &lt;- NULL
-    pred_exp$V2 &lt;- NULL
-    pred_exp &lt;- transpose(pred_exp)
-    gene_list &lt;- as.data.frame(pred_exp$V1)
-    colnames(gene_list) &lt;- &quot;V0&quot;
-    pred_exp &lt;- cbind(gene_list, pred_exp)
-    pred_exp$V0 &lt;- NA
-    pred_exp$V1 &lt;- NA
-    colnames(gene_list) &lt;- &quot;V&quot;
-    pred_exp &lt;- cbind(gene_list, pred_exp)
-    fwrite(pred_exp, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_input/blacks_&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05_gemma.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = F) #path to GEMMA input/pseudo-genotype
-  }
-}</code></pre>
-</div>
-<div id="run-covariates" class="section level3">
-<h3>Run Covariates</h3>
-<p>Check <code>Covariates</code> on Home. This is where the covariates file, phenotype file, and kinship files will be generated.</p>
-</div>
-<div id="run-gemma" class="section level3">
-<h3>Run GEMMA</h3>
-<pre><code>
-declare -a drugs=(&quot;clop_noac&quot;)
-declare -a models=(&quot;ALL&quot; &quot;AFA&quot; &quot;CHN&quot; &quot;HIS&quot;)
-
-#Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
-for drug in ${drugs[@]}
-  do
-  for model in ${models[@]}
-    do
-    /usr/local/bin/gemma -g /home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_input/blacks_clop_noac_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
-    -notsnp \
-    -p /home/rhea/account_wflow/phenos/clop_noac/clop_noac_pheno_no_ids.txt \
-    -k /home/rhea/account_wflow/covariates/clop_noac/blacks_clop_noac.cXX.txt \
-    -c /home/rhea/account_wflow/covariates/clop_noac/clop_noac_covariates.txt \
-    -lmm 4 \
-    -o ${drug}_PCAIR_PAV_filtered_${model}_baseline_rho0.1_zpval0.05
-  done
-done
-</code></pre>
-</div>
-<div id="correct-bonferroni" class="section level3">
-<h3>Correct Bonferroni</h3>
-<pre><code>#Import necessary libraries
-library(data.table)
-library(dplyr)
-library(tibble)
-
-#Create function to paste in drug name
-&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
-
-#Create list for file input variants
-drug_list &lt;- c(&quot;clop_noac&quot;)
-model_list &lt;- c(&quot;ALL&quot;, &quot;AFA&quot;, &quot;CHN&quot;, &quot;HIS&quot;) 
-
-#Make a data frame from combined PrediXcan results that includes chr #, bp, and BH and Bonferroni adj p-value
-  #Read in output files
-  #Create vector of p-values
-  #Adjust p-values with BH and bonferroni methods
-  #Add new columns with adjusted p-values to data frame
-  #Join PrediXcan data frame with bp_chrome data frame to add columns with chr # and bp
-  #Remove old/inaccurate chr and bp columns
-  #Ouput data frame into directory
-for (drug in drug_list) {
-  for (model in model_list) {
-    assoc_file &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_output/&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.assoc.txt&quot;)
-    pvalues &lt;- select(assoc_file, contains(&quot;p_wald&quot;))
-    pvalues &lt;- as.vector(unlist(pvalues))
-    pvalues_adjusted_BH &lt;- p.adjust(pvalues, method = &quot;BH&quot;)
-    pvalues_adjusted_BF &lt;- p.adjust(pvalues, method = &quot;bonferroni&quot;)
-    assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_BH = pvalues_adjusted_BH , .before = &quot;p_lrt&quot;)
-    assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_bonferroni = pvalues_adjusted_BF, .before = &quot;p_lrt&quot;)
-    fwrite(assoc_file, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;, sep = &quot;\t&quot;, quote = F)
-  }
-}</code></pre>
-</div>
-<div id="combine-significant-hits" class="section level3">
-<h3>Combine Significant Hits</h3>
-<pre><code>#Import necessasry libraries
-library(data.table)
-library(dplyr)
-library(tibble)
-
-#Create function to paste in model name
-&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
-
-#Create list of models for file input
-model_list &lt;- c(&quot;ALL&quot;, &quot;AFA&quot;)
-drug_list &lt;- c(&quot;clop_noac&quot;)
-
-#Make a data frame with all results from each model per drug
-  #Read in file
-  #Add column containing model name
-  #Compile significant subsets into single data frame
-for(drug in drug_list){
-  for(model in model_list){
-    output &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;)
-    output &lt;- add_column(output, model = model, .before = &quot;chr&quot;)
-    output &lt;- add_column(output, drug = drug, .before = &quot;chr&quot;)
-    if(exists(&quot;all_assoc&quot;)){
-      all_assoc&lt;-merge(x = all_assoc, y = output, all = TRUE)
-    }
-    else{
-      all_assoc&lt;-output
-    }
-  }
-  
-  #subset at different thresholds
-  all_sig&lt;-subset(all_assoc, pvalues_adjusted_BH &lt; .75)
-  most_sig&lt;-subset(all_assoc, pvalues_adjusted_BH &lt; .1)
-  BF_not1&lt;-subset(all_assoc, pvalues_adjusted_bonferroni &lt; 1)
-  BF_sig&lt;-subset(all_assoc, pvalues_adjusted_bonferroni &lt; .05)
-   
-  #Output data frames into directory
-  fwrite(all_assoc, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_rn_allassoc_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(all_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_rn_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(most_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_rn_most_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(BF_not1, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_rn_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(BF_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_rn_BFsig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-}</code></pre>
-</div>
-<div id="create-plots" class="section level3">
-<h3>Create Plots</h3>
-<pre><code>library(data.table)
-library(dplyr)
-library(ggplot2)
-
-#PrediXcan PWAS Results:
-
-#Pheno files:
-clop_noac_pheno&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop_noac/clop_noac_rn_pheno_no_ids.txt&quot;, header = F)
-clop_noac_samples&lt;-fread(&quot;/home/rhea/account_wflow/dosages/blacks/clop_noac/samples_clop_noac.txt&quot;, header = F)
-
-x_clop_noac&lt;-cbind(clop_noac_samples, clop_noac_pheno)
-colnames(x_clop_noac)&lt;-c(&quot;FID&quot;, &quot;IID&quot;, &quot;pheno&quot;)
- 
-#Predicted Expression files:
-y_clop_noac_Pred_AFA&lt;-fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/predicted_levels/blacks_clop_noac_PCAIR_PAV_filtered_AFA_baseline_rho0.1_zpval0.05.txt&quot;)
-
-
-#Plot Predicted Expression for IL5RA, for AFA Model, ALL pop, and Ara-C drug: *******???????********
-#Data file:
-xy_clop_noac_Pred_AFA&lt;-inner_join(x_clop_noac, y_clop_noac_Pred_AFA, by = c(&quot;FID&quot;, &quot;IID&quot;))
-
-******
-ggplot(xy_clop_noac_Pred_AFA, aes(x = xy_clop_noac_Pred_AFA$SL006512_ENSG00000109758.8, y = xy_clop_noac_Pred_AFA$pheno)) +
-  geom_jitter(size = 0.75, color = &quot;#ec328c&quot;) + 
-  geom_density_2d(color = &quot;#ffbf24&quot;) + 
-  stat_smooth(method=&quot;lm&quot;, se = TRUE, fullrange = TRUE, color = &quot;#8c1788&quot;) + 
-  scale_x_continuous(name = &quot;Predicted protein levels&quot;) + 
-  scale_y_continuous(name = &quot;Clopidogril_NOAC Dose (rank normalized)&quot;) + 
-  theme_bw() + 
-  theme(text = element_text(size = 12), plot.title = element_text(hjust = 0.5)) +
-  ggtitle(&quot;Clopidogril_NOAC Baseline AFA AFM&quot;)
-dev.off()</code></pre>
-</div>
-<div id="create-qq-manhattan-plots" class="section level3">
-<h3>Create qq &amp; manhattan plots</h3>
-<pre><code>#Import necessary libraries
-library(data.table)
-library(dplyr)
-library(qqman)
-library(colorspace)
-
-#Create function to paste in drug name
-&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
-
-#Create color vector
-colors&lt;-sequential_hcl(4,&quot;SunsetDark&quot;)
-
-#Create list of drugs for file input
-drug_list &lt;- c(&quot;clop_noac&quot;)
-model_list &lt;- c(&quot;AFA&quot;, &quot;ALL&quot;)
-
-#Make QQ and Manhattan plots using loop
-for(drug in drug_list){
-  for(model in model_list){
-    pwas_output &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.assoc.txt&quot;)
-    anno &lt;- fread(&quot;/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt&quot;)
-    pwas_out_anno&lt;-left_join(pwas_output, anno, by = c(&quot;rs&quot; = &quot;gene_id&quot;))
-    pwas_out_anno$chr.y&lt;-as.numeric(pwas_out_anno$chr.y)
-    
-    png(filename = &quot;pwas_clop_noac_&quot; %&amp;% model %&amp;% &quot;.qqplot.png&quot;, res=100)
-    qq(pwas_out_anno$p_wald)
-    dev.off()
-
-    png(filename = &quot;pwas_clop_noac_&quot; %&amp;% model %&amp;% &quot;.manplot.png&quot;, res=100)
-    manhattan(pwas_out_anno, chr = &quot;chr.y&quot;, bp = &quot;start&quot;, p = &quot;p_wald&quot;, col = colors)
-    dev.off()
-  }
-}
-
-pwas_output_ALL &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_filtered_ALL_baseline_rho0.1_zpval0.05.assoc.txt&quot;)
-pwas_out_anno_ALL&lt;-left_join(pwas_output_ALL, anno, by = c(&quot;rs&quot; = &quot;gene_id&quot;))
-pwas_out_anno_ALL$chr.y&lt;-as.numeric(pwas_out_anno_ALL$chr.y)
-qq(pwas_out_anno_ALL$p_wald)
-manhattan(pwas_out_anno_ALL, chr = &quot;chr.y&quot;, bp = &quot;start&quot;, p = &quot;p_wald&quot;, snp = &quot;rs&quot;, col = colors)
-
-pwas_output_AFA &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_PCAIR_PAV_filtered_ALL_baseline_rho0.1_zpval0.05.assoc.txt&quot;)
-pwas_out_anno_AFA&lt;-left_join(pwas_output_AFA, anno, by = c(&quot;rs&quot; = &quot;gene_id&quot;))
-pwas_out_anno_AFA$chr.y&lt;-as.numeric(pwas_out_anno_AFA$chr.y)
-qq(pwas_out_anno_AFA$p_wald)
-manhattan(pwas_out_anno_AFA, chr = &quot;chr.y&quot;, bp = &quot;start&quot;, p = &quot;p_wald&quot;, snp = &quot;rs&quot;, col = colors)
-</code></pre>
-</div>
 <div id="gwas---gemma" class="section level3">
 <h3>GWAS - GEMMA</h3>
-<pre><code>
-declare -a drugs=(&quot;clop_noac&quot;)
+<pre><code>#convert dosage to bimbam file format, trying to create mean genotype file
+
+for chr in {1...22}
+cat /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr${chr}.dosage.txt.gz | awk -v s=[373/373]
+’{ printf $2 &quot;,&quot; $4 &quot;,&quot; $5; for(i=1; i&lt;=s; i++) printf &quot;,&quot; $(i*3+3)*2+$(i*3+4); printf &quot;\n&quot; }’
+&gt; [bimbam filename]
+
+#try with just 1000 lines
+head -n 100 /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr1.dosage.txt.gz &gt; /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/test_dosage_1.dosage.txt
+
+cat /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/test_dosage_1.dosage.txt | awk -v s=[373/373] &#39;{printf $2 &quot;,&quot; $4 &quot;,&quot; $5; for(i=1; i&lt;=s; i++) printf &quot;,&quot; $(i*3+3)*2+$(i*3+4); printf &quot;\n&quot;}&#39; &gt; /home/rhea/account_wflow/dosages/blacks/clop_noac/bimbam/test_clop_noac_chr1
+
+
+#go from 7 to the end
+#assign everything you dont need to 0 and print everything el
+awk -v s=[373/373] &#39;{printf $2 &quot;,&quot; $4 &quot;,&quot; $5 ; printf &quot;\n&quot;}&#39; /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/test_dosage_1.dosage.txt &gt; /home/rhea/account_wflow/dosages/blacks/clop_noac/bimbam/test_clop_noac_chr1
+
+
+zcat /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr1.dosage.txt.gz | awk &#39;{$1=$4=$6=&quot;&quot;; print $0}&#39; &gt;  /home/rhea/account_wflow/dosages/blacks/clop_noac/bimbam/clop_noac_chr1_bimbam.txt
+
+</code></pre>
+<pre><code>declare -a drugs=(&quot;clop_noac&quot;)
 declare -a models=(&quot;ALL&quot; &quot;AFA&quot; &quot;CHN&quot; &quot;HIS&quot;)
 
 #Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
@@ -1122,12 +786,11 @@ done
 </code></pre>
 <p>```</p>
 </div>
-</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->
@@ -1136,6 +799,8 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
+
+
 
 
 </div>
