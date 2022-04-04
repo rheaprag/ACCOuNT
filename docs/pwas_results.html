@@ -11,9 +11,9 @@
 
 <meta name="author" content="rheaprag" />
 
-<meta name="date" content="2021-12-03" />
+<meta name="date" content="2022-03-21" />
 
-<title>phenotype_data_analysis</title>
+<title>pwas_results</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -358,9 +358,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">phenotype_data_analysis</h1>
+<h1 class="title toc-ignore">pwas_results</h1>
 <h4 class="author">rheaprag</h4>
-<h4 class="date">2021-12-03</h4>
+<h4 class="date">2022-03-21</h4>
 
 </div>
 
@@ -514,7 +514,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/phenotype_data_analysis.Rmd</code>) and HTML (<code>docs/phenotype_data_analysis.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/pwas_results.Rmd</code>) and HTML (<code>docs/pwas_results.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -543,7 +543,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/4ab6f195a914003f3fd9ed270128215effe3d509/analysis/phenotype_data_analysis.Rmd" target="_blank">4ab6f19</a>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/4ab6f195a914003f3fd9ed270128215effe3d509/analysis/pwas_results.Rmd" target="_blank">4ab6f19</a>
 </td>
 <td>
 rheaprag
@@ -555,57 +555,6 @@ rheaprag
 Publish TWAS and remove unneccesary analysis
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/aaa2e51f27a8350c29cec3cb02f62b0f3b395bc4/docs/phenotype_data_analysis.html" target="_blank">aaa2e51</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-10
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/phenotype_data_analysis.html" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/c81d34f3a039804889f078505230f718d53444f0/analysis/phenotype_data_analysis.Rmd" target="_blank">c81d34f</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-<td>
-Publish updated analysis files
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -613,324 +562,171 @@ Publish updated analysis files
 </div>
 </div>
 </div>
-<p>Histograms were to created to analyze the final merged phenotype data.</p>
-<div id="histogram-with-no-transformation" class="section level2">
-<h2>Histogram with No Transformation</h2>
-<p>The original histogram created showed that the data was skewed to the right.</p>
-<pre><code>suppressPackageStartupMessages(library(ggplot2))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(data.table))
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>These are the results from the PWAS using PrediXcan and GEMMA. The ACCOuNT data was compared to TOPMed models.</p>
+</div>
+<div id="data-table" class="section level2">
+<h2>Data Table</h2>
+<p>These results are based on a Bonferroni value of 1. There were no results with a p-value of &lt; 0.05.</p>
+<pre><code>library(data.table)
+library(knitr)
 
-#read in final clop phenotype file
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt&quot;)
-#assign CrCl column to variable
-Creatinine_clop &lt;- clop$CrCl
-#create histogram
-clop_hist &lt;- hist(Creatinine_clop, main=&quot;Creatinine Clearance of Clopidogril&quot;, col=&quot;darkmagenta&quot;)
-
-#read in final noac phenotype file 
-noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt&quot;)
-#rename column name to &#39;CrCl&#39;
-colnames(noac)[10] &lt;- &quot;CrCl&quot;
-#assign CrCl column to variable
-Creatinine_noac &lt;- noac$CrCl
-#convert any MD&#39;s to NA
-Creatinine_noac_num &lt;- as.numeric(Creatinine_noac)
-#create histogram
-noac_hist &lt;- hist(Creatinine_noac, main=&quot;Creatinine Clearance of NOAC drugs&quot;, col=&quot;gold&quot;)</code></pre>
-<p><img src="figure/phenotype_data_analysis.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-1">
-Past versions of unnamed-chunk-1-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-1-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
+Bf_not1 &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;)
+kable(Bf_not1)</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="2%" />
+<col width="4%" />
+<col width="1%" />
+<col width="13%" />
+<col width="1%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="5%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="2%" />
+<col width="4%" />
+<col width="9%" />
+<col width="13%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
 <thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
+<tr class="header">
+<th align="left">model</th>
+<th align="left">drug</th>
+<th align="right">chr</th>
+<th align="left">rs</th>
+<th align="right">ps</th>
+<th align="right">n_miss</th>
+<th align="left">allele1</th>
+<th align="left">allele0</th>
+<th align="right">af</th>
+<th align="right">beta</th>
+<th align="right">se</th>
+<th align="right">logl_H1</th>
+<th align="right">l_remle</th>
+<th align="right">l_mle</th>
+<th align="right">p_wald</th>
+<th align="right">pvalues_adjusted_BH</th>
+<th align="right">pvalues_adjusted_bonferroni</th>
+<th align="right">p_lrt</th>
+<th align="right">p_score</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/figure/phenotype_data_analysis.Rmd/unnamed-chunk-1-1.png" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
+<tr class="odd">
+<td align="left">AFA</td>
+<td align="left">clop_noac</td>
+<td align="right">-9</td>
+<td align="left">SL000403_ENSG00000182871.16</td>
+<td align="right">-9</td>
+<td align="right">0</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">-0.086</td>
+<td align="right">-1.5388500</td>
+<td align="right">0.5436537</td>
+<td align="right">-446.9979</td>
+<td align="right">0.0000100</td>
+<td align="right">1e+05</td>
+<td align="right">0.0049220</td>
+<td align="right">0.4351044</td>
+<td align="right">0.9401035</td>
+<td align="right">0.0054850</td>
+<td align="right">0.0060549</td>
+</tr>
+<tr class="even">
+<td align="left">AFA</td>
+<td align="left">clop_noac</td>
+<td align="right">-9</td>
+<td align="left">SL006512_ENSG00000109758.8</td>
+<td align="right">-9</td>
+<td align="right">0</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">0.068</td>
+<td align="right">-0.3560823</td>
+<td align="right">0.1100508</td>
+<td align="right">-445.7320</td>
+<td align="right">0.0000100</td>
+<td align="right">1e+05</td>
+<td align="right">0.0013327</td>
+<td align="right">0.2545486</td>
+<td align="right">0.2545486</td>
+<td align="right">0.0013714</td>
+<td align="right">0.0016205</td>
+</tr>
+<tr class="odd">
+<td align="left">ALL</td>
+<td align="left">clop_noac</td>
+<td align="right">-9</td>
+<td align="left">SL005164_ENSG00000100079.7</td>
+<td align="right">-9</td>
+<td align="right">0</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">-0.014</td>
+<td align="right">1.1047040</td>
+<td align="right">0.3552845</td>
+<td align="right">-446.0654</td>
+<td align="right">0.0000100</td>
+<td align="right">1e+05</td>
+<td align="right">0.0020329</td>
+<td align="right">0.2927350</td>
+<td align="right">0.5854700</td>
+<td align="right">0.0019702</td>
+<td align="right">0.0022830</td>
+</tr>
+<tr class="even">
+<td align="left">ALL</td>
+<td align="left">clop_noac</td>
+<td align="right">-9</td>
+<td align="left">SL014092_ENSG00000064309.14</td>
+<td align="right">-9</td>
+<td align="right">0</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">-0.136</td>
+<td align="right">-0.3430737</td>
+<td align="right">0.1078369</td>
+<td align="right">-445.6029</td>
+<td align="right">0.5585088</td>
+<td align="right">1e+05</td>
+<td align="right">0.0016002</td>
+<td align="right">0.2927350</td>
+<td align="right">0.4608579</td>
+<td align="right">0.0011924</td>
+<td align="right">0.0014202</td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<p><img src="figure/phenotype_data_analysis.Rmd/unnamed-chunk-1-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-1-2">
-Past versions of unnamed-chunk-1-2.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-1-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/figure/phenotype_data_analysis.Rmd/unnamed-chunk-1-2.png" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="log-transformation" class="section level2">
-<h2>Log Transformation</h2>
-<p>In order to fix this, I first applied log transformation to the phenotype files:</p>
-<pre><code>suppressPackageStartupMessages(library(ggplot2))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(data.table))
-
-#read in final clop phenotype file
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt&quot;)
-#assign CrCl column to variable
-Creatinine_clop &lt;- clop$CrCl
-#apply log transformation
-Creatinine_c_log &lt;- log(Creatinine_clop)
-#create histogram
-clop_hist &lt;- hist(Creatinine_c_log, main=&quot;Creatinine Clearance of Clopidogril&quot;, col=&quot;darkmagenta&quot;)
-
-#read in final noac phenotype file 
-noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt&quot;)
-#rename column name to &#39;CrCl&#39;
-colnames(noac)[10] &lt;- &quot;CrCl&quot;
-#assign CrCl column to variable
-Creatinine_noac &lt;- noac$CrCl
-#convert any MD&#39;s to NA
-Creatinine_noac_num &lt;- as.numeric(Creatinine_noac)
-#apply log transformation
-Creatinine_noac_log &lt;- log(Creatinine_noac_num)
-#create histogram
-noac_hist &lt;- hist(Creatinine_noac_log, main=&quot;Creatinine Clearance of NOAC drugs&quot;, col=&quot;gold&quot;)</code></pre>
-<p><img src="figure/phenotype_data_analysis.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
-Past versions of unnamed-chunk-2-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-2-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/figure/phenotype_data_analysis.Rmd/unnamed-chunk-2-1.png" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<p><img src="figure/phenotype_data_analysis.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-2">
-Past versions of unnamed-chunk-2-2.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-2-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/figure/phenotype_data_analysis.Rmd/unnamed-chunk-2-2.png" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The log transformed data was skewed to the left, so rank normalization is applied instead.</p>
-</div>
-<div id="rank-normalization" class="section level2">
-<h2>Rank Normalization</h2>
-<pre><code>suppressPackageStartupMessages(library(ggplot2))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(data.table))
-
-#rank normalize files
-source(&quot;/home/rhea/account_wflow/rntransform.R&quot;)
-source(&quot;/home/rhea/account_wflow/ztransform.R&quot;)
-
-#read in final clop phenotype file
-clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt&quot;)
-#apply rn transformation
-Creatinine_clop &lt;- rntransform(clop$CrCl)
-#create histogram
-clop_hist &lt;- hist(Creatinine_clop, main=&quot;Creatinine Clearance of Clopidogril&quot;, col=&quot;darkmagenta&quot;)
-
-#read in final noac phenotype file
-noac&lt;-fread(&quot;/home/rhea/account_wflow/phenos/noac/noac_CrCl_pheno_final.txt&quot;)
-#rename column to &#39;CrCl&#39;
-colnames(noac)[10] &lt;- &quot;CrCl&quot;
-#assign CrClcolumn to variable
-Creatinine_noac &lt;- noac$CrCl
-#convert MD&#39;s to NA
-Creatinine_noac_num &lt;- as.numeric(Creatinine_noac)
-#apply rn transform
-Creatinine_noac_rn &lt;- rntransform(Creatinine_noac_num)
-#create histogram
-noac_hist &lt;- hist(Creatinine_noac_rn, main=&quot;Creatinine Clearance of NOAC drugs&quot;, col=&quot;gold&quot;)</code></pre>
-<p><img src="figure/phenotype_data_analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
-Past versions of unnamed-chunk-3-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/figure/phenotype_data_analysis.Rmd/unnamed-chunk-3-1.png" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<p><img src="figure/phenotype_data_analysis.Rmd/unnamed-chunk-3-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-2">
-Past versions of unnamed-chunk-3-2.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/figure/phenotype_data_analysis.Rmd/unnamed-chunk-3-2.png" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>These histograms showed a normal distribution. The phenotype data used for the remainder of the calculations will be rank-normalized.</p>
-<p>Histograms are all saved under <code>/home/rhea/account_wflow/phenos/{drug}</code>.</p>
+<div id="details" class="section level2">
+<h2>Details</h2>
+<p>Col18A1</p>
+<ul>
+<li><p>provides instructions for protein collagen XVIII</p></li>
+<li><p>lack of collagen XV!!! could lead to kidney issues later in life</p></li>
+</ul>
+<p>HGFAC</p>
+<ul>
+<li><p>hepatocyte growth factor activator</p></li>
+<li><p>HGF plays a role of regeneration/repair in several organs, including the kidney</p></li>
+</ul>
+<p>LGALS2</p>
+<ul>
+<li>Galactin -2</li>
+</ul>
+<p>CDON</p>
+<ul>
+<li>cell surface receptor that mediates cell-cell interations</li>
+</ul>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -959,23 +755,20 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] data.table_1.14.2 dplyr_1.0.8       ggplot2_3.3.5     workflowr_1.7.0  
+[1] knitr_1.37        data.table_1.14.2 workflowr_1.7.0  
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.1 xfun_0.29        bslib_0.3.1      purrr_0.3.4     
- [5] colorspace_2.0-2 vctrs_0.3.8      generics_0.1.2   htmltools_0.5.2 
- [9] yaml_2.2.2       utf8_1.2.2       rlang_1.0.1      jquerylib_0.1.4 
-[13] later_1.3.0      pillar_1.7.0     glue_1.6.1       withr_2.4.3     
-[17] DBI_1.1.2        lifecycle_1.0.1  stringr_1.4.0    munsell_0.5.0   
-[21] gtable_0.3.0     evaluate_0.14    knitr_1.37       callr_3.7.0     
-[25] fastmap_1.1.0    httpuv_1.6.5     ps_1.6.0         fansi_1.0.2     
-[29] highr_0.9        Rcpp_1.0.8       promises_1.2.0.1 scales_1.1.1    
-[33] jsonlite_1.7.3   fs_1.5.2         digest_0.6.29    stringi_1.7.6   
-[37] processx_3.5.2   getPass_0.2-2    rprojroot_2.0.2  grid_4.1.2      
-[41] cli_3.2.0        tools_4.1.2      magrittr_2.0.2   sass_0.4.0      
-[45] tibble_3.1.6     crayon_1.5.0     whisker_0.4      pkgconfig_2.0.3 
-[49] ellipsis_0.3.2   assertthat_0.2.1 rmarkdown_2.11   httr_1.4.2      
-[53] rstudioapi_0.13  R6_2.5.1         git2r_0.29.0     compiler_4.1.2  </code></pre>
+ [1] Rcpp_1.0.8       highr_0.9        bslib_0.3.1      compiler_4.1.2  
+ [5] pillar_1.7.0     later_1.3.0      git2r_0.29.0     jquerylib_0.1.4 
+ [9] tools_4.1.2      getPass_0.2-2    digest_0.6.29    jsonlite_1.7.3  
+[13] evaluate_0.14    tibble_3.1.6     lifecycle_1.0.1  pkgconfig_2.0.3 
+[17] rlang_1.0.1      cli_3.2.0        rstudioapi_0.13  yaml_2.2.2      
+[21] xfun_0.29        fastmap_1.1.0    httr_1.4.2       stringr_1.4.0   
+[25] sass_0.4.0       fs_1.5.2         vctrs_0.3.8      rprojroot_2.0.2 
+[29] glue_1.6.1       R6_2.5.1         processx_3.5.2   fansi_1.0.2     
+[33] rmarkdown_2.11   callr_3.7.0      magrittr_2.0.2   whisker_0.4     
+[37] ps_1.6.0         promises_1.2.0.1 htmltools_0.5.2  ellipsis_0.3.2  
+[41] httpuv_1.6.5     utf8_1.2.2       stringi_1.7.6    crayon_1.5.0    </code></pre>
 </div>
 </div>
 

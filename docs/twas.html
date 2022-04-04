@@ -11,9 +11,9 @@
 
 <meta name="author" content="rheaprag" />
 
-<meta name="date" content="2021-04-22" />
+<meta name="date" content="2022-03-21" />
 
-<title>pred_dosages</title>
+<title>twas</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -358,9 +358,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">pred_dosages</h1>
+<h1 class="title toc-ignore">twas</h1>
 <h4 class="author">rheaprag</h4>
-<h4 class="date">2021-04-22</h4>
+<h4 class="date">2022-03-21</h4>
 
 </div>
 
@@ -454,7 +454,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/pred_dosages.Rmd</code>) and HTML (<code>docs/pred_dosages.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/twas.Rmd</code>) and HTML (<code>docs/twas.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -483,7 +483,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/4ab6f195a914003f3fd9ed270128215effe3d509/analysis/pred_dosages.Rmd" target="_blank">4ab6f19</a>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/4ab6f195a914003f3fd9ed270128215effe3d509/analysis/twas.Rmd" target="_blank">4ab6f19</a>
 </td>
 <td>
 rheaprag
@@ -495,74 +495,6 @@ rheaprag
 Publish TWAS and remove unneccesary analysis
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/26e8fc52d1aca5006746eaa7a98bf9bf3326d9e8/docs/pred_dosages.html" target="_blank">26e8fc5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-01-24
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/8539d50cf6782108873137b88ec6802c32ea2758/analysis/pred_dosages.Rmd" target="_blank">8539d50</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-01-24
-</td>
-<td>
-Publish files 5 to 8 to show analysis
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/7230c4c0664c5a4d7c2d3deb6f78013679dde148/docs/pred_dosages.html" target="_blank">7230c4c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/pred_dosages.Rmd" target="_blank">1be0b98</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Publish analysis files
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -572,103 +504,162 @@ Publish analysis files
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>In order to properly analyze the data in following steps, the original VCF files converted to dosage files and then converted to dosage files.</p>
-<div id="merge-samples-file" class="section level3">
-<h3>Merge samples file</h3>
-<p>The IDs for clop and noac need to be combined for the combined dosage files.</p>
-<pre><code>clop_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/clop/clop_ids_CrCl.txt&quot;)
-noac_ids &lt;- fread(&quot;/home/rhea/account_wflow/vcfs/blacks_imputed/noac/noac_ids_CrCl.txt&quot;)
-
-clop_noac_ids &lt;- union_all(clop_ids, noac_ids)
-fwrite(clop_noac_ids, &quot;clop_noac_ids.txt&quot;)
-</code></pre>
+<p>This details the script for running a TWAS on the ACCOuNT data.</p>
 </div>
+<div id="run-predixcan-with-transcriptome-models" class="section level2">
+<h2>Run PrediXcan with transcriptome models</h2>
+<pre><code>#Run PrediXcan with drug groups and protein models:
+
+#--elasticnet_model_db_path /home/daniel/mashr/EN/WGS_files/models/PBMC_${model_pop}_PCAIR_elasticnet_models_rho0.1_zpval0.05.db \
+#--mashr_model_db_path /home/daniel/mashr/mashr_db/WGS_files/mashr_models/... \
+
+
+declare -a drugs=(&quot;clop_noac&quot;)
+declare -a model_pops=(&quot;AFA&quot; &quot;ALL&quot;)
+
+for model_pop in ${model_pops[@]}
+  do
+  for drug in ${drugs[@]}
+    do
+    python3 /home/wheelerlab3/MetaXcan/software/Predict.py \
+    --model_db_path /home/daniel/mashr/EN/WGS_files/models/PBMC_${model_pop}_PCAIR_elasticnet_models_rho0.1_zpval0.05.db \
+    --text_genotypes /home/rhea/account_wflow/dosages/blacks/clop_noac/pred_dosages/clop_noacchr*.dosage.txt.gz \
+    --text_sample_ids /home/rhea/account_wflow/dosages/blacks/clop_noac/samples_clop_noac.txt \
+    --prediction_output /home/rhea/account_wflow/twas_results/predicted_levels/clop_noac_CrCl_PCAIR_filtered_${model_pop}_baseline_rho0.1_zpval0.05.txt
+  done
+done</code></pre>
 </div>
-<div id="vcf-to-dosage-script" class="section level2">
-<h2>VCF to Dosage Script</h2>
-<p>A Python script was then written in order to output the dosage files:</p>
-<pre><code>import gzip
-import re
-import sys
-import argparse
-import os
+<div id="convert-predixcan-output-to-gemma-input" class="section level2">
+<h2>Convert PrediXcan output to GEMMA input</h2>
+<pre><code>library(data.table)
+&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
+model_list &lt;- c(&quot;AFA&quot;, &quot;ALL&quot;)
 
-def check_arg(args=None):
-    parser = argparse.ArgumentParser(description=&#39;Script to filter imputed VCF&#39;)
-    parser.add_argument(&#39;-i&#39;, &#39;--inputdir&#39;,
-                        help=&#39;directory containing VCF file&#39;,
-                        required=&#39;True&#39;
-                        )
-    parser.add_argument(&#39;-c&#39;, &#39;--chr&#39;,
-                        help=&#39;chromosome&#39;,
-            type=str,
-                        required=&#39;True&#39;
-                        )
-     parser.add_argument(&#39;-d&#39;, &#39;--drug&#39;,
-                        help=&#39;drug&#39;,
-            type=str,
-                        required=&#39;True&#39;
-                        )
-    return parser.parse_args(args)
+for(model in model_list){
+  pred_exp &lt;- fread(&quot;/home/rhea/account_wflow/twas_results/predicted_levels/clop_noac_CrCl_PCAIR_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.txt&quot;, header = F) #path to PrediXcan-produced _predicted_expression.txt
+  pred_exp$V1 &lt;- NULL
+  pred_exp$V2 &lt;- NULL
+  pred_exp &lt;- transpose(pred_exp)
+  gene_list &lt;- as.data.frame(pred_exp$V1)
+  colnames(gene_list) &lt;- &quot;V0&quot;
+  pred_exp &lt;- cbind(gene_list, pred_exp)
+  pred_exp$V0 &lt;- NA
+  pred_exp$V1 &lt;- NA
+  colnames(gene_list) &lt;- &quot;V&quot;
+  pred_exp &lt;- cbind(gene_list, pred_exp)
+  fwrite(pred_exp, &quot;/home/rhea/account_wflow/twas_results/assoc_gemma_input/clop_noac_CrCl_PCAIR_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05_gemma.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = F) #path to GEMMA input/pseudo-genotype
+}</code></pre>
+</div>
+<div id="gemma-analysis" class="section level2">
+<h2>GEMMA analysis</h2>
+<pre><code>declare -a models=(&quot;ALL&quot; &quot;AFA&quot;)
 
-#retrieve command line arguments
-args = check_arg(sys.argv[1:])
-chrpath = args.inputdir
-c = args.chr
-drug = args.drug
-chrfile = chrpath + drug + &quot;_&quot; + &quot;chr&quot; + c + &quot;.recode.vcf.gz&quot;
-mypath = &quot;/home/rhea/account_wflow/&quot;
-
-# get dosage file data - getting errors with this section
-if(os.path.exists(mypath+ &#39;UMich_dosages/&#39;) == False): 
-    os.mkdir(mypath + &#39;UMich_dosages/&#39;)
-
-outdosage = open(mypath + &quot;UMich_dosages/&quot; + drug + &quot;chr&quot; + c + &quot;.dosage.txt&quot;,&quot;w&quot;)
-
-for line in gzip.open(chrfile):
-    #skip meta data and header lines
-    if(line.startswith(b&#39;##&#39;)):
-        continue
-    if(line.startswith(b&#39;#CHROM&#39;)):
-        continue
-    arr = line.strip().split()
-    (chr, pos, id, ref, alt, qual, filter, info, format) = arr[0:9]
-    gt_dosagerow = arr[9:]
-    #get freq of alt allele:
-    info_list = info.split(b&quot;;&quot;)
-    af_list = info_list[0].split(b&quot;=&quot;)
-    freqalt = af_list[1]
-    #get dosage of alt allele
-    dosagerow = map(lambda x : float(x.split(b&quot;:&quot;)[1]), gt_dosagerow) #lambda function to split each info entry and collect the dosage
-    dosages = &#39; &#39;.join(map(str,dosagerow))
-    #reformat ids for proteome models (chr:pos)
-    id_list = id.split(b&quot;:&quot;)
-    id_formatted = str(id_list[0]) + &quot;:&quot; + str(id_list[1])
-    output = str(chr) + &#39; &#39; + str(id_formatted) + &#39; &#39; + str(pos) + &#39; &#39; + str(ref) + &#39; &#39; + str(alt) + &#39; &#39; + str(freqalt) + &#39; &#39; + dosages + &#39;\n&#39;
-    output = output.replace(&quot;b&quot;, &quot;&quot;)
-    output = output.replace(&quot;&#39;&quot;, &quot;&quot;)
-    outdosage.write(output)
-
-outdosage.close()</code></pre>
-<div id="create-dosage-files" class="section level3">
-<h3>Create Dosage files</h3>
-<p>The clop and noac data is pulled out of the original VCF file using the combined ID file made above. A loop then uses <code>vcf_to_dosage.py</code> file is then applies the python script to the new VCF file and outputs the dosage txt fies.</p>
-<pre><code>#split vcf by pulling out clop &amp; noac data using combined ID file
-for chr in {1..22};
-do vcftools --gzvcf /home/ashley/account/vcfs/blacks_imputed/all/chr${chr}_maf01_r28.vcf.gz --keep /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/clop_noac_CrCl_ids.txt --recode --recode-INFO-all --out clop_noac_chr${chr};
+#Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
+for model in ${models[@]}
+  do
+  /usr/local/bin/gemma -g /home/rhea/account_wflow/twas_results/assoc_gemma_input/clop_noac_CrCl_PCAIR_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
+  -notsnp \
+  -p /home/rhea/account_wflow/phenos/clop_noac/clop_noac_rn_pheno_no_ids.txt \
+  -k /home/rhea/account_wflow/covariates/clop_noac/blacks_clop_noac.cXX.txt \
+  -c /home/rhea/account_wflow/covariates/clop_noac/clop_noac_covariates.txt \
+  -lmm 4 \
+  -o clop_noac_CrCl_PCAIR_filtered_${model}_baseline_rho0.1_zpval0.05
 done
 
-#gzip new vcf files
-gzip clop_noac_chr*.recode.vcf
 
-# Use vcf_to_dosage.py to output dosage txt files
-for chr in {1..22};
-do python /home/rhea/account_wflow/vcfs/vcf_to_dosage.py -i /home/rhea/account_wflow/vcfs/blacks_imputed/clop_noac/ -c ${chr} -d clop_noac;
-done
+#new models
+declare -a drugs=(&quot;clop_noac&quot;)
+declare -a models=(&quot;ALL&quot; &quot;AFA&quot; &quot;CHN&quot; &quot;HIS&quot;)
 
-gzip clop_noacchr*.dosage.txt
-</code></pre>
-<p>Dosage files are saved under <code>/home/rhea/account_wflow/dosages/blacks/clop_noad/pred_dosages</code>.</p>
+#Use loop to run PrediXcan step two through GEMMA (accounts for relatedness)
+for drug in ${drugs[@]}
+  do
+  for model in ${models[@]}
+    do
+    /usr/local/bin/gemma -g /home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_input/blacks_clop_noac_PCAIR_filtered_${model}_baseline_rho0.1_zpval0.05_gemma.txt \
+    -notsnp \
+    -p /home/rhea/account_wflow/phenos/clop_noac/clop_noac_rn_pheno_no_ids.txt \
+    -k /home/rhea/account_wflow/covariates/clop_noac/blacks_clop_noac.cXX.txt \
+    -c /home/rhea/account_wflow/covariates/clop_noac/clop_noac_covariates.txt \
+    -lmm 4 \
+    -o ${drug}_PCAIR_filtered_${model}_baseline_rho0.1_zpval0.05
+  done
+done</code></pre>
+</div>
+<div id="correct-bonferroni" class="section level2">
+<h2>Correct Bonferroni</h2>
+<pre><code>#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(tibble)
+
+#Create function to paste in drug name
+&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
+
+#Create list for file input variants
+model_list &lt;- c(&quot;ALL&quot;, &quot;AFA&quot;) 
+
+#Make a data frame from combined PrediXcan results that includes chr #, bp, and BH and Bonferroni adj p-value
+  #Read in output files
+  #Create vector of p-values
+  #Adjust p-values with BH and bonferroni methods
+  #Add new columns with adjusted p-values to data frame
+  #Join PrediXcan data frame with bp_chrome data frame to add columns with chr # and bp
+  #Remove old/inaccurate chr and bp columns
+  #Ouput data frame into directory
+
+for (model in model_list) {
+  assoc_file &lt;- fread(&quot;/home/rhea/account_wflow/twas_results/assoc_gemma_output/clop_noac_CrCl_PCAIR_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.assoc.txt&quot;)
+  pvalues &lt;- select(assoc_file, contains(&quot;p_wald&quot;))
+  pvalues &lt;- as.vector(unlist(pvalues))
+  pvalues_adjusted_BH &lt;- p.adjust(pvalues, method = &quot;BH&quot;)
+  pvalues_adjusted_BF &lt;- p.adjust(pvalues, method = &quot;bonferroni&quot;)
+  assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_BH = pvalues_adjusted_BH , .before = &quot;p_lrt&quot;)
+  assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_bonferroni = pvalues_adjusted_BF, .before = &quot;p_lrt&quot;)
+  fwrite(assoc_file, &quot;/home/rhea/account_wflow/twas_results/adj_assoc_output/clop_noac_CrCl_PCAIR_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;, sep = &quot;\t&quot;, quote = F)
+}</code></pre>
+<div id="combine-significant-hits" class="section level3">
+<h3>Combine Significant Hits</h3>
+<pre><code>#Import necessasry libraries
+library(data.table)
+library(dplyr)
+library(tibble)
+
+#Create function to paste in model name
+&quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
+
+#Create list of models for file input
+model_list &lt;- c(&quot;ALL&quot;, &quot;AFA&quot;)
+
+#Make a data frame with all results from each model per drug
+  #Read in file
+  #Add column containing model name
+  #Compile significant subsets into single data frame
+for(model in model_list){
+  output &lt;- fread(&quot;/home/rhea/account_wflow/twas_results/adj_assoc_output/clop_noac_CrCl_PCAIR_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;)
+  output &lt;- add_column(output, model = model, .before = &quot;chr&quot;)
+  output &lt;- add_column(output, drug = drug, .before = &quot;chr&quot;)
+  if(exists(&quot;all_assoc&quot;)){
+      all_assoc&lt;-left_join(x = all_assoc, y = output, all = TRUE)
+  }
+  else{
+    all_assoc&lt;-output
+  }
+
+  #subset at different thresholds
+  all_sig&lt;-subset(all_assoc, pvalues_adjusted_BH &lt; .75)
+  most_sig&lt;-subset(all_assoc, pvalues_adjusted_BH &lt; .1)
+  BF_not1&lt;-subset(all_assoc, pvalues_adjusted_bonferroni &lt; 1)
+  BF_sig&lt;-subset(all_assoc, pvalues_adjusted_bonferroni &lt; .05)
+   
+  #Output data frames into directory
+  fwrite(all_assoc, &quot;/home/rhea/account_wflow/twas_results/adj_assoc_output/clop_noac_CrCl_allassoc_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(all_sig, &quot;/home/rhea/account_wflow/twas_results/adj_assoc_output/clop_noac_CrCl_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(most_sig, &quot;/home/rhea/account_wflow/twas_results/adj_assoc_output/clop_noac_CrCl_most_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(BF_not1, &quot;/home/rhea/account_wflow/twas_results/adj_assoc_output/clop_noac_CrCl_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(BF_sig, &quot;/home/rhea/account_wflow/twas_results/adj_assoc_output/clop_noac_CrCl_BFsig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+}</code></pre>
+<p>No significant genes were found in this analysis.</p>
 </div>
 </div>
 
