@@ -16,7 +16,6 @@ In order to properly analyze the data in following steps, the original VCF files
 The IDs for clop and noac need to be combined for the combined dosage files.
 
 ```{}
-
 clop_ids <- fread("/home/rhea/account_wflow/vcfs/blacks_imputed/clop/clop_ids_CrCl.txt")
 noac_ids <- fread("/home/rhea/account_wflow/vcfs/blacks_imputed/noac/noac_ids_CrCl.txt")
 

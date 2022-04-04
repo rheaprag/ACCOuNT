@@ -14,9 +14,9 @@ Histograms were to created to analyze the final merged phenotype data.
 The original histogram created showed that the data was skewed to the right. 
 
 ```{}
-library(ggplot2)
-library(dplyr)
-library(data.table)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(data.table))
 
 #read in final clop phenotype file
 clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
@@ -38,9 +38,9 @@ noac_hist <- hist(Creatinine_noac, main="Creatinine Clearance of NOAC drugs", co
 ```
 
 ```{r, echo = FALSE}
-library(ggplot2)
-library(dplyr)
-library(data.table)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(data.table))
 
 #read in final clop phenotype file
 clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
@@ -65,9 +65,9 @@ noac_hist <- hist(Creatinine_noac_num, main="Creatinine Clearance of NOAC drugs"
 
 In order to fix this, I first applied log transformation to the phenotype files:
 ```{}
-library(ggplot2)
-library(dplyr)
-library(data.table)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(data.table))
 
 #read in final clop phenotype file
 clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
@@ -93,9 +93,9 @@ noac_hist <- hist(Creatinine_noac_log, main="Creatinine Clearance of NOAC drugs"
 ```
 
 ```{r, echo = FALSE}
-library(ggplot2)
-library(dplyr)
-library(data.table)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(data.table))
 
 #clop
 clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_CrCl_pheno_final.txt")
@@ -121,9 +121,9 @@ The log transformed data was skewed to the left, so rank normalization is applie
 ## Rank Normalization
 
 ```{}
-library(ggplot2)
-library(dplyr)
-library(data.table)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(data.table))
 
 #rank normalize files
 source("/home/rhea/account_wflow/rntransform.R")
@@ -151,9 +151,9 @@ noac_hist <- hist(Creatinine_noac_rn, main="Creatinine Clearance of NOAC drugs",
 ```
 
 ```{r, echo = FALSE}
-library(ggplot2)
-library(dplyr)
-library(data.table)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(data.table))
 
 #rank normalize files
 source("/home/rhea/account_wflow/rntransform.R")

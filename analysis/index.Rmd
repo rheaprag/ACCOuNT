@@ -50,9 +50,6 @@ This documentation documents the analysis for GWAS.
 
 This documentation documents the analysis for TWAS.
 
-15. Running GEMMA for TWAS
+15. [PrediXcan for TWAS](twas.html)
 
-16. TWAS Results
-
-17. TWAS Plots
 
