@@ -1,0 +1,45 @@
+---
+title: "twas_plots"
+author: "rheaprag"
+date: "2022-04-05"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+```{}
+library(tidyverse)
+library(data.table)
+library(qqman)
+library(colorspace)
+
+colors<-sequential_hcl(4,"SunsetDark")
+anno <- fread("/home/chris/gencode/gene_annotation_v38_strand.txt")
+
+twas_results <- fread("/home/rhea/account_wflow/twas_results/assoc_gemma_output/clop_noac_CrCl_PCAIR_filtered_AFA_baseline_rho0.1_zpval0.05.assoc.txt")
+
+twas_keep <- twas_results %>% filter(p_score < 0.01)
+
+twas_out_anno <- left_join(twas_keep, anno, by = c("rs" = "gene_id"))
+twas_out_anno$chr.y<-as.numeric(twas_out_anno$chr.y)
+manhattan(twas_out_anno, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+```
+
+```{r, echo=FALSE}
+suppressMessages(library(tidyverse))
+suppressMessages(library(data.table))
+suppressMessages(library(qqman))
+suppressMessages(library(colorspace))
+
+colors<-sequential_hcl(4,"SunsetDark")
+anno <- fread("/home/chris/gencode/gene_annotation_v38_strand.txt")
+
+twas_results <- fread("/home/rhea/account_wflow/twas_results/assoc_gemma_output/clop_noac_CrCl_PCAIR_filtered_AFA_baseline_rho0.1_zpval0.05.assoc.txt")
+
+twas_keep <- twas_results %>% filter(p_score < 0.01)
+
+twas_out_anno <- left_join(twas_keep, anno, by = c("rs" = "gene_id"))
+twas_out_anno$chr.y<-as.numeric(twas_out_anno$chr.y)
+manhattan(twas_out_anno, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+```

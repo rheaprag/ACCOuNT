@@ -52,4 +52,6 @@ This documentation documents the analysis for TWAS.
 
 15. [PrediXcan for TWAS](twas.html)
 
+16. [TWAS Plots](twas_plots.html)
+
 

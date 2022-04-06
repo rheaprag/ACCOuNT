@@ -1,0 +1,93 @@
+---
+title: "gwas_plots"
+author: "rheaprag"
+date: "2022-03-21"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+While there were no results from the GWAS, QQ and Manhattan plots were created. 
+
+#QQ Plot
+```{}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Make QQ Plots
+gwas_output<- fread("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/clop_noac_CrCl_gwas.assoc.txt.gz")
+gwas_out_anno<-left_join(gwas_output, anno, by = c("rs" = "gene_id"))
+gwas_out_anno$chr.y<-as.numeric(gwas_out_anno$chr.y)
+qq(gwas_out_anno$p_wald)
+
+
+sort all pvalues, figure out top 10-20
+
+gwas_sorted <- gwas_out_anno[order(p_wald),]
+
+dplyr filter all p values , keep less than .01
+
+png(filename = "gwas_CrCl".qqplot.png", res=100)
+qq(gwas_out_anno$p_wald)
+dev.off()
+
+use locus zoom of top 1 or 2 hits, see if there are any kidney related genes
+- download summary stats and upload to locus zoom server
+```
+
+```{r, echo = FALSE}
+#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors<-sequential_hcl(4,"SunsetDark")
+
+anno <- fread("/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt")
+
+#Make QQ Plots
+gwas_output<- fread("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/clop_noac_CrCl_gwas.assoc.txt.gz")
+gwas_out_anno<-left_join(gwas_output, anno, by = c("rs" = "gene_id"))
+gwas_out_anno$chr.y<-as.numeric(gwas_out_anno$chr.y)
+qq(gwas_out_anno$p_wald)
+```
+
+##Manhattan Plot
+```{}
+#import necessary libraries
+library(tidyverse)
+library(data.table)
+library(qqman)
+library(colorspace)
+
+colors<-sequential_hcl(4,"SunsetDark")
+anno <- fread("/home/chris/gencode/gene_annotation_v38_strand.txt")
+
+gwas_results <- fread("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_gwas.adj.txt")
+
+gwas_keep <- gwas_results %>% filter(p_score <= 0.01)
+
+library(stringr)
+gwas_keep$chr = str_sub(gwas_keep$rs,4,5) 
+gwas_keep$chr<-gsub(":","",as.character(gwas_keep$chr))
+gwas_keep$rs=str_sub(gwas_keep$rs,6,11)
+gwas_keep$rs <- sub("^", "rs", gwas_keep$rs)
+
+gwas_out_anno <- left_join(gwas_keep, anno, by = c("rs" = "gene_id"))
+gwas_out_anno$chr.y<-as.numeric(gwas_out_anno$chr.y)
+manhattan(gwas_out_anno$p_wald, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+```
+
+
+
