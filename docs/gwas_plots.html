@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="rheaprag" />
 
+<meta name="date" content="2022-03-21" />
 
-<title>Home</title>
+<title>gwas_plots</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -230,6 +235,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -237,6 +305,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -280,7 +358,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">gwas_plots</h1>
+<h4 class="author">rheaprag</h4>
+<h4 class="date">2022-03-21</h4>
 
 </div>
 
@@ -308,7 +388,7 @@ $(document).ready(function () {
 <strong>Last updated:</strong> 2022-04-06
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>ACCOuNT/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -330,6 +410,66 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
 <p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20210422code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20210422)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20210422code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20210422)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -374,7 +514,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/gwas_plots.Rmd</code>) and HTML (<code>docs/gwas_plots.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -403,7 +543,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/ee80a918f01234d9625591fc34dc69e72be1a9aa/analysis/index.Rmd" target="_blank">ee80a91</a>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/ee80a918f01234d9625591fc34dc69e72be1a9aa/analysis/gwas_plots.Rmd" target="_blank">ee80a91</a>
 </td>
 <td>
 rheaprag
@@ -415,346 +555,6 @@ rheaprag
 Push updates
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/03947cd3584c85ef018cf5c338ac3713cff306ca/docs/index.html" target="_blank">03947cd</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-04-04
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/4ab6f195a914003f3fd9ed270128215effe3d509/analysis/index.Rmd" target="_blank">4ab6f19</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-04-04
-</td>
-<td>
-Publish TWAS and remove unneccesary analysis
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/e9b8f345035de2e30e67a49358e4f219d64e0c7f/docs/index.html" target="_blank">e9b8f34</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-03-21
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/71d55a83a819bed13583ccd0bee334b703b3b495/docs/index.html" target="_blank">71d55a8</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-03-21
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/03115f91eb2e7686b1c4772a37fbedf35ec5bb02/analysis/index.Rmd" target="_blank">03115f9</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-03-21
-</td>
-<td>
-Update pages and add GWAS analysis
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/9c280eba585deb9bc1a5d59575aa30170199ede0/docs/index.html" target="_blank">9c280eb</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-01-24
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/c14bd9c79d68c024a7ba4c9067e594d92eb8bd6d/analysis/index.Rmd" target="_blank">c14bd9c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-01-24
-</td>
-<td>
-Publish files on adjusting and plotting PWAS results
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/26e8fc52d1aca5006746eaa7a98bf9bf3326d9e8/docs/index.html" target="_blank">26e8fc5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-01-24
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/8539d50cf6782108873137b88ec6802c32ea2758/analysis/index.Rmd" target="_blank">8539d50</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2022-01-24
-</td>
-<td>
-Publish files 5 to 8 to show analysis
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/aaa2e51f27a8350c29cec3cb02f62b0f3b395bc4/docs/index.html" target="_blank">aaa2e51</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-10
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/ddcfdd5004b4fb1daeee1c23ca78f9856e403a66/docs/index.html" target="_blank">ddcfdd5</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/c81d34f3a039804889f078505230f718d53444f0/analysis/index.Rmd" target="_blank">c81d34f</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-12-03
-</td>
-<td>
-Publish updated analysis files
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/a46b009be514d24846ebaf81058366440a216468/docs/index.html" target="_blank">a46b009</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-08-16
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/5df004f0a5e2f66768cbaa7c7736f8a65a4909ff/analysis/index.Rmd" target="_blank">5df004f</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-08-16
-</td>
-<td>
-Update CrCl with covariate analysis
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/33b030e99d31f8974013e4226d07c160780bcaac/docs/index.html" target="_blank">33b030e</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-05-19
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/a608eaa007a137a2b04ce33d780ba0dd9ee183dd/analysis/index.Rmd" target="_blank">a608eaa</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-05-19
-</td>
-<td>
-Update website and fix typos
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/7230c4c0664c5a4d7c2d3deb6f78013679dde148/docs/index.html" target="_blank">7230c4c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/1be0b9863b9dca4b3c1f1ca1277e4f822f184e2e/analysis/index.Rmd" target="_blank">1be0b98</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Publish analysis files
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/35ee90c838a35a77a1ec0f81ba8eb51088b77bda/docs/index.html" target="_blank">35ee90c</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rheaprag/ACCOuNT/blob/be721cef6e51a7a28c177bbc6d8abbf0e1cbea7a/analysis/index.Rmd" target="_blank">be721ce</a>
-</td>
-<td>
-rheaprag
-</td>
-<td>
-2021-04-22
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -762,35 +562,129 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>Welcome to my website where I document my analysis used in my project.</p>
-<p>The code is adapted from <a href="https://github.com/ashleymulford/ACCOuNT/tree/master/scripts">here</a>.</p>
-<p>Specifically, this will look at the analysis of creatinine clearance. Creatinine is a waste product produced in our body. Low creatinine levels indicate kidney damage while high levels indicate diminished kidney function.</p>
-<p>This analysis uses the Clopidogrel and NOAC drug groups.</p>
-<p>This is my documentation for the various association studies.</p>
-<ol style="list-style-type: decimal">
-<li><p><a href="pheno.html">Extracting and Merging Phenotype Data</a></p></li>
-<li><p><a href="calculation_clop_CrCl.html">Calculating Creatinine Clearance</a></p></li>
-<li><p><a href="adjusting_data_files.html">Finishing the Data Files</a></p></li>
-<li><p><a href="phenotype_data_analysis.html">Histogram of Phenotype Data</a></p></li>
-<li><p><a href="pred_dosages.html">Creating the Dosage Files</a></p></li>
-<li><p><a href="pwas.html">Running PrediXcan</a></p></li>
-<li><p><a href="covariates.html">Covariates</a></p></li>
-<li><p><a href="association_studies_gemma.html">GEMMA Association Studies</a></p></li>
-<li><p><a href="correct_bonferroni.html">Correct Bonferroni</a></p></li>
-<li><p><a href="pwas_plots.html">PWAS Plots</a></p></li>
-<li><p><a href="pwas_results.html">PWAS Results</a></p></li>
-</ol>
-<p>This documentation documents the analysis for GWAS.</p>
-<ol start="12" style="list-style-type: decimal">
-<li><p><a href="dosage_to_bimbam.html">Dosage File to BIMBAM Format</a></p></li>
-<li><p><a href="gwas.html">Running GEMMA for GWAS</a></p></li>
-<li><p><a href="gwas_plots.html">GWAS Plots</a></p></li>
-</ol>
-<p>This documentation documents the analysis for TWAS.</p>
-<ol start="15" style="list-style-type: decimal">
-<li><p><a href="twas.html">PrediXcan for TWAS</a></p></li>
-<li><p><a href="twas_plots.html">TWAS Plots</a></p></li>
-</ol>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>While there were no results from the GWAS, QQ and Manhattan plots were created.</p>
+<p>#QQ Plot</p>
+<pre><code>#Import necessary libraries
+library(data.table)
+library(dplyr)
+library(qqman)
+library(colorspace)
+
+#Create color vector
+colors&lt;-sequential_hcl(4,&quot;SunsetDark&quot;)
+
+anno &lt;- fread(&quot;/home/ryan/topmed/proteome/proteome_with_multigene_expression/annotation_all_aptamers_ENSG.txt&quot;)
+
+#Make QQ Plots
+gwas_output&lt;- fread(&quot;/home/rhea/account_wflow/gwas_results/blacks/clop_noac/clop_noac_CrCl_gwas.assoc.txt.gz&quot;)
+gwas_out_anno&lt;-left_join(gwas_output, anno, by = c(&quot;rs&quot; = &quot;gene_id&quot;))
+gwas_out_anno$chr.y&lt;-as.numeric(gwas_out_anno$chr.y)
+qq(gwas_out_anno$p_wald)
+
+
+sort all pvalues, figure out top 10-20
+
+gwas_sorted &lt;- gwas_out_anno[order(p_wald),]
+
+dplyr filter all p values , keep less than .01
+
+png(filename = &quot;gwas_CrCl&quot;.qqplot.png&quot;, res=100)
+qq(gwas_out_anno$p_wald)
+dev.off()
+
+use locus zoom of top 1 or 2 hits, see if there are any kidney related genes
+- download summary stats and upload to locus zoom server</code></pre>
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:data.table&#39;:
+
+    between, first, last</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre><code></code></pre>
+<pre><code>For example usage please run: vignette(&#39;qqman&#39;)</code></pre>
+<pre><code></code></pre>
+<pre><code>Citation appreciated but not required:</code></pre>
+<pre><code>Turner, (2018). qqman: an R package for visualizing GWAS results using Q-Q and manhattan plots. Journal of Open Source Software, 3(25), 731, https://doi.org/10.21105/joss.00731.</code></pre>
+<pre><code></code></pre>
+<p><img src="figure/gwas_plots.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>##Manhattan Plot</p>
+<pre><code>#import necessary libraries
+library(tidyverse)
+library(data.table)
+library(qqman)
+library(colorspace)
+
+colors&lt;-sequential_hcl(4,&quot;SunsetDark&quot;)
+anno &lt;- fread(&quot;/home/chris/gencode/gene_annotation_v38_strand.txt&quot;)
+
+gwas_results &lt;- fread(&quot;/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_gwas.adj.txt&quot;)
+
+gwas_keep &lt;- gwas_results %&gt;% filter(p_score &lt;= 0.01)
+
+library(stringr)
+gwas_keep$chr = str_sub(gwas_keep$rs,4,5) 
+gwas_keep$chr&lt;-gsub(&quot;:&quot;,&quot;&quot;,as.character(gwas_keep$chr))
+gwas_keep$rs=str_sub(gwas_keep$rs,6,11)
+gwas_keep$rs &lt;- sub(&quot;^&quot;, &quot;rs&quot;, gwas_keep$rs)
+
+gwas_out_anno &lt;- left_join(gwas_keep, anno, by = c(&quot;rs&quot; = &quot;gene_id&quot;))
+gwas_out_anno$chr.y&lt;-as.numeric(gwas_out_anno$chr.y)
+manhattan(gwas_out_anno$p_wald, chr = &quot;chr.y&quot;, bp = &quot;start&quot;, p = &quot;p_wald&quot;, snp = &quot;rs&quot;, col = colors)</code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.2 (2021-11-01)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Pop!_OS 20.04 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] colorspace_2.0-2  qqman_0.1.8       dplyr_1.0.8       data.table_1.14.2
+[5] workflowr_1.7.0  
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_1.1.1  xfun_0.29         bslib_0.3.1       purrr_0.3.4      
+ [5] vctrs_0.3.8       generics_0.1.2    htmltools_0.5.2   yaml_2.2.2       
+ [9] utf8_1.2.2        rlang_1.0.1       R.oo_1.24.0       jquerylib_0.1.4  
+[13] later_1.3.0       pillar_1.7.0      glue_1.6.1        DBI_1.1.2        
+[17] R.utils_2.11.0    calibrate_1.7.7   lifecycle_1.0.1   stringr_1.4.0    
+[21] R.methodsS3_1.8.1 evaluate_0.14     knitr_1.37        callr_3.7.0      
+[25] fastmap_1.1.0     httpuv_1.6.5      ps_1.6.0          fansi_1.0.2      
+[29] highr_0.9         Rcpp_1.0.8        promises_1.2.0.1  jsonlite_1.7.3   
+[33] fs_1.5.2          digest_0.6.29     stringi_1.7.6     processx_3.5.2   
+[37] getPass_0.2-2     rprojroot_2.0.2   cli_3.2.0         tools_4.1.2      
+[41] magrittr_2.0.2    sass_0.4.0        tibble_3.1.6      crayon_1.5.0     
+[45] whisker_0.4       pkgconfig_2.0.3   ellipsis_0.3.2    MASS_7.3-55      
+[49] assertthat_0.2.1  rmarkdown_2.11    httr_1.4.2        rstudioapi_0.13  
+[53] R6_2.5.1          git2r_0.29.0      compiler_4.1.2   </code></pre>
+</div>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -808,6 +702,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -840,6 +736,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
