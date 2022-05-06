@@ -13,13 +13,13 @@ In this analysis, the creatinine clearance of clopidogril and the NOAC drugs are
 
 ### Calculate Creatinine Clearance for Clopidogril Data
 
-```{R}
+```{}
 #crcl calculation
 #Est. Creatinine Clearance = [[140 - age(yr)]*weight(kg)]/[72*serum Cr(mg/dL)]
 #multiply by 0.85 for women
 
-library(data.table)
-library(dplyr)
+suppressPackageStartupMessages(library(data.table))
+suppressPackageStartupMessages(library(dplyr))
 
 #import pheno file in for clop, has missing data values
 clop<-fread("/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt")
