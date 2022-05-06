@@ -15,7 +15,8 @@
 
 <title>calculation_clop_CrCl</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -39,13 +40,15 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
   padding-top: 12px;
 }
 </style>
+
+
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -382,7 +385,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-12-10
+<strong>Last updated:</strong> 2022-05-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -391,8 +394,8 @@ div.tocify {
 <strong>Knit directory:</strong> <code>ACCOuNT/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version 1.7.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -413,16 +416,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreef4a8e8246587f298446339ae37ee3232ff8e5a5ctargetblankf4a8e82a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/f4a8e8246587f298446339ae37ee3232ff8e5a5c" target="_blank">f4a8e82</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree7fb919b9c97a43ad8669353f8e38a343b1b7d732targetblank7fb919ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/7fb919b9c97a43ad8669353f8e38a343b1b7d732" target="_blank">7fb919b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreef4a8e8246587f298446339ae37ee3232ff8e5a5ctargetblankf4a8e82a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree7fb919b9c97a43ad8669353f8e38a343b1b7d732targetblank7fb919ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/f4a8e8246587f298446339ae37ee3232ff8e5a5c" target="_blank">f4a8e82</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/7fb919b9c97a43ad8669353f8e38a343b1b7d732" target="_blank">7fb919b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -433,15 +436,11 @@ Ignored files:
 
 Untracked files:
     Untracked:  clop_CrCl_pheno.txt
-    Untracked:  clop_CrCl_pheno_final.txt
-    Untracked:  clop_CrCl_with_ids.txt
-    Untracked:  clop_combnd_pheno_ids.txt
-    Untracked:  noac_CrCl_pheno_final.txt
-    Untracked:  noac_CrCl_with_ids.txt
 
 Unstaged changes:
-    Modified:   analysis/creatinine_clearance.Rmd
-    Modified:   analysis/pred_dosages.Rmd
+    Modified:   analysis/gwas_plots.Rmd
+    Modified:   analysis/twas.Rmd
+    Modified:   analysis/twas_plots.Rmd
 
 </code></pre>
 <p>
@@ -480,6 +479,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/7fb919b9c97a43ad8669353f8e38a343b1b7d732/analysis/calculation_clop_CrCl.Rmd" target="_blank">7fb919b</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-05-06
+</td>
+<td>
+Publish calculation file
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/aaa2e51f27a8350c29cec3cb02f62b0f3b395bc4/docs/calculation_clop_CrCl.html" target="_blank">aaa2e51</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2021-12-10
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -526,47 +559,24 @@ Publish updated analysis files
 <p>In this analysis, the creatinine clearance of clopidogril and the NOAC drugs are being analyzed. However, the creatinine clearance for clopidogril is not already given and needs to be calculated.</p>
 <div id="calculate-creatinine-clearance-for-clopidogril-data" class="section level3">
 <h3>Calculate Creatinine Clearance for Clopidogril Data</h3>
-<pre class="r"><code>#crcl calculation
+<pre><code>#crcl calculation
 #Est. Creatinine Clearance = [[140 - age(yr)]*weight(kg)]/[72*serum Cr(mg/dL)]
 #multiply by 0.85 for women
 
-library(data.table)
-library(dplyr)</code></pre>
-<pre><code>
-Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>The following objects are masked from &#39;package:data.table&#39;:
+suppressPackageStartupMessages(library(data.table))
+suppressPackageStartupMessages(library(dplyr))
 
-    between, first, last</code></pre>
-<pre><code>The following objects are masked from &#39;package:stats&#39;:
-
-    filter, lag</code></pre>
-<pre><code>The following objects are masked from &#39;package:base&#39;:
-
-    intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>#import pheno file in for clop, has missing data values
+#import pheno file in for clop, has missing data values
 clop&lt;-fread(&quot;/home/rhea/account_wflow/phenos/clop/clop_combnd_pheno_ids.txt&quot;)
 
-str(clop) #see structure of data.frame</code></pre>
-<pre><code>Classes &#39;data.table&#39; and &#39;data.frame&#39;:  141 obs. of  10 variables:
- $ V1                                      : chr  &quot;MP-7528&quot; &quot;MP-7503&quot; &quot;MP-8496&quot; &quot;MP-3893&quot; ...
- $ V2                                      : chr  &quot;MP-7528&quot; &quot;MP-7503&quot; &quot;MP-8496&quot; &quot;MP-3893&quot; ...
- $ Study ID (PharmGKB ID)                  : chr  &quot;PA166167528&quot; &quot;PA166167503&quot; &quot;PA166168496&quot; &quot;PA166163893&quot; ...
- $ Project site                            : int  4 4 5 1 4 5 1 4 2 1 ...
- $ Gender                                  : chr  &quot;M&quot; &quot;M&quot; &quot;F&quot; &quot;F&quot; ...
- $ Age at enrollment (with over 89 binning): int  56 68 49 60 81 69 54 61 24 75 ...
- $ Height (cm)                             : chr  &quot;170.18&quot; &quot;175.26&quot; &quot;162.56&quot; &quot;152.4&quot; ...
- $ Weight (kg)                             : chr  &quot;75.75&quot; &quot;73.03&quot; &quot;103.419&quot; &quot;92.5&quot; ...
- $ BMI                                     : chr  &quot;26.2&quot; &quot;23.8&quot; &quot;39.1&quot; &quot;39.8&quot; ...
- $ Creatinine level (mg/dL)                : chr  &quot;1&quot; &quot;0.8&quot; &quot;0.95&quot; &quot;MD&quot; ...
- - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt; </code></pre>
-<pre class="r"><code>#Note Height and Creatinine level are characters, need to convert to the numeric type
+str(clop) #see structure of data.frame
+#Note Height and Creatinine level are characters, need to convert to the numeric type
 
 clop_age&lt;-clop$`Age at enrollment (with over 89 binning)`
-clop_weight&lt;-as.numeric(clop$`Weight (kg)`) #as.numeric() converts MD&#39;s to NA, I&#39;m assuming MD=&quot;missing data&quot;?</code></pre>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<pre class="r"><code>clop_sCr&lt;-as.numeric(clop$`Creatinine level (mg/dL)`) #as.numeric() converts characters to numbers and MD&#39;s to NA, so we can do math</code></pre>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<pre class="r"><code>crcl &lt;- (140 - clop_age)*clop_weight / (72*clop_sCr)
+clop_weight&lt;-as.numeric(clop$`Weight (kg)`) #as.numeric() converts MD&#39;s to NA, I&#39;m assuming MD=&quot;missing data&quot;?
+clop_sCr&lt;-as.numeric(clop$`Creatinine level (mg/dL)`) #as.numeric() converts characters to numbers and MD&#39;s to NA, so we can do math
+
+crcl &lt;- (140 - clop_age)*clop_weight / (72*clop_sCr)
 
 #use mutate() to add crcl to clop data.frame and adjust if female with ifelse()
 clop &lt;- mutate(clop, CrCl = ifelse(Gender==&#39;M&#39;,crcl,0.85*crcl))
@@ -578,7 +588,7 @@ fwrite(clop, &quot;clop_CrCl_pheno.txt&quot;, sep=&quot;\t&quot;, na=&quot;NA&qu
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->
@@ -587,6 +597,8 @@ footer is added to webpages before the MathJax javascript. -->
     "HTML-CSS": { availableFonts: ["TeX"] }
   });
 </script>
+
+
 
 
 </div>
