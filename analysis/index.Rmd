@@ -10,13 +10,13 @@ editor_options:
 
 Welcome to my website where I document my analysis used in my project. 
 
-The code is adapted from [here](https://github.com/ashleymulford/ACCOuNT/tree/master/scripts).
+Initial code from the project can be found [here](https://github.com/ashleymulford/ACCOuNT/tree/master/scripts).
 
 Specifically, this will look at the analysis of creatinine clearance. Creatinine is a waste product produced in our body. Low creatinine levels indicate kidney damage while high levels indicate diminished kidney function.
 
 This analysis uses the Clopidogrel and NOAC drug groups.
 
-This is my documentation for the various association studies.
+These scripts document preparing the various files for the analysis.
 
 1. [Extracting and Merging Phenotype Data](pheno.html)
 
@@ -27,6 +27,8 @@ This is my documentation for the various association studies.
 4. [Histogram of Phenotype Data](phenotype_data_analysis.html)
 
 5. [Creating the Dosage Files](pred_dosages.html)
+
+These scripts document the analysis for PWAS.
 
 6. [Running PrediXcan](pwas.html)
 
@@ -40,7 +42,7 @@ This is my documentation for the various association studies.
 
 11. [PWAS Results](pwas_results.html)
 
-This documentation documents the analysis for GWAS.
+These scripts document the analysis for GWAS.
 
 12. [Dosage File to BIMBAM Format](dosage_to_bimbam.html)
 
@@ -48,7 +50,7 @@ This documentation documents the analysis for GWAS.
 
 14. [GWAS Plots](gwas_plots.html)
 
-This documentation documents the analysis for TWAS.
+These scripts document the analysis for TWAS.
 
 15. [PrediXcan for TWAS](twas.html)
 
