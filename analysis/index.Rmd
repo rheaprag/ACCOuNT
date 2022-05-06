@@ -56,4 +56,3 @@ These scripts document the analysis for TWAS.
 
 16. [TWAS Plots](twas_plots.html)
 
-

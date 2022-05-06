@@ -19,7 +19,7 @@ These results are based on a Bonferroni value of 1. There were no results with a
 library(data.table)
 library(knitr)
 
-Bf_not1 <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt")
+Bf_not1 <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/predicted_levels/clop_noac_CrCl_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt")
 kable(Bf_not1)
 ```
 
@@ -27,28 +27,15 @@ kable(Bf_not1)
 library(data.table)
 library(knitr)
 
-Bf_not1 <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt")
+Bf_not1 <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/predicted_levels/clop_noac_CrCl_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt")
 kable(Bf_not1)
 ```
 
 ## Details
-
-Col18A1
-
-* provides instructions for protein collagen XVIII
-
-* lack of collagen XV!!! could lead to kidney issues later in life
-
-HGFAC
-
-* hepatocyte growth factor activator
-
-* HGF plays a role of regeneration/repair in several organs, including the kidney
-
 LGALS2
 
 * Galactin -2
 
-CDON
+CDON-
 
 * cell surface receptor that mediates cell-cell interations

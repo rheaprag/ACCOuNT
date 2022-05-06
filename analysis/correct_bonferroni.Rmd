@@ -23,7 +23,6 @@ library(tibble)
 "%&%" = function(a,b) paste(a,b,sep="")
 
 #Create list for file input variants
-drug_list <- c("clop_noac")
 model_list <- c("ALL", "AFA", "CHN", "HIS") 
 
 #Make a data frame from combined PrediXcan results that includes chr #, bp, and BH and Bonferroni adj p-value
@@ -34,17 +33,15 @@ model_list <- c("ALL", "AFA", "CHN", "HIS")
   #Join PrediXcan data frame with bp_chrome data frame to add columns with chr # and bp
   #Remove old/inaccurate chr and bp columns
   #Ouput data frame into directory
-for (drug in drug_list) {
-  for (model in model_list) {
-    assoc_file <- fread("/home/rhea/account_wflow/pwas_results/blacks/" %&% drug %&% "/assoc_gemma_output/" %&% drug %&% "_PCAIR_PAV_rn_filtered_" %&% model %&% "_baseline_rho0.1_zpval0.05.assoc.txt")
-    pvalues <- select(assoc_file, contains("p_wald"))
-    pvalues <- as.vector(unlist(pvalues))
-    pvalues_adjusted_BH <- p.adjust(pvalues, method = "BH")
-    pvalues_adjusted_BF <- p.adjust(pvalues, method = "bonferroni")
-    assoc_file <- add_column(assoc_file,  pvalues_adjusted_BH = pvalues_adjusted_BH , .before = "p_lrt")
-    assoc_file <- add_column(assoc_file,  pvalues_adjusted_bonferroni = pvalues_adjusted_BF, .before = "p_lrt")
-    fwrite(assoc_file, "/home/rhea/account_wflow/pwas_results/blacks/" %&% drug %&% "/adj_assoc_output/" %&% drug %&% "_PCAIR_PAV_rn_filtered_" %&% model %&% "_baseline_rho0.1_zpval0.05.adj.txt", sep = "\t", quote = F)
-  }
+for (model in model_list) {
+  assoc_file <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_CrCl_PCAIR_PAV_filtered_" %&% model %&% "_baseline_rho0.1_zpval0.05.assoc.txt")
+  pvalues <- select(assoc_file, contains("p_wald"))
+  pvalues <- as.vector(unlist(pvalues))
+  pvalues_adjusted_BH <- p.adjust(pvalues, method = "BH")
+  pvalues_adjusted_BF <- p.adjust(pvalues, method = "bonferroni")
+  assoc_file <- add_column(assoc_file,  pvalues_adjusted_BH = pvalues_adjusted_BH , .before = "p_lrt")
+  assoc_file <- add_column(assoc_file,  pvalues_adjusted_bonferroni = pvalues_adjusted_BF, .before = "p_lrt")
+  fwrite(assoc_file, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_PCAIR_PAV_rn_filtered_" %&% model %&% "_baseline_rho0.1_zpval0.05.adj.txt", sep = "\t", quote = F)
 }
 ```
 
@@ -66,9 +63,8 @@ model_list <- c("ALL", "AFA")
   #Add column containing model name
   #Compile significant subsets into single data frame
 for(model in model_list){
-  output <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_PCAIR_PAV_rn_filtered_" %&% model %&% "_baseline_rho0.1_zpval0.05.adj.txt")
+  output <- fread("/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_PCAIR_PAV_rn_filtered_" %&% model %&% "_baseline_rho0.1_zpval0.05.adj.txt")
   output <- add_column(output, model = model, .before = "chr")
-  output <- add_column(output, drug = drug, .before = "chr")
   if(exists("all_assoc")){
       all_assoc<-left_join(x = all_assoc, y = output, all = TRUE)
   }
@@ -83,11 +79,11 @@ for(model in model_list){
   BF_sig<-subset(all_assoc, pvalues_adjusted_bonferroni < .05)
    
   #Output data frames into directory
-  fwrite(all_assoc, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_allassoc_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
-  fwrite(all_sig, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
-  fwrite(most_sig, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_most_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
-  fwrite(BF_not1, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
-  fwrite(BF_sig, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_BFsig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+  fwrite(all_assoc, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_allassoc_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+  fwrite(all_sig, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+  fwrite(most_sig, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_most_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+  fwrite(BF_not1, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
+  fwrite(BF_sig, "/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_BFsig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt", na = "NA", quote = F, sep = "\t", col.names = T) 
 }
 ```
 

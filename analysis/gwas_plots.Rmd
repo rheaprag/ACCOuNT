@@ -70,24 +70,48 @@ library(tidyverse)
 library(data.table)
 library(qqman)
 library(colorspace)
+library(stringr)
 
 colors<-sequential_hcl(4,"SunsetDark")
-anno <- fread("/home/chris/gencode/gene_annotation_v38_strand.txt")
 
-gwas_results <- fread("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_gwas.adj.txt")
+gwas_results <- fread("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_gwas.adj.txt",stringsAsFactors=F)
 
-gwas_keep <- gwas_results %>% filter(p_score <= 0.01)
+gwas_pscore <- gwas_results %>% filter(p_score <= 0.01)
 
-library(stringr)
-gwas_keep$chr = str_sub(gwas_keep$rs,4,5) 
-gwas_keep$chr<-gsub(":","",as.character(gwas_keep$chr))
-gwas_keep$rs=str_sub(gwas_keep$rs,6,11)
-gwas_keep$rs <- sub("^", "rs", gwas_keep$rs)
+fwrite(gwas_pscore, "/home/rhea/account_wflow/gwas_results/clop_noac_CrCl_gwas_keep.txt", na = "NA", quote = F, sep = "\t", col.names = T)
 
-gwas_out_anno <- left_join(gwas_keep, anno, by = c("rs" = "gene_id"))
-gwas_out_anno$chr.y<-as.numeric(gwas_out_anno$chr.y)
-manhattan(gwas_out_anno$p_wald, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+#then split with python script
+gwas_keep <- fread("/home/rhea/account_wflow/gwas_results/clop_noac_CrCl_gwas_keep.txt")
+
+manhattan(gwas_keep, chr = "chr", bp = "start", p = "p_wald", snp = "ps", col = colors)
+
+table(gwas_keep$chr)
+
 ```
 
+## LocusZoom
+```{}
+#gwas_extract_columns.py
 
+#pull out important columns from gwas_results
+gwas_keep = pd.read_csv("/home/rhea/account_wflow/gwas_results/blacks/clop_noac/clop_noac_allassoc_CrCl_gwas.adj.txt", sep = "\t")
 
+for idx,column in enumerate(gwas_keep.columns):
+  print(idx,column)
+#important columns to keep
+  #chr - 1
+  #allele1 - 4
+  #allele0 - 5
+  #start - 17
+  #p_wald - 12
+  #beta - 7
+  #se - 8
+
+data = gwas_keep.iloc[:,[1, 4, 5, 17, 12, 7, 8]]
+
+data.to_csv("/home/rhea/account_wflow/gwas_results/clop_noac_CrCl_gwas_all.txt")
+```
+
+I used the `gwas_extract_columns.py` script to pull out important columns. This will allow for all of the GWAS results to be used for LocusZoom. 
+
+Results can be found [here](https://my.locuszoom.org/gwas/24901/).

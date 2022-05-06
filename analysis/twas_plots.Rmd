@@ -21,9 +21,9 @@ twas_results <- fread("/home/rhea/account_wflow/twas_results/assoc_gemma_output/
 
 twas_keep <- twas_results %>% filter(p_score < 0.01)
 
-twas_out_anno <- left_join(twas_keep, anno, by = c("rs" = "gene_id"))
+twas_out_anno <- left_join(twas_results, anno, by = c("rs" = "gene_id"))
 twas_out_anno$chr.y<-as.numeric(twas_out_anno$chr.y)
-manhattan(twas_out_anno, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+manhattan(twas_out_anno, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors, suggestiveline = F)
 ```
 
 ```{r, echo=FALSE}
@@ -39,7 +39,7 @@ twas_results <- fread("/home/rhea/account_wflow/twas_results/assoc_gemma_output/
 
 twas_keep <- twas_results %>% filter(p_score < 0.01)
 
-twas_out_anno <- left_join(twas_keep, anno, by = c("rs" = "gene_id"))
+twas_out_anno <- left_join(twas_results, anno, by = c("rs" = "gene_id"))
 twas_out_anno$chr.y<-as.numeric(twas_out_anno$chr.y)
-manhattan(twas_out_anno, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors)
+manhattan(twas_out_anno, chr = "chr.y", bp = "start", p = "p_wald", snp = "rs", col = colors, suggestiveline = F)
 ```
