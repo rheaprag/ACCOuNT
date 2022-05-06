@@ -385,7 +385,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-03-21
+<strong>Last updated:</strong> 2022-05-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -416,16 +416,16 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreeb1604f5f70d6b0f4abf7e542564ab3fcdf4a2369targetblankb1604f5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rheaprag/ACCOuNT/tree/b1604f5f70d6b0f4abf7e542564ab3fcdf4a2369" target="_blank">b1604f5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtree03115f91eb2e7686b1c4772a37fbedf35ec5bb02targetblank03115f9a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrheapragACCOuNTtreeb1604f5f70d6b0f4abf7e542564ab3fcdf4a2369targetblankb1604f5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/03115f91eb2e7686b1c4772a37fbedf35ec5bb02" target="_blank">03115f9</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rheaprag/ACCOuNT/tree/b1604f5f70d6b0f4abf7e542564ab3fcdf4a2369" target="_blank">b1604f5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -435,14 +435,14 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  analysis/gwas_plots.Rmd
-    Untracked:  analysis/pwas_results.Rmd
     Untracked:  clop_CrCl_pheno.txt
-    Untracked:  clop_CrCl_pheno_final.txt
-    Untracked:  clop_CrCl_with_ids.txt
-    Untracked:  clop_combnd_pheno_ids.txt
-    Untracked:  noac_CrCl_pheno_final.txt
-    Untracked:  noac_CrCl_with_ids.txt
+    Untracked:  output/pc1_v_pc2.png
+    Untracked:  output/pc1_v_pc3.png
+    Untracked:  output/pc2_v_pc3.png
+    Untracked:  output/proportion_of_variance.png
+
+Unstaged changes:
+    Modified:   analysis/pwas_plots.Rmd
 
 </code></pre>
 <p>
@@ -481,6 +481,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rheaprag/ACCOuNT/blob/b1604f5f70d6b0f4abf7e542564ab3fcdf4a2369/analysis/correct_bonferroni.Rmd" target="_blank">b1604f5</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-05-06
+</td>
+<td>
+Publish updated files
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rheaprag/ACCOuNT/71d55a83a819bed13583ccd0bee334b703b3b495/docs/correct_bonferroni.html" target="_blank">71d55a8</a>
+</td>
+<td>
+rheaprag
+</td>
+<td>
+2022-03-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -588,7 +622,6 @@ library(tibble)
 &quot;%&amp;%&quot; = function(a,b) paste(a,b,sep=&quot;&quot;)
 
 #Create list for file input variants
-drug_list &lt;- c(&quot;clop_noac&quot;)
 model_list &lt;- c(&quot;ALL&quot;, &quot;AFA&quot;, &quot;CHN&quot;, &quot;HIS&quot;) 
 
 #Make a data frame from combined PrediXcan results that includes chr #, bp, and BH and Bonferroni adj p-value
@@ -599,17 +632,15 @@ model_list &lt;- c(&quot;ALL&quot;, &quot;AFA&quot;, &quot;CHN&quot;, &quot;HIS&
   #Join PrediXcan data frame with bp_chrome data frame to add columns with chr # and bp
   #Remove old/inaccurate chr and bp columns
   #Ouput data frame into directory
-for (drug in drug_list) {
-  for (model in model_list) {
-    assoc_file &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/assoc_gemma_output/&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_rn_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.assoc.txt&quot;)
-    pvalues &lt;- select(assoc_file, contains(&quot;p_wald&quot;))
-    pvalues &lt;- as.vector(unlist(pvalues))
-    pvalues_adjusted_BH &lt;- p.adjust(pvalues, method = &quot;BH&quot;)
-    pvalues_adjusted_BF &lt;- p.adjust(pvalues, method = &quot;bonferroni&quot;)
-    assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_BH = pvalues_adjusted_BH , .before = &quot;p_lrt&quot;)
-    assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_bonferroni = pvalues_adjusted_BF, .before = &quot;p_lrt&quot;)
-    fwrite(assoc_file, &quot;/home/rhea/account_wflow/pwas_results/blacks/&quot; %&amp;% drug %&amp;% &quot;/adj_assoc_output/&quot; %&amp;% drug %&amp;% &quot;_PCAIR_PAV_rn_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;, sep = &quot;\t&quot;, quote = F)
-  }
+for (model in model_list) {
+  assoc_file &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/assoc_gemma_output/clop_noac_CrCl_PCAIR_PAV_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.assoc.txt&quot;)
+  pvalues &lt;- select(assoc_file, contains(&quot;p_wald&quot;))
+  pvalues &lt;- as.vector(unlist(pvalues))
+  pvalues_adjusted_BH &lt;- p.adjust(pvalues, method = &quot;BH&quot;)
+  pvalues_adjusted_BF &lt;- p.adjust(pvalues, method = &quot;bonferroni&quot;)
+  assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_BH = pvalues_adjusted_BH , .before = &quot;p_lrt&quot;)
+  assoc_file &lt;- add_column(assoc_file,  pvalues_adjusted_bonferroni = pvalues_adjusted_BF, .before = &quot;p_lrt&quot;)
+  fwrite(assoc_file, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_PCAIR_PAV_rn_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;, sep = &quot;\t&quot;, quote = F)
 }</code></pre>
 <div id="combine-significant-hits" class="section level3">
 <h3>Combine Significant Hits</h3>
@@ -629,9 +660,8 @@ model_list &lt;- c(&quot;ALL&quot;, &quot;AFA&quot;)
   #Add column containing model name
   #Compile significant subsets into single data frame
 for(model in model_list){
-  output &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_PCAIR_PAV_rn_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;)
+  output &lt;- fread(&quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_PCAIR_PAV_rn_filtered_&quot; %&amp;% model %&amp;% &quot;_baseline_rho0.1_zpval0.05.adj.txt&quot;)
   output &lt;- add_column(output, model = model, .before = &quot;chr&quot;)
-  output &lt;- add_column(output, drug = drug, .before = &quot;chr&quot;)
   if(exists(&quot;all_assoc&quot;)){
       all_assoc&lt;-left_join(x = all_assoc, y = output, all = TRUE)
   }
@@ -646,11 +676,11 @@ for(model in model_list){
   BF_sig&lt;-subset(all_assoc, pvalues_adjusted_bonferroni &lt; .05)
    
   #Output data frames into directory
-  fwrite(all_assoc, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_allassoc_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(all_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(most_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_most_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(BF_not1, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
-  fwrite(BF_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_rn_BFsig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(all_assoc, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_allassoc_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(all_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(most_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_most_sig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(BF_not1, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_BFnot1_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
+  fwrite(BF_sig, &quot;/home/rhea/account_wflow/pwas_results/blacks/clop_noac/adj_assoc_output/clop_noac_CrCl_BFsig_PCAIR_PAV_filtered_baseline_rho0.1_zpval0.05.adj.txt&quot;, na = &quot;NA&quot;, quote = F, sep = &quot;\t&quot;, col.names = T) 
 }</code></pre>
 </div>
 </div>
